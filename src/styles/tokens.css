@@ -1,0 +1,71 @@
+:root {
+  /* Interface Brand Colors */
+  --brand-red: #ed1b24;
+  --brand-red-light: rgba(237, 27, 36, 0.08);
+  --brand-red-glow: rgba(237, 27, 36, 0.22);
+  --action-red: #da0000;
+  --action-red-hover: #b80000;
+  
+  /* Text colors */
+  --text-primary: #121214;
+  --text-secondary: #5e5e66;
+  --text-muted: #8c8c94;
+  --text-inverse: #ffffff;
+  
+  /* Surfaces */
+  --surface-white: #ffffff;
+  --surface-soft: #f7f7f9;
+  --surface-subtle: #eeeff2;
+  --surface-charcoal: #141416;
+  --surface-charcoal-card: #1c1c1f;
+  
+  /* Borders - ultra fine and clean */
+  --border-subtle: #e5e5ea;
+  --border-card: #e2e2e8;
+  --border-dark: #26262a;
+  --border-focus: #ed1b24;
+  
+  /* Layout tokens */
+  --max-width: 1240px;
+  --section-spacing-desktop: 92px;
+  --section-spacing-mobile: 52px;
+  --panel-radius: 12px;
+  --panel-radius-sm: 8px;
+  --panel-radius-xs: 6px;
+  --button-radius: 6px;
+  --button-radius-pill: 24px;
+  --gap-grid: 20px;
+  --page-padding-desktop: 36px;
+  --page-padding-mobile: 20px;
+  
+  /* Typography - Satoshi Geometric Sans */
+  --font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-hero: clamp(2.75rem, 5.2vw, 4.5rem);
+  --font-section-heading: clamp(2rem, 3.2vw, 2.75rem);
+  --font-product-title: clamp(1.25rem, 1.8vw, 1.65rem);
+  --font-subheading: clamp(1.05rem, 1.4vw, 1.25rem);
+  --font-body: 1rem;
+  --font-body-sm: 0.875rem;
+  --font-caption: 0.75rem;
+  --font-button: 0.875rem;
+  
+  /* Letter-spacing & Kerning Tokens */
+  --tracking-hero: -0.038em;
+  --tracking-heading: -0.028em;
+  --tracking-subheading: -0.015em;
+  --tracking-title: -0.018em;
+  --tracking-body: -0.005em;
+  --tracking-button: -0.01em;
+  --tracking-eyebrow: 0.09em;
+  --tracking-pill: 0.04em;
+  
+  /* Elevation & Shadows */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.2);
+  
+  /* Transitions */
+  --transition-quick: 160ms ease;
+  --transition-normal: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
