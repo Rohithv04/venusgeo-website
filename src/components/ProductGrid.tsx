@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ProductCard } from './ProductCard';
 import { products, type ProductItem, type ProductPdf } from '../data/products';
-import { X, CheckCircle2, MessageSquare, Mail, Check, Activity, ArrowRight, FileText, Eye, Download, ExternalLink } from 'lucide-react';
+import { X, CheckCircle2, MessageSquare, Mail, ArrowRight, FileText, Eye, Download, ExternalLink } from 'lucide-react';
 
 export const ProductGrid: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
@@ -61,60 +61,24 @@ export const ProductGrid: React.FC = () => {
   return (
     <section id="products" className="section products-section" aria-label="AI-Powered Products">
       <div className="container">
-        {/* Split Section Header */}
+        {/* Section Header */}
         <div className="products-split-header">
-          {/* Left: Section Title & Action */}
           <div className="products-header-left">
             <div className="eyebrow">Enterprise Product Suite</div>
             <h2 className="section-heading">
               AI-Powered Products<br />
               <span className="text-secondary">for Your Business</span>
             </h2>
-            <div className="products-header-cta">
-              <a
-                href="#contact"
-                onClick={scrollToContact}
-                className="btn btn-primary products-quote-btn"
-              >
-                <span>Talk to Engineering</span>
-                <ArrowRight size={15} />
-              </a>
-            </div>
           </div>
-
-          {/* Right: Operational Status Card */}
-          <div className="products-status-card card-panel">
-            <div className="status-card-header">
-              <div className="status-label">Operational Telemetry</div>
-              <div className="status-active-badge">
-                <Activity size={13} className="text-red" />
-                <span>Live 24/7</span>
-              </div>
-            </div>
-
-            <div className="status-metric-rows">
-              <div className="status-row">
-                <span className="status-param">Inference Latency</span>
-                <span className="status-val">&lt; 15ms</span>
-              </div>
-              <div className="status-row highlight-status-row">
-                <span className="status-param">Extraction Accuracy</span>
-                <div className="status-val-wrap">
-                  <span className="status-val">99.8%</span>
-                  <div className="red-check-badge">
-                    <Check size={11} />
-                  </div>
-                </div>
-              </div>
-              <div className="status-row">
-                <span className="status-param">System Availability</span>
-                <span className="status-val">99.99%</span>
-              </div>
-            </div>
-
-            <div className="status-footer-text">
-              Real-time ingestion, privacy validation & automated edge dispatch.
-            </div>
+          <div className="products-header-cta">
+            <a
+              href="#contact"
+              onClick={scrollToContact}
+              className="btn btn-primary products-quote-btn"
+            >
+              <span>Talk to Engineering</span>
+              <ArrowRight size={15} />
+            </a>
           </div>
         </div>
 
@@ -384,17 +348,17 @@ export const ProductGrid: React.FC = () => {
         }
 
         .products-split-header {
-          display: grid;
-          grid-template-columns: 1.2fr 1fr;
-          gap: 32px;
+          display: flex;
+          justify-content: space-between;
           align-items: flex-end;
+          gap: 24px;
           margin-bottom: 40px;
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 768px) {
           .products-split-header {
-            grid-template-columns: 1fr;
-            gap: 24px;
+            flex-direction: column;
+            align-items: flex-start;
           }
         }
 
@@ -409,99 +373,6 @@ export const ProductGrid: React.FC = () => {
           padding: 11px 22px;
           font-size: 0.875rem;
           border-radius: var(--button-radius);
-        }
-
-        /* Status card on right side of header */
-        .products-status-card {
-          padding: 24px;
-          background-color: var(--surface-white);
-          border-radius: var(--panel-radius);
-          box-shadow: var(--shadow-subtle);
-        }
-
-        .status-card-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-bottom: 12px;
-          margin-bottom: 12px;
-          border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .status-label {
-          font-size: 0.75rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: var(--tracking-eyebrow);
-          color: var(--text-muted);
-        }
-
-        .status-active-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: var(--tracking-pill);
-          color: var(--text-primary);
-          background-color: var(--surface-soft);
-          padding: 3px 8px;
-          border-radius: 4px;
-        }
-
-        .status-metric-rows {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          margin-bottom: 12px;
-        }
-
-        .status-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: 0.8125rem;
-          color: var(--text-secondary);
-        }
-
-        .status-param {
-          color: var(--text-secondary);
-        }
-
-        .status-val {
-          font-weight: 700;
-          letter-spacing: -0.015em;
-          color: var(--text-primary);
-        }
-
-        .highlight-status-row .status-param {
-          font-weight: 600;
-          color: var(--text-primary);
-        }
-
-        .status-val-wrap {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .red-check-badge {
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background-color: var(--brand-red);
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .status-footer-text {
-          font-size: 0.75rem;
-          color: var(--text-muted);
-          line-height: 1.4;
-          padding-top: 10px;
-          border-top: 1px solid var(--border-subtle);
         }
 
         /* 2-Column Desktop Grid */

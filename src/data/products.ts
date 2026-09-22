@@ -36,6 +36,14 @@ export const products: ProductItem[] = [
     image: '/assets/products/document-ai.jpg',
     actionText: 'Explore Document AI',
     destinationType: 'internal-panel',
+    pdf: {
+      title: 'Document AI Business Presentation',
+      subtitle: 'Pammy AI Maritime Operations & Intelligent Automation (12 Slides)',
+      url: '/assets/docs/document-ai-business-presentation.pdf',
+      fileName: 'Document-AI-Business-Presentation.pdf',
+      slideCount: 12,
+      fileSize: '2.5 MB'
+    },
     detail: {
       overview: 'Document AI automates end-to-end data extraction and classification from complex, unstructured documents, invoices, legal contracts, and forms.',
       features: [
