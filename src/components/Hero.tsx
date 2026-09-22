@@ -132,128 +132,192 @@ export const Hero: React.FC = () => {
       };
       window.addEventListener('resize', handleResize);
 
-      // Trigger the single-shot smooth transition to the hero section
-      const triggerTransition = () => {
+      // Build the master timeline paused; progress is driven by scroll depth
+      const tl = gsap.timeline({
+        paused: true,
+        onComplete: () => {
+          setIsDocked(true);
+          if (loaderHud) loaderHud.style.display = 'none';
+          if (darkCurtain) darkCurtain.style.display = 'none';
+          gsap.set(videoCard, {
+            clearProps: 'transform,boxShadow,borderRadius,zIndex'
+          });
+        }
+      });
+
+      // 1. Video Card: smoothly moves and docks into hero section slot
+      tl.to(
+        videoCard,
+        {
+          x: 0,
+          y: 0,
+          scale: 1,
+          borderRadius: '12px',
+          boxShadow: '0 16px 40px rgba(0, 0, 0, 0.08)',
+          zIndex: 10,
+          duration: 1,
+          ease: 'power2.out'
+        },
+        0
+      );
+
+      // 2. HUD & dark curtain fade out
+      tl.to(
+        loaderHud,
+        { opacity: 0, duration: 0.35, ease: 'power1.out' },
+        0
+      );
+      if (darkCurtain) {
+        tl.to(
+          darkCurtain,
+          { opacity: 0, duration: 0.55, ease: 'power1.out' },
+          0
+        );
+      }
+
+      // 3. Hero Left Content: smoothly slides and fades in
+      tl.to(
+        heroContent,
+        { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out' },
+        0.2
+      );
+
+      // 4. Floating Badges: settle in place
+      if (floatingBadges) {
+        tl.to(
+          floatingBadges,
+          { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' },
+          0.4
+        );
+      }
+
+      // 5. Dock Grid: fades in
+      if (dockGrid) {
+        tl.to(
+          dockGrid,
+          { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' },
+          0.35
+        );
+      }
+
+      // 6. Ecosystem Strip: fades in
+      if (ecosystem) {
+        tl.to(
+          ecosystem,
+          { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' },
+          0.45
+        );
+      }
+
+      // Generous scroll depth required to transition into hero section
+      const DESKTOP_SCROLL_DEPTH = 450;
+      const MOBILE_SCROLL_DEPTH = 240;
+      let accumulatedScroll = 0;
+
+      // Complete the docking permanently
+      const completeDock = () => {
         if (transitioningRef.current) return;
         transitioningRef.current = true;
 
         removeListeners();
 
-        const tl = gsap.timeline({
+        gsap.to(tl, {
+          progress: 1,
+          duration: 0.4,
+          ease: 'power2.out',
+          overwrite: 'auto',
           onComplete: () => {
             setIsDocked(true);
             if (loaderHud) loaderHud.style.display = 'none';
             if (darkCurtain) darkCurtain.style.display = 'none';
-            // Clear transforms on videoCard so it lives naturally in normal CSS layout
             gsap.set(videoCard, {
               clearProps: 'transform,boxShadow,borderRadius,zIndex'
             });
           }
         });
-
-        // 1. Video Card: smoothly moves and docks into hero section slot
-        tl.to(
-          videoCard,
-          {
-            x: 0,
-            y: 0,
-            scale: 1,
-            borderRadius: '12px',
-            boxShadow: '0 16px 40px rgba(0, 0, 0, 0.08)',
-            zIndex: 10,
-            duration: 0.75,
-            ease: 'power2.out'
-          },
-          0
-        );
-
-        // 2. HUD & dark curtain fade out
-        tl.to(
-          loaderHud,
-          { opacity: 0, duration: 0.3, ease: 'power1.out' },
-          0
-        );
-        if (darkCurtain) {
-          tl.to(
-            darkCurtain,
-            { opacity: 0, duration: 0.45, ease: 'power1.out' },
-            0
-          );
-        }
-
-        // 3. Hero Left Content: smoothly slides and fades in
-        tl.to(
-          heroContent,
-          { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' },
-          0.15
-        );
-
-        // 4. Floating Badges: settle in place
-        if (floatingBadges) {
-          tl.to(
-            floatingBadges,
-            { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
-            0.35
-          );
-        }
-
-        // 5. Dock Grid: fades in
-        if (dockGrid) {
-          tl.to(
-            dockGrid,
-            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
-            0.3
-          );
-        }
-
-        // 6. Ecosystem Strip: fades in
-        if (ecosystem) {
-          tl.to(
-            ecosystem,
-            { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
-            0.4
-          );
-        }
       };
 
-      triggerTransitionRef.current = triggerTransition;
+      triggerTransitionRef.current = completeDock;
 
-      // Wheel listener (Desktop scroll down)
+      // Wheel listener (Desktop scroll depth)
       const handleWheel = (e: WheelEvent) => {
-        if (e.deltaY > 6) {
-          triggerTransition();
+        if (transitioningRef.current) return;
+        // Only progress forwards on scroll down
+        if (e.deltaY > 0) {
+          accumulatedScroll += e.deltaY;
+          const targetProgress = Math.min(1, accumulatedScroll / DESKTOP_SCROLL_DEPTH);
+
+          gsap.to(tl, {
+            progress: targetProgress,
+            duration: 0.28,
+            ease: 'power1.out',
+            overwrite: 'auto'
+          });
+
+          if (accumulatedScroll >= DESKTOP_SCROLL_DEPTH) {
+            completeDock();
+          }
         }
       };
 
-      // Touch listeners (Mobile swipe up to scroll down)
+      // Touch listeners (Mobile swipe depth)
       let touchStartY = 0;
+      let lastTouchY = 0;
+
       const handleTouchStart = (e: TouchEvent) => {
         touchStartY = e.touches[0].clientY;
+        lastTouchY = touchStartY;
       };
+
       const handleTouchMove = (e: TouchEvent) => {
-        const delta = touchStartY - e.touches[0].clientY;
-        if (delta > 12) {
-          triggerTransition();
+        if (transitioningRef.current) return;
+        const currentY = e.touches[0].clientY;
+        lastTouchY = currentY;
+        const delta = touchStartY - currentY; // positive when swiping up
+
+        if (delta > 0) {
+          const targetProgress = Math.min(1, delta / MOBILE_SCROLL_DEPTH);
+          gsap.to(tl, {
+            progress: targetProgress,
+            duration: 0.2,
+            ease: 'power1.out',
+            overwrite: 'auto'
+          });
+
+          if (delta >= MOBILE_SCROLL_DEPTH) {
+            completeDock();
+          }
+        }
+      };
+
+      const handleTouchEnd = () => {
+        if (transitioningRef.current) return;
+        const totalDelta = touchStartY - lastTouchY;
+        // If user made a deliberate swipe of at least 40px, smoothly finish to docked state
+        if (totalDelta > 40) {
+          completeDock();
         }
       };
 
       // Key listener (ArrowDown, PageDown, Space)
       const handleKeyDown = (e: KeyboardEvent) => {
         if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
-          triggerTransition();
+          e.preventDefault();
+          completeDock();
         }
       };
 
       // Native window scroll fallback
       const handleScroll = () => {
-        if (window.scrollY > 10) {
-          triggerTransition();
+        if (window.scrollY > 20) {
+          completeDock();
         }
       };
 
       window.addEventListener('wheel', handleWheel, { passive: true });
       window.addEventListener('touchstart', handleTouchStart, { passive: true });
       window.addEventListener('touchmove', handleTouchMove, { passive: true });
+      window.addEventListener('touchend', handleTouchEnd, { passive: true });
       window.addEventListener('keydown', handleKeyDown);
       window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -261,6 +325,7 @@ export const Hero: React.FC = () => {
         window.removeEventListener('wheel', handleWheel);
         window.removeEventListener('touchstart', handleTouchStart);
         window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
         window.removeEventListener('keydown', handleKeyDown);
         window.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', handleResize);
