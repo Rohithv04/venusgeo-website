@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ExternalLink, Award, PhoneCall, Cpu, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ExternalLink, Award, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { gsap, prefersReducedMotion } from '../utils/animations';
 
 export const Hero: React.FC = () => {
@@ -10,8 +10,6 @@ export const Hero: React.FC = () => {
   const heroVisualRef = useRef<HTMLDivElement>(null);
   const videoCardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const floatingBadgesRef = useRef<HTMLDivElement>(null);
-  const floatBadgeRef = useRef<HTMLDivElement>(null);
   const statRef = useRef<HTMLDivElement>(null);
   const dockGridRef = useRef<HTMLDivElement>(null);
   const ecosystemRef = useRef<HTMLDivElement>(null);
@@ -46,22 +44,10 @@ export const Hero: React.FC = () => {
     }
 
     const ctx = gsap.context(() => {
-      // Continuous subtle breathing movement for the floating badge
-      if (floatBadgeRef.current) {
-        gsap.to(floatBadgeRef.current, {
-          y: -4,
-          duration: 3,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut'
-        });
-      }
-
       const videoCard = videoCardRef.current;
       const loaderHud = loaderHudRef.current;
       const darkCurtain = darkCurtainRef.current;
       const heroContent = heroContentRef.current;
-      const floatingBadges = floatingBadgesRef.current;
       const dockGrid = dockGridRef.current;
       const ecosystem = ecosystemRef.current;
 
@@ -115,7 +101,6 @@ export const Hero: React.FC = () => {
       gsap.set(loaderHud, { opacity: 1, pointerEvents: 'auto' });
       if (darkCurtain) gsap.set(darkCurtain, { opacity: 1 });
       gsap.set(heroContent, { opacity: 0, x: -32 });
-      if (floatingBadges) gsap.set(floatingBadges, { opacity: 0, y: 16 });
       if (dockGrid) gsap.set(dockGrid, { opacity: 0, y: 30 });
       if (ecosystem) gsap.set(ecosystem, { opacity: 0, y: 15 });
 
@@ -182,14 +167,6 @@ export const Hero: React.FC = () => {
         0.2
       );
 
-      // 4. Floating Badges: settle in place
-      if (floatingBadges) {
-        tl.to(
-          floatingBadges,
-          { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' },
-          0.4
-        );
-      }
 
       // 5. Dock Grid: fades in
       if (dockGrid) {
@@ -356,13 +333,6 @@ export const Hero: React.FC = () => {
     }
   };
 
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const el = document.getElementById('contact');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section ref={heroRef} className="hero-section" aria-label="Introduction">
@@ -469,30 +439,7 @@ export const Hero: React.FC = () => {
 
                 <div className="hero-img-gradient-overlay" aria-hidden="true" />
 
-                {/* Overlaid Floating Badges Stack on Right (Aligned with reference layout) */}
-                <div ref={floatingBadgesRef} className="hero-floating-stack">
-                  <div ref={floatBadgeRef} className="floating-badge-top">
-                    <div className="floating-badge-icon">
-                      <Cpu size={18} />
-                    </div>
-                    <div className="floating-badge-text">
-                      <div className="floating-badge-val">25+ Fleets & Enterprises</div>
-                      <div className="floating-badge-sub">Active in production</div>
-                    </div>
-                  </div>
 
-                  <a
-                    href="#contact"
-                    onClick={scrollToContact}
-                    className="floating-call-btn"
-                    aria-label="Contact engineering team"
-                  >
-                    <div className="call-btn-circle">
-                      <PhoneCall size={16} />
-                    </div>
-                    <span className="call-btn-label">Contact Us</span>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -868,117 +815,6 @@ export const Hero: React.FC = () => {
           background: linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.28) 100%);
         }
 
-        /* Overlaid Floating Badges Stack on Right */
-        .hero-floating-stack {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          gap: 12px;
-          max-width: calc(100% - 32px);
-          z-index: 5;
-        }
-
-        @media (max-width: 600px) {
-          .hero-floating-stack {
-            top: 10px;
-            right: 10px;
-            gap: 8px;
-          }
-          .floating-badge-top {
-            padding: 6px 10px;
-          }
-          .floating-badge-val {
-            font-size: 0.75rem;
-          }
-          .floating-badge-sub {
-            font-size: 0.625rem;
-          }
-          .floating-call-btn {
-            padding: 4px 10px 4px 4px;
-          }
-          .call-btn-circle {
-            width: 26px;
-            height: 26px;
-          }
-          .call-btn-label {
-            font-size: 0.75rem;
-          }
-        }
-
-        .floating-badge-top {
-          background-color: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(8px);
-          border: 1px solid var(--border-card);
-          border-radius: var(--panel-radius-sm);
-          padding: 10px 14px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          box-shadow: var(--shadow-float);
-          white-space: nowrap;
-        }
-
-        .floating-badge-icon {
-          color: var(--brand-red);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .floating-badge-val {
-          font-size: 0.8125rem;
-          font-weight: 600;
-          letter-spacing: var(--tracking-title);
-          color: var(--text-primary);
-          line-height: 1.2;
-        }
-
-        .floating-badge-sub {
-          font-size: 0.6875rem;
-          color: var(--text-secondary);
-        }
-
-        .floating-call-btn {
-          background-color: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(8px);
-          border: 1px solid var(--border-card);
-          border-radius: 30px;
-          padding: 5px 14px 5px 5px;
-          display: flex;
-          align-items: center;
-          gap: 9px;
-          box-shadow: var(--shadow-float);
-          transition: transform var(--transition-quick), box-shadow var(--transition-quick);
-          text-decoration: none;
-          white-space: nowrap;
-        }
-
-        .floating-call-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 16px 36px rgba(237, 27, 36, 0.22);
-        }
-
-        .call-btn-circle {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background-color: var(--brand-red);
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .call-btn-label {
-          font-size: 0.8125rem;
-          font-weight: 600;
-          letter-spacing: var(--tracking-button);
-          color: var(--text-primary);
-        }
 
         /* 3-Card Dock Directly Below Hero - Equal height & perfectly aligned */
         .hero-dock-grid {
