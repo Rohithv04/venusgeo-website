@@ -1,3 +1,12 @@
+export interface ProductPdf {
+  title: string;
+  subtitle?: string;
+  url: string;
+  fileName: string;
+  slideCount?: number;
+  fileSize?: string;
+}
+
 export interface ProductItem {
   id: string;
   name: string;
@@ -7,6 +16,7 @@ export interface ProductItem {
   actionText: string;
   destinationType: 'external' | 'internal-panel';
   url?: string;
+  pdf?: ProductPdf;
   // Detail metadata for products using internal detail panel
   detail?: {
     overview: string;
@@ -59,15 +69,23 @@ export const products: ProductItem[] = [
   },
   // Row 2, Left
   {
-    id: 'postmate',
-    name: 'Postmate',
+    id: 'posmate',
+    name: 'Posmate',
     shortBenefit: 'Service that moves with the guest.',
     description: 'Mobile ordering and payments for connected onboard experiences.',
     image: '/assets/products/postmate.jpg',
-    actionText: 'Explore Postmate',
+    actionText: 'Explore Posmate',
     destinationType: 'internal-panel',
+    pdf: {
+      title: 'POSMATE Business Presentation',
+      subtitle: 'Cruise Ship POS Modernization (10 Slides)',
+      url: '/assets/docs/posmate-business-presentation.pdf',
+      fileName: 'POSMATE-Business-Presentation.pdf',
+      slideCount: 10,
+      fileSize: '2.4 MB'
+    },
     detail: {
-      overview: 'Postmate powers seamless, real-time handheld ordering, table management, and instant payment processing across hospitality venues and cruise vessels.',
+      overview: 'Posmate powers seamless, real-time handheld ordering, table management, and instant payment processing across hospitality venues and cruise vessels.',
       features: [
         'Mobile POS optimized for handheld tablets and ruggedized terminals',
         'Offline-first synchronization for connectivity-challenged environments',
@@ -95,6 +113,14 @@ export const products: ProductItem[] = [
     image: '/assets/products/ital.jpg',
     actionText: 'Explore ITAL',
     destinationType: 'internal-panel',
+    pdf: {
+      title: 'ITAL Business Presentation',
+      subtitle: 'IT Asset Lookup & Fleet Telemetry (15 Slides)',
+      url: '/assets/docs/ital-business-presentation.pdf',
+      fileName: 'ITAL-Business-Presentation.pdf',
+      slideCount: 15,
+      fileSize: '2.5 MB'
+    },
     detail: {
       overview: 'ITAL provides comprehensive maritime and distributed fleet IT asset management, monitoring connected devices, satellite links, and software health worldwide.',
       features: [

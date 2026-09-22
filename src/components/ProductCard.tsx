@@ -1,13 +1,14 @@
 import React from 'react';
-import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock } from 'lucide-react';
-import type { ProductItem } from '../data/products';
+import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock, FileText, Eye, Download } from 'lucide-react';
+import type { ProductItem, ProductPdf } from '../data/products';
 
 interface ProductCardProps {
   product: ProductItem;
   onOpenDetail: (product: ProductItem) => void;
+  onPreviewPdf?: (pdf: ProductPdf) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail, onPreviewPdf }) => {
   const isExternal = product.destinationType === 'external' && product.url;
 
   const getProductIcon = (id: string) => {
@@ -16,6 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
         return <FileSearch size={18} />;
       case 'private-id':
         return <ShieldCheck size={18} />;
+      case 'posmate':
       case 'postmate':
         return <CreditCard size={18} />;
       case 'ital':
@@ -31,12 +33,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
 
   return (
     <div className="product-card card-panel" id={`card-${product.id}`}>
-      {/* Top Bar with Delicate Red Outline Icon (matching reference style) */}
+      {/* Top Bar with Delicate Red Outline Icon */}
       <div className="product-card-top-bar">
         <div className="icon-red-outline">
           {getProductIcon(product.id)}
         </div>
-        <span className="product-tag-pill">{product.name}</span>
+        <div className="product-card-top-tags">
+          {product.pdf && (
+            <span className="product-pdf-tag">
+              <FileText size={11} />
+              <span>PDF Deck</span>
+            </span>
+          )}
+          <span className="product-tag-pill">{product.name}</span>
+        </div>
       </div>
 
       {/* Product Image Media Frame */}
@@ -59,6 +69,49 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
         </div>
 
         <p className="product-desc">{product.description}</p>
+
+        {/* Presentation PDF Attachment Row */}
+        {product.pdf && (
+          <div className="product-pdf-strip" aria-label={`PDF Presentation for ${product.name}`}>
+            <div className="pdf-strip-header">
+              <div className="pdf-strip-meta">
+                <FileText size={13} className="text-red" />
+                <span className="pdf-strip-title">Presentation Deck</span>
+              </div>
+              {product.pdf.slideCount && (
+                <span className="pdf-strip-slides">{product.pdf.slideCount} Slides</span>
+              )}
+            </div>
+
+            <div className="pdf-strip-actions">
+              <button
+                type="button"
+                className="pdf-btn pdf-btn-preview"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onPreviewPdf?.(product.pdf!);
+                }}
+                title={`Preview ${product.pdf.title}`}
+                aria-label={`Preview ${product.pdf.title} PDF`}
+              >
+                <Eye size={13} />
+                <span>Preview PDF</span>
+              </button>
+
+              <a
+                href={product.pdf.url}
+                download={product.pdf.fileName}
+                className="pdf-btn pdf-btn-download"
+                onClick={(e) => e.stopPropagation()}
+                title={`Download ${product.pdf.title}`}
+                aria-label={`Download ${product.pdf.title} PDF`}
+              >
+                <Download size={13} />
+                <span>Download</span>
+              </a>
+            </div>
+          </div>
+        )}
 
         {/* Explore Action Button with Arrow */}
         <div className="product-card-action">
@@ -92,7 +145,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
           display: flex;
           flex-direction: column;
           height: 100%;
-          min-height: 420px;
+          min-height: 440px;
           overflow: hidden;
           background-color: var(--surface-white);
           border: 1px solid var(--border-card);
@@ -111,6 +164,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
           align-items: center;
           justify-content: space-between;
           padding: 20px 24px 14px 24px;
+        }
+
+        .product-card-top-tags {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .product-pdf-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 0.625rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--brand-red);
+          background-color: #fef2f2;
+          border: 1px solid #fecdd3;
+          padding: 3px 8px;
+          border-radius: 20px;
         }
 
         .product-tag-pill {
@@ -194,12 +268,97 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
           font-size: 0.875rem;
           color: var(--text-secondary);
           line-height: 1.5;
-          margin-bottom: 20px;
+          margin-bottom: 16px;
           flex-grow: 1;
         }
 
-        .product-card-action {
+        /* Presentation PDF Strip */
+        .product-pdf-strip {
           margin-top: auto;
+          margin-bottom: 14px;
+          padding: 9px 12px;
+          background: linear-gradient(180deg, #fafafb 0%, #f4f4f7 100%);
+          border: 1px solid #e2e2e8;
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .pdf-strip-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .pdf-strip-meta {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .pdf-strip-title {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--text-primary);
+          letter-spacing: -0.01em;
+        }
+
+        .pdf-strip-slides {
+          font-size: 0.6875rem;
+          color: var(--text-muted);
+          font-weight: 500;
+          background: rgba(0, 0, 0, 0.04);
+          padding: 2px 6px;
+          border-radius: 4px;
+        }
+
+        .pdf-strip-actions {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px;
+        }
+
+        .pdf-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          padding: 6px 8px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          border-radius: 5px;
+          text-decoration: none;
+          transition: all 0.18s ease;
+          cursor: pointer;
+        }
+
+        .pdf-btn-preview {
+          background-color: var(--surface-white);
+          color: var(--text-primary);
+          border: 1px solid #d4d4d8;
+        }
+
+        .pdf-btn-preview:hover {
+          background-color: #f1f1f5;
+          border-color: #a1a1aa;
+          color: var(--brand-red);
+        }
+
+        .pdf-btn-download {
+          background-color: #fff1f2;
+          color: var(--brand-red);
+          border: 1px solid #fecdd3;
+        }
+
+        .pdf-btn-download:hover {
+          background-color: #ffe4e6;
+          border-color: #fda4af;
+          color: #be123c;
+        }
+
+        .product-card-action {
+          margin-top: 0;
         }
 
         .product-action-btn {
@@ -222,3 +381,4 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail 
     </div>
   );
 };
+
