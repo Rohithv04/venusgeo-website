@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ExternalLink, Award, PhoneCall, Cpu, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { gsap, prefersReducedMotion } from '../utils/animations';
 
 export const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const pinStageRef = useRef<HTMLDivElement>(null);
+  const darkCurtainRef = useRef<HTMLDivElement>(null);
   const loaderHudRef = useRef<HTMLDivElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroVisualRef = useRef<HTMLDivElement>(null);
@@ -16,17 +16,32 @@ export const Hero: React.FC = () => {
   const dockGridRef = useRef<HTMLDivElement>(null);
   const ecosystemRef = useRef<HTMLDivElement>(null);
 
+  // Determine if already docked based on URL hash or previous scroll depth
+  const [isDocked, setIsDocked] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      if (window.location.hash || window.scrollY > 30) {
+        return true;
+      }
+    }
+    return false;
+  });
+
+  const transitioningRef = useRef(false);
+  const triggerTransitionRef = useRef<(() => void) | null>(null);
+
   useEffect(() => {
     if (!heroRef.current) return;
 
-    // If reduced motion is preferred, render directly in docked state
-    if (prefersReducedMotion()) {
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => {});
-      }
-      if (statRef.current) {
-        statRef.current.textContent = '25+';
-      }
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+    if (statRef.current) {
+      statRef.current.textContent = '25+';
+    }
+
+    // If reduced motion is preferred or already docked, ensure direct docked presentation
+    if (prefersReducedMotion() || isDocked) {
+      setIsDocked(true);
       return;
     }
 
@@ -42,31 +57,20 @@ export const Hero: React.FC = () => {
         });
       }
 
-      // Ensure stat starts and finishes crisply at 25+
-      if (statRef.current) {
-        statRef.current.textContent = '25+';
-      }
-
       const videoCard = videoCardRef.current;
-      const stage = pinStageRef.current;
       const loaderHud = loaderHudRef.current;
+      const darkCurtain = darkCurtainRef.current;
       const heroContent = heroContentRef.current;
       const floatingBadges = floatingBadgesRef.current;
       const dockGrid = dockGridRef.current;
       const ecosystem = ecosystemRef.current;
 
-      if (!stage || !videoCard || !heroContent || !loaderHud) return;
+      if (!videoCard || !loaderHud || !heroContent) return;
 
-      // Ensure video is playing automatically
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => {});
-      }
-
-      // Calculate translation and scale required to make the card fill the viewport
-      // Measures heroVisualRef (the stationary grid slot) so videoCard transforms never need to be cleared
+      // Calculate translation and scale required to make the card fill or center in viewport
       const getMorphValues = () => {
         const container = heroVisualRef.current;
-        if (!container) return { deltaX: 0, deltaY: 0, scale: 1 };
+        if (!container) return { deltaX: 0, deltaY: 0, scale: 1, isMobile: false };
         const cardRect = container.getBoundingClientRect();
         const vw = window.innerWidth;
         const vh = window.innerHeight;
@@ -79,129 +83,204 @@ export const Hero: React.FC = () => {
         const deltaX = viewCenterX - cardCenterX;
         const deltaY = viewCenterY - cardCenterY;
 
-        const scaleX = vw / cardRect.width;
-        const scaleY = vh / cardRect.height;
-        // Cover the screen completely
-        const scale = Math.max(scaleX, scaleY);
+        const isMobile = vw <= 768;
+        let scale = 1;
 
-        return { deltaX, deltaY, scale };
+        if (isMobile) {
+          // On mobile, keep video in its actual 16:9 aspect ratio, perfectly centered
+          // Constrain width with comfortable margin so it is never cropped or blown up
+          const targetWidth = Math.min(vw - 32, 480);
+          scale = targetWidth / (cardRect.width || 1);
+        } else {
+          // Desktop: cover viewport cleanly
+          const scaleX = vw / (cardRect.width || 1);
+          const scaleY = vh / (cardRect.height || 1);
+          scale = Math.max(scaleX, scaleY);
+        }
+
+        return { deltaX, deltaY, scale, isMobile };
       };
 
       let morph = getMorphValues();
 
-      // Master scroll-driven timeline pinned at top
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: stage,
-          start: 'top top',
-          end: '+=700',
-          pin: true,
-          scrub: 0.8,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          onRefresh: () => {
-            morph = getMorphValues();
-          }
-        }
+      // Apply initial state at start of website
+      gsap.set(videoCard, {
+        x: morph.deltaX,
+        y: morph.deltaY,
+        scale: morph.scale,
+        borderRadius: morph.isMobile ? '12px' : '0px',
+        boxShadow: morph.isMobile ? '0 16px 40px rgba(0, 0, 0, 0.5)' : '0 0 0 rgba(0, 0, 0, 0)',
+        zIndex: 600
       });
+      gsap.set(loaderHud, { opacity: 1, pointerEvents: 'auto' });
+      if (darkCurtain) gsap.set(darkCurtain, { opacity: 1 });
+      gsap.set(heroContent, { opacity: 0, x: -32 });
+      if (floatingBadges) gsap.set(floatingBadges, { opacity: 0, y: 16 });
+      if (dockGrid) gsap.set(dockGrid, { opacity: 0, y: 30 });
+      if (ecosystem) gsap.set(ecosystem, { opacity: 0, y: 15 });
 
-      // 1. Video Card: Starts fullscreen (centered & scaled) with 0 radius and morphs into docked card
-      tl.fromTo(
-        videoCard,
-        {
-          x: () => morph.deltaX,
-          y: () => morph.deltaY,
-          scale: () => morph.scale,
-          borderRadius: '0px',
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-          zIndex: 600
-        },
-        {
-          x: 0,
-          y: 0,
-          scale: 1,
-          borderRadius: '12px',
-          boxShadow: '0 16px 40px rgba(0, 0, 0, 0.08)',
-          zIndex: 10,
-          ease: 'power1.inOut',
-          duration: 1
-        },
-        0
-      );
-
-      // 2. Loader HUD: Fades out in the first 25% of scroll
-      tl.fromTo(
-        loaderHud,
-        { opacity: 1, pointerEvents: 'auto' },
-        { opacity: 0, pointerEvents: 'none', ease: 'power1.out', duration: 0.25 },
-        0
-      );
-
-      // 3. Hero Left Content: Slides in as the video docks
-      tl.fromTo(
-        heroContent,
-        { opacity: 0, x: -36 },
-        { opacity: 1, x: 0, ease: 'power2.out', duration: 0.65 },
-        0.35
-      );
-
-      // 4. Floating Badges: Fade and settle in place on the docked video
-      if (floatingBadges) {
-        tl.fromTo(
-          floatingBadges,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, ease: 'power2.out', duration: 0.35 },
-          0.65
-        );
-      }
-
-      // 5. 3-Card Dock Grid: Fades and slides in
-      if (dockGrid) {
-        tl.fromTo(
-          dockGrid,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, ease: 'power2.out', duration: 0.5 },
-          0.5
-        );
-      }
-
-      // 6. Ecosystem Strip: Fades in
-      if (ecosystem) {
-        tl.fromTo(
-          ecosystem,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, ease: 'power2.out', duration: 0.4 },
-          0.6
-        );
-      }
-
-      // Apply initial state if window is at the top
-      if (window.scrollY < 20) {
+      // Handle window resize while intro is active
+      const handleResize = () => {
+        if (transitioningRef.current) return;
+        morph = getMorphValues();
         gsap.set(videoCard, {
           x: morph.deltaX,
           y: morph.deltaY,
           scale: morph.scale,
-          borderRadius: '0px',
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-          zIndex: 600
+          borderRadius: morph.isMobile ? '12px' : '0px'
         });
-        gsap.set(loaderHud, { opacity: 1, pointerEvents: 'auto' });
-        gsap.set(heroContent, { opacity: 0, x: -36 });
-        if (floatingBadges) gsap.set(floatingBadges, { opacity: 0, y: 16 });
-        if (dockGrid) gsap.set(dockGrid, { opacity: 0, y: 30 });
-        if (ecosystem) gsap.set(ecosystem, { opacity: 0, y: 15 });
-      }
+      };
+      window.addEventListener('resize', handleResize);
+
+      // Trigger the single-shot smooth transition to the hero section
+      const triggerTransition = () => {
+        if (transitioningRef.current) return;
+        transitioningRef.current = true;
+
+        removeListeners();
+
+        const tl = gsap.timeline({
+          onComplete: () => {
+            setIsDocked(true);
+            if (loaderHud) loaderHud.style.display = 'none';
+            if (darkCurtain) darkCurtain.style.display = 'none';
+            // Clear transforms on videoCard so it lives naturally in normal CSS layout
+            gsap.set(videoCard, {
+              clearProps: 'transform,boxShadow,borderRadius,zIndex'
+            });
+          }
+        });
+
+        // 1. Video Card: smoothly moves and docks into hero section slot
+        tl.to(
+          videoCard,
+          {
+            x: 0,
+            y: 0,
+            scale: 1,
+            borderRadius: '12px',
+            boxShadow: '0 16px 40px rgba(0, 0, 0, 0.08)',
+            zIndex: 10,
+            duration: 0.75,
+            ease: 'power2.out'
+          },
+          0
+        );
+
+        // 2. HUD & dark curtain fade out
+        tl.to(
+          loaderHud,
+          { opacity: 0, duration: 0.3, ease: 'power1.out' },
+          0
+        );
+        if (darkCurtain) {
+          tl.to(
+            darkCurtain,
+            { opacity: 0, duration: 0.45, ease: 'power1.out' },
+            0
+          );
+        }
+
+        // 3. Hero Left Content: smoothly slides and fades in
+        tl.to(
+          heroContent,
+          { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' },
+          0.15
+        );
+
+        // 4. Floating Badges: settle in place
+        if (floatingBadges) {
+          tl.to(
+            floatingBadges,
+            { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
+            0.35
+          );
+        }
+
+        // 5. Dock Grid: fades in
+        if (dockGrid) {
+          tl.to(
+            dockGrid,
+            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' },
+            0.3
+          );
+        }
+
+        // 6. Ecosystem Strip: fades in
+        if (ecosystem) {
+          tl.to(
+            ecosystem,
+            { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
+            0.4
+          );
+        }
+      };
+
+      triggerTransitionRef.current = triggerTransition;
+
+      // Wheel listener (Desktop scroll down)
+      const handleWheel = (e: WheelEvent) => {
+        if (e.deltaY > 6) {
+          triggerTransition();
+        }
+      };
+
+      // Touch listeners (Mobile swipe up to scroll down)
+      let touchStartY = 0;
+      const handleTouchStart = (e: TouchEvent) => {
+        touchStartY = e.touches[0].clientY;
+      };
+      const handleTouchMove = (e: TouchEvent) => {
+        const delta = touchStartY - e.touches[0].clientY;
+        if (delta > 12) {
+          triggerTransition();
+        }
+      };
+
+      // Key listener (ArrowDown, PageDown, Space)
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+          triggerTransition();
+        }
+      };
+
+      // Native window scroll fallback
+      const handleScroll = () => {
+        if (window.scrollY > 10) {
+          triggerTransition();
+        }
+      };
+
+      window.addEventListener('wheel', handleWheel, { passive: true });
+      window.addEventListener('touchstart', handleTouchStart, { passive: true });
+      window.addEventListener('touchmove', handleTouchMove, { passive: true });
+      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      const removeListeners = () => {
+        window.removeEventListener('wheel', handleWheel);
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', handleResize);
+      };
+
+      return () => {
+        removeListeners();
+      };
     }, heroRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isDocked]);
 
-  const skipToSite = (e?: React.MouseEvent) => {
+  const handleSkipOrExplore = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
-    window.scrollTo({
-      top: 720,
-      behavior: 'smooth'
-    });
+    if (triggerTransitionRef.current) {
+      triggerTransitionRef.current();
+    } else {
+      setIsDocked(true);
+    }
   };
 
   const scrollToProducts = (e: React.MouseEvent) => {
@@ -222,9 +301,13 @@ export const Hero: React.FC = () => {
 
   return (
     <section ref={heroRef} className="hero-section" aria-label="Introduction">
-      {/* Scroll Stage for Pinned Video Morph */}
-      <div ref={pinStageRef} className="hero-scroll-stage">
-        {/* Fullscreen Brand Loader HUD - Active at scroll 0, fades on scroll depth */}
+      {/* Intro dark curtain behind starting video on start of website */}
+      {!isDocked && (
+        <div ref={darkCurtainRef} className="intro-dark-curtain" aria-hidden="true" />
+      )}
+
+      {/* Fullscreen Brand Loader HUD - Active at start, smoothly fades out on scroll */}
+      {!isDocked && (
         <div ref={loaderHudRef} className="brand-loader-hud" aria-hidden="false">
           <div className="loader-hud-backdrop" />
 
@@ -237,7 +320,7 @@ export const Hero: React.FC = () => {
 
             <button
               type="button"
-              onClick={skipToSite}
+              onClick={handleSkipOrExplore}
               className="loader-skip-btn"
               aria-label="Skip intro to site"
             >
@@ -250,7 +333,7 @@ export const Hero: React.FC = () => {
           <div className="loader-hud-footer">
             <button
               type="button"
-              onClick={skipToSite}
+              onClick={handleSkipOrExplore}
               className="loader-scroll-cue"
               aria-label="Scroll down to explore"
             >
@@ -261,6 +344,9 @@ export const Hero: React.FC = () => {
             </button>
           </div>
         </div>
+      )}
+
+      <div className="hero-stage-wrapper">
 
         <div className="container hero-container-inner">
           {/* Main Split Hero Grid */}
@@ -435,22 +521,34 @@ export const Hero: React.FC = () => {
           overflow: visible;
         }
 
-        .hero-scroll-stage {
+        .hero-stage-wrapper {
           position: relative;
           width: 100%;
         }
 
+        /* Increased padding between sticky header and hero content */
         .hero-container-inner {
-          padding-top: 40px;
+          padding-top: 72px;
           padding-bottom: 56px;
           position: relative;
         }
 
         @media (max-width: 768px) {
           .hero-container-inner {
-            padding-top: 24px;
+            padding-top: 44px;
             padding-bottom: 40px;
           }
+        }
+
+        /* Dark curtain behind intro video at the start */
+        .intro-dark-curtain {
+          position: fixed;
+          inset: 0;
+          width: 100vw;
+          height: 100vh;
+          background: radial-gradient(circle at center, #16161f 0%, #09090c 100%);
+          z-index: 550;
+          pointer-events: none;
         }
 
         /* Fullscreen Brand Loader HUD */
@@ -466,6 +564,12 @@ export const Hero: React.FC = () => {
           padding: 24px 32px;
           pointer-events: auto;
           box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+          .brand-loader-hud {
+            padding: 16px 16px 28px 16px;
+          }
         }
 
         .loader-hud-backdrop {
@@ -497,6 +601,13 @@ export const Hero: React.FC = () => {
           color: #ffffff;
         }
 
+        @media (max-width: 768px) {
+          .loader-brand-badge {
+            padding: 6px 12px;
+            gap: 8px;
+          }
+        }
+
         .loader-pulse-dot {
           width: 8px;
           height: 8px;
@@ -518,6 +629,12 @@ export const Hero: React.FC = () => {
           text-transform: uppercase;
         }
 
+        @media (max-width: 768px) {
+          .loader-brand-title {
+            font-size: 0.6875rem;
+          }
+        }
+
         .loader-skip-btn {
           display: inline-flex;
           align-items: center;
@@ -532,6 +649,13 @@ export const Hero: React.FC = () => {
           font-weight: 600;
           cursor: pointer;
           transition: transform var(--transition-quick), background-color var(--transition-quick);
+        }
+
+        @media (max-width: 768px) {
+          .loader-skip-btn {
+            padding: 6px 14px;
+            font-size: 0.75rem;
+          }
         }
 
         .loader-skip-btn:hover {
@@ -567,6 +691,12 @@ export const Hero: React.FC = () => {
           letter-spacing: 0.06em;
           text-transform: uppercase;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        @media (max-width: 768px) {
+          .scroll-cue-text {
+            font-size: 0.75rem;
+          }
         }
 
         .scroll-arrow-anim {
@@ -655,12 +785,13 @@ export const Hero: React.FC = () => {
           background-color: var(--surface-charcoal);
           transform-origin: center center;
           will-change: transform, border-radius, box-shadow;
+          aspect-ratio: 16 / 9;
         }
 
         .hero-main-video {
           width: 100%;
-          height: auto;
-          aspect-ratio: 16 / 10;
+          height: 100%;
+          aspect-ratio: 16 / 9;
           object-fit: cover;
           display: block;
         }
@@ -683,6 +814,33 @@ export const Hero: React.FC = () => {
           gap: 12px;
           max-width: calc(100% - 32px);
           z-index: 5;
+        }
+
+        @media (max-width: 600px) {
+          .hero-floating-stack {
+            top: 10px;
+            right: 10px;
+            gap: 8px;
+          }
+          .floating-badge-top {
+            padding: 6px 10px;
+          }
+          .floating-badge-val {
+            font-size: 0.75rem;
+          }
+          .floating-badge-sub {
+            font-size: 0.625rem;
+          }
+          .floating-call-btn {
+            padding: 4px 10px 4px 4px;
+          }
+          .call-btn-circle {
+            width: 26px;
+            height: 26px;
+          }
+          .call-btn-label {
+            font-size: 0.75rem;
+          }
         }
 
         .floating-badge-top {
