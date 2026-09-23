@@ -125,7 +125,7 @@ export const ProductGrid: React.FC = () => {
             {/* Modal Header Bar */}
             <div className="modal-header">
               <div className="modal-header-text">
-                <span className="modal-badge">Product Overview</span>
+                <span className="modal-badge">{selectedProduct.industry}</span>
                 <h3 id="modal-title" className="modal-title">{selectedProduct.name}</h3>
                 <p className="modal-subtitle">{selectedProduct.shortBenefit}</p>
               </div>

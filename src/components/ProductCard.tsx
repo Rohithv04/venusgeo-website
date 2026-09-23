@@ -45,7 +45,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
               <span>PDF Deck</span>
             </span>
           )}
-          <span className="product-tag-pill">{product.name}</span>
+          <span className="product-industry-badge" title={`Target Industry: ${product.industry}`}>
+            <span className="industry-badge-dot" aria-hidden="true" />
+            <span>{product.industry}</span>
+          </span>
         </div>
       </div>
 
@@ -187,16 +190,35 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
           border-radius: 20px;
         }
 
-        .product-tag-pill {
-          font-size: 0.6875rem;
-          font-weight: 600;
+        .product-industry-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.75rem;
+          font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: 0.06em;
-          color: var(--text-secondary);
-          background-color: var(--surface-soft);
-          border: 1px solid var(--border-subtle);
-          padding: 4px 10px;
+          letter-spacing: 0.05em;
+          color: var(--text-primary);
+          background-color: #f1f4f9;
+          border: 1.5px solid #cbd2df;
+          padding: 4px 11px;
           border-radius: 20px;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+          white-space: nowrap;
+          transition: border-color var(--transition-quick), background-color var(--transition-quick);
+        }
+
+        .product-card:hover .product-industry-badge {
+          border-color: #94a3b8;
+          background-color: #e8ecf4;
+        }
+
+        .industry-badge-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: var(--brand-red);
+          flex-shrink: 0;
         }
 
         .product-card-media {

@@ -10,6 +10,7 @@ export interface ProductPdf {
 export interface ProductItem {
   id: string;
   name: string;
+  industry: string;
   shortBenefit: string;
   description: string;
   image: string;
@@ -31,6 +32,7 @@ export const products: ProductItem[] = [
   {
     id: 'document-ai',
     name: 'Document AI',
+    industry: 'Financial Services',
     shortBenefit: 'From documents to clear action.',
     description: 'Turn document-heavy workflows into structured information and clearer decisions.',
     image: '/assets/products/document-ai.jpg',
@@ -68,6 +70,7 @@ export const products: ProductItem[] = [
   {
     id: 'private-id',
     name: 'Private ID',
+    industry: 'Identity & Security',
     shortBenefit: 'Verify identity. Preserve privacy.',
     description: 'Privacy-preserving identity verification for trusted digital access.',
     image: '/assets/products/private-id.jpg',
@@ -79,6 +82,7 @@ export const products: ProductItem[] = [
   {
     id: 'posmate',
     name: 'Posmate',
+    industry: 'Cruise & Hospitality',
     shortBenefit: 'Service that moves with the guest.',
     description: 'Mobile ordering and payments for connected onboard experiences.',
     image: '/assets/products/postmate.jpg',
@@ -116,6 +120,7 @@ export const products: ProductItem[] = [
   {
     id: 'ital',
     name: 'ITAL',
+    industry: 'Maritime',
     shortBenefit: 'Every device. One clear view.',
     description: 'Visibility into devices, users, and applications across vessels and teams.',
     image: '/assets/products/ital.jpg',
@@ -153,6 +158,7 @@ export const products: ProductItem[] = [
   {
     id: 'medugo',
     name: 'Medugo',
+    industry: 'Healthcare',
     shortBenefit: 'Health information. All together.',
     description: 'Keep medical records, reports, and vitals organised, accessible, and ready to share.',
     image: '/assets/products/medugo.jpg',
@@ -164,6 +170,7 @@ export const products: ProductItem[] = [
   {
     id: 'dr-queues',
     name: 'Dr Queues',
+    industry: 'Healthcare',
     shortBenefit: 'A smoother journey to care.',
     description: 'Connect patient check-in, live queues, and digital report delivery.',
     image: '/assets/products/dr-queues.jpg',
