@@ -32,10 +32,10 @@ export const products: ProductItem[] = [
   {
     id: 'pammy-ai',
     name: 'Pammy AI',
-    industry: 'Financial Services',
-    shortBenefit: 'From documents to clear action.',
-    description: 'Turn document-heavy workflows into structured information and clearer decisions.',
-    image: '/assets/products/document-ai.jpg',
+    industry: 'Maritime Operations',
+    shortBenefit: 'Document intelligence for maritime & crew operations.',
+    description: 'Automate crew onboarding, flag compliance risks, and streamline maritime documents across fleet operations.',
+    image: '/assets/products/pammy-ai.jpg',
     actionText: 'Explore Pammy AI',
     destinationType: 'internal-panel',
     pdf: {
@@ -47,22 +47,22 @@ export const products: ProductItem[] = [
       fileSize: '2.5 MB'
     },
     detail: {
-      overview: 'Pammy AI automates end-to-end data extraction and classification from complex, unstructured documents, invoices, legal contracts, and forms.',
+      overview: 'Pammy AI accelerates maritime crew readiness and compliance by automating document ingestion, cross-checks, and validation for cruise lines and commercial vessels.',
       features: [
-        'Multi-format intelligent document ingestion (PDF, scan, image)',
-        'Key-value and tabular entity recognition with confidence scoring',
-        'Human-in-the-loop exception handling and automated validation',
-        'Enterprise ERP and workflow integrations'
+        'Multi-format document ingestion (Passports, Visas, Seaman Books, STCW certificates)',
+        'Automated OCR extraction with real-time confidence scoring and anomaly detection',
+        'Regulatory compliance cross-checks against flag state and port authority rules',
+        'Direct integration with onboard crew management and enterprise ERP systems'
       ],
       useCases: [
-        'Invoice processing and accounts payable automation',
-        'Compliance documentation verification and KYC onboarding',
-        'Regulatory filing parsing and audit preparation'
+        'Rapid maritime crew onboarding and pre-joining verification',
+        'STCW, medical fitness, and seamanship license compliance tracking',
+        'Port clearance document preparation and audit readiness'
       ],
       technicalHighlights: [
-        'Fine-tuned domain OCR pipelines',
-        'Zero-data retention option for sensitive workloads',
-        'High-throughput asynchronous processing API'
+        'Maritime-specialized OCR models fine-tuned on multinational document standards',
+        'Offline-ready edge processing for low-bandwidth satellite connectivity at sea',
+        'Zero-data retention and enterprise cryptographic security standards'
       ]
     }
   },
