@@ -60,6 +60,24 @@ export const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="header-nav-desktop" aria-label="Main Navigation">
+          <Link
+            to="/about-us"
+            className={`nav-link ${location.pathname.startsWith('/about-us') ? 'active' : ''}`}
+          >
+            About Us
+          </Link>
+          <Link
+            to="/ai-engineering"
+            className={`nav-link ${location.pathname.startsWith('/ai-engineering') ? 'active' : ''}`}
+          >
+            AI Engineering
+          </Link>
+          <Link
+            to="/enterprise-mobility/"
+            className={`nav-link ${location.pathname.startsWith('/enterprise-mobility') ? 'active' : ''}`}
+          >
+            Enterprise Mobility
+          </Link>
           <a
             href="/#products"
             onClick={(e) => handleAnchorClick(e, '#products')}
@@ -68,32 +86,12 @@ export const Header: React.FC = () => {
             Products
           </a>
           <a
-            href="https://www.venusgeo.com/gen-ai-integration/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
-          >
-            AI Engineering
-          </a>
-          <a
             href="/#industries"
             onClick={(e) => handleAnchorClick(e, '#industries')}
             className="nav-link"
           >
             Industries
           </a>
-          <Link
-            to="/enterprise-mobility/"
-            className={`nav-link ${location.pathname.startsWith('/enterprise-mobility') ? 'active' : ''}`}
-          >
-            Enterprise Mobility
-          </Link>
-          <Link
-            to="/about-us"
-            className={`nav-link ${location.pathname.startsWith('/about-us') ? 'active' : ''}`}
-          >
-            About
-          </Link>
         </nav>
 
         {/* Header Action */}
@@ -123,6 +121,27 @@ export const Header: React.FC = () => {
       {mobileMenuOpen && (
         <div className="mobile-drawer" role="dialog" aria-modal="true">
           <nav className="mobile-nav-list" aria-label="Mobile Navigation">
+            <Link
+              to="/about-us"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`mobile-nav-link ${location.pathname.startsWith('/about-us') ? 'active' : ''}`}
+            >
+              About Us
+            </Link>
+            <Link
+              to="/ai-engineering"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`mobile-nav-link ${location.pathname.startsWith('/ai-engineering') ? 'active' : ''}`}
+            >
+              AI Engineering
+            </Link>
+            <Link
+              to="/enterprise-mobility/"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`mobile-nav-link ${location.pathname.startsWith('/enterprise-mobility') ? 'active' : ''}`}
+            >
+              Enterprise Mobility
+            </Link>
             <a
               href="/#products"
               onClick={(e) => handleAnchorClick(e, '#products')}
@@ -131,34 +150,12 @@ export const Header: React.FC = () => {
               Products
             </a>
             <a
-              href="https://www.venusgeo.com/gen-ai-integration/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mobile-nav-link"
-            >
-              AI Engineering
-            </a>
-            <a
               href="/#industries"
               onClick={(e) => handleAnchorClick(e, '#industries')}
               className="mobile-nav-link"
             >
               Industries
             </a>
-            <Link
-              to="/enterprise-mobility/"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`mobile-nav-link ${location.pathname.startsWith('/enterprise-mobility') ? 'active' : ''}`}
-            >
-              Enterprise Mobility
-            </Link>
-            <Link
-              to="/about-us"
-              onClick={() => setMobileMenuOpen(false)}
-              className={`mobile-nav-link ${location.pathname.startsWith('/about-us') ? 'active' : ''}`}
-            >
-              About
-            </Link>
             <div className="mobile-nav-cta">
               <a
                 href="/#contact"

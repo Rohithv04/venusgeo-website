@@ -44,14 +44,9 @@ export const Footer: React.FC = () => {
             <h4 className="footer-group-title">Explore</h4>
             <ul className="footer-link-list">
               <li>
-                <a
-                  href="https://www.venusgeo.com/gen-ai-integration/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                >
+                <Link to="/ai-engineering" className="footer-link">
                   AI Engineering
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="/#industries" className="footer-link">Industries</a>

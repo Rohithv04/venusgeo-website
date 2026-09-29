@@ -61,31 +61,37 @@ export const mobilityHomeContent = {
       {
         title: 'TMHub',
         description: 'No more managing crew engagements via emails, phone and texts',
+        image: '/assets/mobility/tmhub.jpg',
         tag: 'Crew Operations'
       },
       {
         title: 'TMHub Scan docs',
         description: 'Making it easy for crew members to scan, upload and OCR Contract documents',
+        image: '/assets/mobility/tmhub-scan.jpg',
         tag: 'Document & OCR'
       },
       {
         title: 'Asset IT Tracking',
         description: 'Trace every handheld device, across ships, across revenue centers and its current state.',
+        image: '/assets/mobility/asset-it-tracking.jpg',
         tag: 'Fleet IT Management'
       },
       {
         title: 'MBark',
         description: 'No more long queues in the port and more hard wired podium for the agents',
+        image: '/assets/mobility/mbark.jpg',
         tag: 'Port Operations'
       },
       {
         title: 'Gangway',
         description: 'Souls on board and souls off board management on port days in a voyage is so easy',
+        image: '/assets/mobility/gangway.jpg',
         tag: 'Security & Manifest'
       },
       {
         title: 'HerdX',
         description: 'Cattle management made easy for the farmers, from cattle health to cattle inventory',
+        image: '/assets/mobility/herdx.jpg',
         tag: 'Agriculture & IoT'
       }
     ] as CaseStudy[]

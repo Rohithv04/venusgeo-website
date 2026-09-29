@@ -1000,25 +1000,43 @@ export const EnterpriseMobility: React.FC = () => {
           overflow: hidden;
           display: flex;
           flex-direction: column;
+          border: 1px solid var(--border-card);
+          border-radius: var(--panel-radius);
+          transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                      box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+                      border-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .case-card:hover {
+          transform: translateY(-4px);
+          border-color: #cacace;
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
         }
 
         .case-media {
           position: relative;
           width: 100%;
-          height: 180px;
-          background-color: #f0f0f3;
+          height: 195px;
+          background-color: #eeeff2;
+          overflow: hidden;
         }
 
         .case-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          display: block;
+          transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .case-card:hover .case-img {
+          transform: scale(1.04);
         }
 
         .case-media-placeholder {
           position: relative;
           width: 100%;
-          height: 120px;
+          height: 140px;
           background-color: var(--surface-soft);
           display: flex;
           align-items: center;
@@ -1032,15 +1050,19 @@ export const EnterpriseMobility: React.FC = () => {
 
         .case-tag {
           position: absolute;
-          top: 10px;
-          left: 10px;
-          background-color: rgba(18, 18, 20, 0.78);
-          color: #fff;
+          top: 12px;
+          left: 12px;
+          background-color: rgba(18, 18, 20, 0.85);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          color: #ffffff;
           font-size: 0.6875rem;
           font-weight: 700;
           letter-spacing: var(--tracking-pill);
-          padding: 3px 8px;
-          border-radius: 3px;
+          padding: 4px 10px;
+          border-radius: 4px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+          z-index: 2;
         }
 
         .case-body {
@@ -1069,29 +1091,72 @@ export const EnterpriseMobility: React.FC = () => {
           background-color: var(--surface-soft);
         }
 
+        .tech-stack-section .section-intro-block {
+          padding: 0;
+          background: transparent;
+          margin-bottom: 28px;
+          border: none;
+          width: 100%;
+        }
+
+        .tech-stack-section .eyebrow {
+          margin-bottom: 12px;
+        }
+
+        .tech-stack-section .section-title {
+          font-size: clamp(2rem, 3.2vw, 2.5rem);
+          font-weight: 800;
+          letter-spacing: -0.025em;
+          line-height: 1.15;
+          margin-bottom: 14px;
+          color: var(--text-primary);
+          max-width: 980px;
+        }
+
+        .tech-stack-section .section-lead {
+          font-size: 1.125rem;
+          line-height: 1.75;
+          color: var(--text-secondary);
+          max-width: 980px;
+          letter-spacing: -0.01em;
+          margin-bottom: 0;
+        }
+
         .tech-categories-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: var(--gap-grid);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
+          width: 100%;
         }
 
         @media (max-width: 768px) {
           .tech-categories-grid {
             grid-template-columns: 1fr;
+            gap: 16px;
           }
         }
 
         .tech-category-card {
           background-color: var(--surface-white);
-          padding: 24px;
+          border: 1px solid var(--border-card);
+          border-radius: var(--panel-radius-sm, 12px);
+          padding: 24px 28px;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .tech-category-card:hover {
+          transform: translateY(-2px);
+          border-color: #d1d1d8;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
         .tech-cat-title {
           font-size: 1rem;
           font-weight: 700;
           color: var(--brand-red);
-          margin-bottom: 14px;
-          letter-spacing: var(--tracking-title);
+          margin-bottom: 16px;
+          letter-spacing: -0.01em;
         }
 
         .tech-pills-wrap {
@@ -1101,15 +1166,24 @@ export const EnterpriseMobility: React.FC = () => {
         }
 
         .tech-badge {
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
           font-size: 0.8125rem;
-          font-weight: 600;
-          letter-spacing: var(--tracking-pill);
+          font-weight: 500;
+          letter-spacing: -0.01em;
+          color: #1e1e24;
+          background-color: #f7f7f9;
+          border: 1px solid #e6e6eb;
+          padding: 6px 12px;
+          border-radius: 6px;
+          line-height: 1.35;
+          transition: background-color var(--transition-quick), border-color var(--transition-quick), color var(--transition-quick);
+        }
+
+        .tech-badge:hover {
+          background-color: var(--surface-white);
+          border-color: #d0d0d8;
           color: var(--text-primary);
-          background-color: var(--surface-soft);
-          border: 1px solid var(--border-subtle);
-          padding: 5px 10px;
-          border-radius: 4px;
         }
 
         /* Xamarin Section */
