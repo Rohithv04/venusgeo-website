@@ -132,11 +132,20 @@ export const PowerOfDiversity: React.FC = () => {
           padding-bottom: 84px;
         }
 
+        @media (max-width: 768px) {
+          .power-of-diversity-section {
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+        }
+
         .diversity-marquee-container {
           position: absolute;
           top: 36px;
           left: 0;
           right: 0;
+          width: 100%;
+          overflow: hidden;
           white-space: nowrap;
           pointer-events: none;
           opacity: 0.045;
@@ -157,6 +166,16 @@ export const PowerOfDiversity: React.FC = () => {
         .diversity-header {
           max-width: 660px;
           margin-bottom: 48px;
+        }
+
+        @media (max-width: 600px) {
+          .diversity-header {
+            margin-bottom: 28px;
+          }
+          .diversity-main-copy {
+            font-size: 0.95rem !important;
+            line-height: 1.55 !important;
+          }
         }
 
         .diversity-main-headline {
@@ -187,6 +206,7 @@ export const PowerOfDiversity: React.FC = () => {
         @media (max-width: 600px) {
           .principles-row-grid {
             grid-template-columns: 1fr;
+            gap: 12px;
           }
         }
 
@@ -196,6 +216,15 @@ export const PowerOfDiversity: React.FC = () => {
           flex-direction: column;
           background: #ffffff;
           transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        @media (max-width: 600px) {
+          .diversity-principle-card {
+            padding: 20px 16px;
+          }
+          .principle-outcome {
+            font-size: 1rem !important;
+          }
         }
 
         .diversity-principle-card:hover {

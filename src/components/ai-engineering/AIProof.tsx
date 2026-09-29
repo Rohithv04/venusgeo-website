@@ -495,6 +495,13 @@ export const AIProof: React.FC = () => {
         }
 
         @media (max-width: 768px) {
+          .proof-header-block {
+            margin-bottom: 24px;
+          }
+          .proof-subheading {
+            font-size: 0.95rem;
+            line-height: 1.55;
+          }
           .proof-tab-bar {
             display: none;
           }
@@ -524,36 +531,44 @@ export const AIProof: React.FC = () => {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 18px;
+            padding: 14px 16px;
+            min-height: 52px;
             background: none;
             border: none;
             cursor: pointer;
             text-align: left;
+            gap: 8px;
           }
 
           .acc-header-left {
             display: flex;
             align-items: center;
             gap: 10px;
+            min-width: 0;
+            flex: 1;
           }
 
           .acc-num {
             font-size: 0.8125rem;
             font-weight: 800;
             color: var(--brand-red);
+            flex-shrink: 0;
           }
 
           .acc-label {
-            font-size: 0.875rem;
+            font-size: 0.84375rem;
             font-weight: 700;
             letter-spacing: var(--tracking-title);
             color: var(--text-primary);
+            line-height: 1.25;
+            word-break: break-word;
           }
 
           .acc-toggle-icon {
             color: var(--text-secondary);
             display: flex;
             align-items: center;
+            flex-shrink: 0;
           }
 
           .icon-rotate {
@@ -561,13 +576,12 @@ export const AIProof: React.FC = () => {
           }
 
           .mobile-accordion-body {
-            padding: 0 18px 20px 18px;
+            padding: 12px 16px 18px 16px;
             border-top: 1px solid var(--border-subtle);
-            padding-top: 14px;
           }
 
           .acc-title {
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 8px;
@@ -575,14 +589,14 @@ export const AIProof: React.FC = () => {
 
           .acc-desc {
             font-size: 0.875rem;
-            line-height: 1.6;
+            line-height: 1.55;
             color: var(--text-secondary);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
           }
 
           .acc-principle {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 8px;
             padding: 8px 12px;
             background-color: var(--brand-red-light);
@@ -590,6 +604,7 @@ export const AIProof: React.FC = () => {
             font-size: 0.75rem;
             color: var(--text-primary);
             margin-bottom: 14px;
+            line-height: 1.4;
           }
 
           .acc-principle strong {

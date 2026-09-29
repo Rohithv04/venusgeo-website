@@ -71,6 +71,13 @@ export const AboutStatement: React.FC = () => {
           position: relative;
         }
 
+        @media (max-width: 768px) {
+          .about-statement-section {
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+        }
+
         .statement-inner-box {
           max-width: 820px;
           margin: 0 auto;
@@ -95,6 +102,12 @@ export const AboutStatement: React.FC = () => {
           margin-bottom: 24px;
         }
 
+        @media (max-width: 600px) {
+          .statement-eyebrow-tag {
+            margin-bottom: 16px;
+          }
+        }
+
         .statement-dot {
           width: 6px;
           height: 6px;
@@ -111,6 +124,13 @@ export const AboutStatement: React.FC = () => {
           margin-bottom: 24px;
         }
 
+        @media (max-width: 600px) {
+          .statement-highlight-text {
+            font-size: clamp(1.5rem, 5vw, 2.1rem);
+            margin-bottom: 16px;
+          }
+        }
+
         .statement-supporting-copy {
           font-size: clamp(1.05rem, 1.35vw, 1.25rem);
           color: var(--text-secondary);
@@ -119,12 +139,30 @@ export const AboutStatement: React.FC = () => {
           max-width: 680px;
         }
 
+        @media (max-width: 600px) {
+          .statement-supporting-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 24px;
+          }
+        }
+
         .statement-pillars-accent {
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 12px;
           flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+          .statement-pillars-accent {
+            gap: 8px;
+          }
+          .accent-pill {
+            font-size: 0.75rem !important;
+            padding: 6px 12px !important;
+          }
         }
 
         .accent-pill {

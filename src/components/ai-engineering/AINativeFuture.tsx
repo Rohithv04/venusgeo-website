@@ -511,8 +511,39 @@ export const AINativeFuture: React.FC = () => {
             line-height: 1.4;
           }
 
+          .future-header {
+            margin-bottom: 24px;
+          }
+
+          .future-lead-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
+          }
+
+          .pipeline-top-meta {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+          }
+
+          .meta-legend {
+            gap: 12px;
+            flex-wrap: wrap;
+          }
+
           .future-pipeline-wrapper {
-            padding: 18px 16px;
+            padding: 16px 14px;
+          }
+
+          .footer-statement-inner {
+            padding: 10px 12px;
+          }
+
+          .footer-statement-text {
+            font-size: 0.8125rem;
+            line-height: 1.45;
           }
         }
       `}</style>

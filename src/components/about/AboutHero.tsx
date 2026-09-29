@@ -270,6 +270,13 @@ export const AboutHero: React.FC = () => {
           overflow: hidden;
         }
 
+        @media (max-width: 768px) {
+          .about-hero-section {
+            padding-top: 36px;
+            padding-bottom: 48px;
+          }
+        }
+
         .about-hero-grid-bg {
           position: absolute;
           inset: 0;
@@ -291,7 +298,7 @@ export const AboutHero: React.FC = () => {
         @media (max-width: 992px) {
           .about-hero-layout {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 36px;
           }
         }
 
@@ -321,6 +328,14 @@ export const AboutHero: React.FC = () => {
           max-width: 620px;
         }
 
+        @media (max-width: 600px) {
+          .about-hero-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 18px;
+          }
+        }
+
         .about-hero-meta-pill {
           display: inline-flex;
           align-items: center;
@@ -336,11 +351,21 @@ export const AboutHero: React.FC = () => {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
+        @media (max-width: 600px) {
+          .about-hero-meta-pill {
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+          }
+        }
+
         .meta-dot {
           width: 6px;
           height: 6px;
           border-radius: 50%;
           background-color: var(--brand-red);
+          flex-shrink: 0;
         }
 
         .about-hero-metrics {
@@ -361,7 +386,9 @@ export const AboutHero: React.FC = () => {
           .about-hero-metrics {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 14px;
+            padding: 14px 16px;
+            margin-bottom: 24px;
           }
           .metric-divider {
             display: none;
@@ -403,10 +430,23 @@ export const AboutHero: React.FC = () => {
           flex-wrap: wrap;
         }
 
+        @media (max-width: 600px) {
+          .about-hero-actions {
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+          }
+          .about-hero-actions .btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+
         /* Right Column Topology Visual */
         .about-hero-visual-col {
           display: flex;
           justify-content: center;
+          width: 100%;
         }
 
         .topology-card {
@@ -417,6 +457,12 @@ export const AboutHero: React.FC = () => {
           border-radius: var(--panel-radius);
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
           position: relative;
+        }
+
+        @media (max-width: 600px) {
+          .topology-card {
+            padding: 16px 14px;
+          }
         }
 
         .topology-header {

@@ -492,14 +492,61 @@ export const AIEngineeringCTA: React.FC<AIEngineeringCTAProps> = ({
         }
 
         @media (max-width: 640px) {
+          .ai-cta-header {
+            margin-bottom: 28px;
+          }
+          .ai-cta-subheading {
+            font-size: 0.95rem;
+            line-height: 1.55;
+          }
           .cta-questions-grid {
             grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+          }
+          .cta-question-card {
+            padding: 20px 16px;
           }
           .cta-engagement-box {
-            padding: 24px 20px;
+            padding: 20px 16px;
+            margin-bottom: 28px;
+          }
+          .workshop-heading {
+            font-size: 1.3rem;
+            line-height: 1.25;
+            margin-bottom: 12px;
+          }
+          .workshop-desc {
+            font-size: 0.875rem;
+            line-height: 1.55;
+            margin-bottom: 20px;
+          }
+          .workshop-actions {
+            margin-bottom: 20px;
+          }
+          .workshop-btn {
+            padding: 12px 16px;
+            font-size: 0.875rem;
+          }
+          .inquiry-form-title {
+            font-size: 1.05rem;
+          }
+          .inquiry-form-sub {
+            font-size: 0.75rem;
+            margin-bottom: 16px;
           }
           .form-row-2 {
             grid-template-columns: 1fr;
+            gap: 14px;
+          }
+          .form-input, .form-select {
+            min-height: 44px;
+          }
+          .submit-btn {
+            min-height: 44px;
+          }
+          .brand-statement-text {
+            font-size: 0.875rem;
           }
         }
       `}</style>

@@ -275,13 +275,19 @@ export const AIApplicationLayer: React.FC = () => {
               <h3 className="triad-text">AI suggests.</h3>
               <p className="triad-sub">Rapid extraction, synthesis and contextual options.</p>
             </div>
-            <div className="triad-divider">→</div>
+            <div className="triad-divider">
+              <span className="triad-arrow-desktop">→</span>
+              <span className="triad-arrow-mobile">↓</span>
+            </div>
             <div className="triad-box">
               <span className="triad-step">02</span>
               <h3 className="triad-text text-red">Your business rules validate.</h3>
               <p className="triad-sub">Deterministic thresholds, compliance bounds and API contracts.</p>
             </div>
-            <div className="triad-divider">→</div>
+            <div className="triad-divider">
+              <span className="triad-arrow-desktop">→</span>
+              <span className="triad-arrow-mobile">↓</span>
+            </div>
             <div className="triad-box">
               <span className="triad-step">03</span>
               <h3 className="triad-text">People confirm.</h3>
@@ -627,39 +633,95 @@ export const AIApplicationLayer: React.FC = () => {
           font-size: 1.25rem;
           font-weight: 700;
           color: var(--text-muted);
+        .triad-arrow-mobile {
+          display: none;
         }
 
         @media (max-width: 1024px) {
           .diagram-columns-grid {
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 12px;
           }
           .diag-connector {
-            transform: rotate(90deg);
-            margin: 10px auto;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 6px 0;
+            transform: none;
+          }
+          .connector-beam {
+            width: 36px;
+            height: 2px;
+          }
+          .connector-label {
+            font-size: 0.625rem;
+            color: var(--brand-red);
           }
           .in-app-features-grid {
             grid-template-columns: repeat(2, 1fr);
           }
           .triad-grid {
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 8px;
           }
           .triad-divider {
-            transform: rotate(90deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 24px;
+            color: var(--brand-red);
+            font-size: 1.1rem;
+            transform: none;
             margin: 0 auto;
+          }
+          .triad-arrow-desktop {
+            display: none;
+          }
+          .triad-arrow-mobile {
+            display: inline;
           }
         }
 
         @media (max-width: 640px) {
-          .in-app-features-grid {
-            grid-template-columns: 1fr;
+          .app-layer-header {
+            margin-bottom: 28px;
+          }
+          .app-layer-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
           }
           .app-architecture-diagram {
-            padding: 20px;
+            padding: 18px 14px;
+            margin-bottom: 32px;
+          }
+          .diagram-top-bar {
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+          }
+          .diag-col {
+            padding: 18px 14px;
+          }
+          .in-app-features-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-bottom: 32px;
+          }
+          .in-app-feat-card {
+            padding: 20px 16px;
           }
           .ai-rule-triad-wrap {
-            padding: 24px 16px;
+            padding: 22px 14px;
+          }
+          .triad-box {
+            padding: 16px 14px;
+          }
+          .triad-text {
+            font-size: 1.1rem;
           }
         }
       `}</style>

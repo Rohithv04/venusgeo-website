@@ -742,7 +742,14 @@ export const EnterpriseMobility: React.FC = () => {
 
         @media (max-width: 768px) {
           .mobility-hero-banner {
-            padding: 24px;
+            padding: 24px 20px;
+            margin-bottom: 24px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .mobility-hero-banner {
+            padding: 20px 16px;
           }
         }
 
@@ -782,8 +789,19 @@ export const EnterpriseMobility: React.FC = () => {
         }
 
         @media (max-width: 600px) {
+          .banner-subtitle {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 24px;
+          }
           .banner-actions {
             flex-direction: column;
+            gap: 10px;
+            margin-bottom: 28px;
+          }
+          .banner-actions .btn {
+            width: 100%;
+            justify-content: center;
           }
         }
 
@@ -799,6 +817,21 @@ export const EnterpriseMobility: React.FC = () => {
         @media (max-width: 768px) {
           .stats-strip {
             grid-template-columns: repeat(2, 1fr);
+            gap: 16px 12px;
+            padding-top: 24px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .stats-strip {
+            gap: 14px 10px;
+            padding-top: 20px;
+          }
+          .stat-value {
+            font-size: 1.5rem !important;
+          }
+          .stat-label {
+            font-size: 0.75rem !important;
           }
         }
 
@@ -840,6 +873,12 @@ export const EnterpriseMobility: React.FC = () => {
         .trust-info, .tob-card {
           padding: 32px;
           background-color: var(--surface-white);
+        }
+
+        @media (max-width: 768px) {
+          .trust-info, .tob-card {
+            padding: 22px 18px;
+          }
         }
 
         .trust-header {
@@ -916,6 +955,13 @@ export const EnterpriseMobility: React.FC = () => {
           gap: 10px;
         }
 
+        @media (max-width: 600px) {
+          .tob-points {
+            grid-template-columns: 1fr;
+            gap: 8px;
+          }
+        }
+
         .tob-pill {
           display: flex;
           align-items: center;
@@ -944,6 +990,17 @@ export const EnterpriseMobility: React.FC = () => {
           margin-bottom: 48px;
         }
 
+        @media (max-width: 768px) {
+          .section-intro-block {
+            padding: 22px 18px;
+            margin-bottom: 28px;
+          }
+          .section-lead {
+            font-size: 0.95rem !important;
+            line-height: 1.55 !important;
+          }
+        }
+
         .section-title {
           font-size: var(--font-section-heading);
           letter-spacing: var(--tracking-heading);
@@ -961,6 +1018,19 @@ export const EnterpriseMobility: React.FC = () => {
 
         .cases-header-block {
           margin-bottom: 32px;
+        }
+
+        @media (max-width: 768px) {
+          .cases-header-block {
+            margin-bottom: 24px;
+          }
+          .cases-heading {
+            font-size: 1.35rem !important;
+          }
+          .cases-intro {
+            font-size: 0.95rem !important;
+            line-height: 1.55 !important;
+          }
         }
 
         .cases-heading {
@@ -992,6 +1062,7 @@ export const EnterpriseMobility: React.FC = () => {
         @media (max-width: 600px) {
           .cases-grid {
             grid-template-columns: 1fr;
+            gap: 16px;
           }
         }
 
@@ -1197,6 +1268,18 @@ export const EnterpriseMobility: React.FC = () => {
           margin-bottom: 32px;
         }
 
+        @media (max-width: 768px) {
+          .xamarin-banner {
+            padding: 22px 18px;
+            margin-bottom: 24px;
+          }
+          .xamarin-subtitle {
+            font-size: 0.95rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 20px !important;
+          }
+        }
+
         .xamarin-title {
           font-size: var(--font-section-heading);
           letter-spacing: var(--tracking-heading);
@@ -1214,6 +1297,20 @@ export const EnterpriseMobility: React.FC = () => {
           padding: 32px;
           margin-bottom: 32px;
           background-color: var(--surface-soft);
+        }
+
+        @media (max-width: 768px) {
+          .xamarin-choice-block {
+            padding: 22px 18px;
+            margin-bottom: 24px;
+          }
+          .choice-heading {
+            font-size: 1.2rem !important;
+          }
+          .choice-para {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+          }
         }
 
         .choice-heading {
@@ -1240,6 +1337,20 @@ export const EnterpriseMobility: React.FC = () => {
 
         .xamarin-engage-block {
           margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+          .xamarin-engage-block {
+            margin-bottom: 24px;
+          }
+          .engage-heading {
+            font-size: 1.2rem !important;
+          }
+          .engage-intro {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 18px !important;
+          }
         }
 
         .engage-heading {
@@ -1272,6 +1383,7 @@ export const EnterpriseMobility: React.FC = () => {
         @media (max-width: 560px) {
           .xamarin-cases-grid {
             grid-template-columns: 1fr;
+            gap: 12px;
           }
         }
 
@@ -1312,6 +1424,16 @@ export const EnterpriseMobility: React.FC = () => {
         @media (max-width: 880px) {
           .confidence-block {
             grid-template-columns: 1fr;
+            padding: 22px 18px;
+            gap: 20px;
+            margin-bottom: 24px;
+          }
+          .confidence-heading {
+            font-size: 1.2rem !important;
+          }
+          .confidence-desc {
+            font-size: 0.875rem !important;
+            margin-bottom: 16px !important;
           }
         }
 
@@ -1356,6 +1478,19 @@ export const EnterpriseMobility: React.FC = () => {
           background-color: var(--surface-soft);
         }
 
+        @media (max-width: 768px) {
+          .can-do-box {
+            padding: 22px 18px;
+          }
+          .can-do-title {
+            font-size: 1.15rem !important;
+          }
+          .can-do-text {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+          }
+        }
+
         .can-do-title {
           font-size: 1.25rem;
           font-weight: 700;
@@ -1380,6 +1515,18 @@ export const EnterpriseMobility: React.FC = () => {
           margin-bottom: 32px;
         }
 
+        @media (max-width: 768px) {
+          .iot-banner {
+            padding: 22px 18px;
+            margin-bottom: 24px;
+          }
+          .iot-subtitle {
+            font-size: 0.95rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 20px !important;
+          }
+        }
+
         .iot-title {
           font-size: var(--font-section-heading);
           letter-spacing: var(--tracking-heading);
@@ -1399,6 +1546,20 @@ export const EnterpriseMobility: React.FC = () => {
           margin-bottom: 32px;
         }
 
+        @media (max-width: 768px) {
+          .empower-block {
+            padding: 22px 18px;
+            margin-bottom: 24px;
+          }
+          .empower-heading {
+            font-size: 1.2rem !important;
+          }
+          .empower-text {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+          }
+        }
+
         .empower-heading {
           font-size: 1.35rem;
           font-weight: 700;
@@ -1414,6 +1575,20 @@ export const EnterpriseMobility: React.FC = () => {
 
         .iot-journey-block {
           margin-bottom: 32px;
+        }
+
+        @media (max-width: 768px) {
+          .iot-journey-block {
+            margin-bottom: 24px;
+          }
+          .journey-heading {
+            font-size: 1.2rem !important;
+          }
+          .journey-intro {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 16px !important;
+          }
         }
 
         .journey-heading {
@@ -1446,12 +1621,19 @@ export const EnterpriseMobility: React.FC = () => {
         @media (max-width: 600px) {
           .iot-modules-grid {
             grid-template-columns: 1fr;
+            gap: 12px;
           }
         }
 
         .iot-module-card {
           background-color: var(--surface-white);
           padding: 24px;
+        }
+
+        @media (max-width: 600px) {
+          .iot-module-card {
+            padding: 18px 16px;
+          }
         }
 
         .module-header {
@@ -1479,6 +1661,20 @@ export const EnterpriseMobility: React.FC = () => {
           padding: 36px;
         }
 
+        @media (max-width: 768px) {
+          .iot-continuum-block {
+            padding: 22px 18px;
+          }
+          .continuum-heading {
+            font-size: 1.2rem !important;
+          }
+          .continuum-desc {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 20px !important;
+          }
+        }
+
         .continuum-heading {
           font-size: 1.35rem;
           font-weight: 700;
@@ -1503,6 +1699,8 @@ export const EnterpriseMobility: React.FC = () => {
         @media (max-width: 900px) {
           .iot-specs-columns {
             grid-template-columns: 1fr;
+            gap: 14px;
+            margin-bottom: 24px;
           }
         }
 
@@ -1511,6 +1709,12 @@ export const EnterpriseMobility: React.FC = () => {
           padding: 20px;
           border-radius: 6px;
           border: 1px solid var(--border-subtle);
+        }
+
+        @media (max-width: 600px) {
+          .iot-spec-col {
+            padding: 16px 14px;
+          }
         }
 
         .spec-col-title {
@@ -1569,6 +1773,26 @@ export const EnterpriseMobility: React.FC = () => {
           .engagement-wrapper {
             grid-template-columns: 1fr;
             padding: 28px;
+            gap: 32px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .engagement-wrapper {
+            padding: 20px 16px;
+            gap: 24px;
+          }
+          .engagement-main-heading {
+            font-size: 1.25rem !important;
+          }
+          .engagement-lead {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 20px !important;
+          }
+          .office-card {
+            padding: 16px 14px !important;
+            gap: 12px !important;
           }
         }
 
@@ -1601,6 +1825,7 @@ export const EnterpriseMobility: React.FC = () => {
         .office-icon {
           color: var(--brand-red);
           margin-top: 2px;
+          flex-shrink: 0;
         }
 
         .office-title {
@@ -1632,11 +1857,13 @@ export const EnterpriseMobility: React.FC = () => {
           border-radius: 6px;
           margin-bottom: 16px;
           border: 1px solid var(--border-subtle);
+          gap: 4px;
         }
 
         .toggle-btn {
           flex: 1;
-          padding: 10px;
+          padding: 10px 8px;
+          min-height: 42px;
           font-size: 0.875rem;
           font-weight: 600;
           letter-spacing: var(--tracking-button);
@@ -1646,6 +1873,10 @@ export const EnterpriseMobility: React.FC = () => {
           border-radius: 4px;
           color: var(--text-secondary);
           transition: all var(--transition-quick);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
 
         .toggle-btn.active {
@@ -1681,6 +1912,7 @@ export const EnterpriseMobility: React.FC = () => {
         }
 
         .m-input {
+          min-height: 44px;
           padding: 11px 14px;
           border: 1px solid var(--border-subtle);
           border-radius: var(--button-radius);
@@ -1715,6 +1947,8 @@ export const EnterpriseMobility: React.FC = () => {
         .m-submit-btn {
           margin-top: 6px;
           padding: 12px;
+          min-height: 44px;
+          width: 100%;
         }
       `}</style>
     </div>

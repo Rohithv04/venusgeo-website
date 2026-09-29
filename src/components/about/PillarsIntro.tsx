@@ -98,6 +98,24 @@ export const PillarsIntro: React.FC = () => {
           }
         }
 
+        @media (max-width: 600px) {
+          .pillars-intro-card {
+            padding: 24px 16px;
+          }
+          .pillars-intro-subtext {
+            font-size: 0.9375rem !important;
+            line-height: 1.55 !important;
+          }
+          .pillars-preview-row {
+            gap: 8px;
+            margin-bottom: 20px;
+          }
+          .pillar-preview-chip {
+            padding: 8px 12px !important;
+            font-size: 0.8125rem !important;
+          }
+        }
+
         .pillars-intro-header {
           max-width: 680px;
           margin-bottom: 32px;

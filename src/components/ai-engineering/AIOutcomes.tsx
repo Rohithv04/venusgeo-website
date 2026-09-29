@@ -378,12 +378,25 @@ export const AIOutcomes: React.FC = () => {
         }
 
         @media (max-width: 640px) {
+          .outcomes-header-row {
+            margin-bottom: 28px;
+          }
+          .outcomes-subheading {
+            font-size: 0.95rem;
+            line-height: 1.55;
+          }
           .outcome-panels-grid {
             grid-template-columns: 1fr;
             gap: 16px;
           }
           .outcome-panel {
-            padding: 24px 20px;
+            padding: 22px 18px;
+          }
+          .panel-keyword {
+            font-size: 1.3rem;
+          }
+          .panel-detail-copy {
+            margin-bottom: 18px;
           }
         }
       `}</style>

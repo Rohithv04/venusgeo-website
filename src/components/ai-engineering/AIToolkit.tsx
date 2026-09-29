@@ -214,6 +214,36 @@ export const AIToolkit: React.FC = () => {
             padding: 20px;
           }
         }
+
+        @media (max-width: 640px) {
+          .toolkit-header {
+            margin-bottom: 28px;
+          }
+          .toolkit-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
+          }
+          .toolkit-card {
+            padding: 18px 16px;
+            gap: 14px;
+          }
+          .cat-header-col {
+            gap: 12px;
+          }
+          .cat-title {
+            font-size: 0.95rem;
+          }
+          .cat-desc {
+            font-size: 0.75rem;
+          }
+          .cat-tech-pills {
+            gap: 6px;
+          }
+          .tech-badge {
+            font-size: 0.75rem;
+            padding: 5px 10px;
+          }
+        }
       `}</style>
     </section>
   );

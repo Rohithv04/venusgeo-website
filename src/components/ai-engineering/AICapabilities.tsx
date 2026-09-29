@@ -345,11 +345,30 @@ export const AICapabilities: React.FC = () => {
         }
 
         @media (max-width: 640px) {
+          .capabilities-header {
+            margin-bottom: 28px;
+          }
+          .capabilities-lead-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
+          }
           .capabilities-grid {
             grid-template-columns: 1fr;
+            gap: 16px;
           }
           .capability-card {
-            padding: 24px 20px;
+            padding: 22px 18px;
+          }
+          .cap-title {
+            font-size: 1.1rem;
+          }
+          .cap-copy {
+            font-size: 0.875rem;
+            line-height: 1.55;
+            margin-bottom: 18px;
+          }
+          .agentic-sequence-box {
+            padding: 10px 12px;
           }
         }
       `}</style>

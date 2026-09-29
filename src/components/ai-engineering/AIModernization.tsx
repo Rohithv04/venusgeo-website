@@ -656,14 +656,29 @@ export const AIModernization: React.FC = () => {
         @media (max-width: 1024px) {
           .flow-grid-cols {
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 12px;
           }
           .flow-connector {
-            transform: rotate(90deg);
-            margin: 10px auto;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 6px 0;
+            transform: none;
+          }
+          .flow-stream-line {
+            width: 36px;
+            height: 2px;
+          }
+          .stream-text {
+            font-size: 0.625rem;
+            color: var(--brand-red);
           }
           .compare-grid {
             grid-template-columns: 1fr;
+            gap: 16px;
           }
           .analyze-tags-cloud {
             grid-template-columns: repeat(2, 1fr);
@@ -671,18 +686,89 @@ export const AIModernization: React.FC = () => {
         }
 
         @media (max-width: 640px) {
-          .modern-flow-diagram {
-            padding: 20px;
+          .modernization-header {
+            margin-bottom: 28px;
           }
+          .modern-lead-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
+          }
+          .modern-flow-diagram {
+            padding: 18px 14px;
+            margin-bottom: 32px;
+          }
+          .flow-diagram-titlebar {
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+          }
+          .flow-col {
+            padding: 18px 14px;
+          }
+          .brownfield-overview-block {
+            margin-bottom: 32px;
+          }
+          .brownfield-meta {
+            margin-bottom: 20px;
+          }
+          .brownfield-title {
+            font-size: 1.25rem;
+          }
+          .brownfield-desc {
+            font-size: 0.875rem;
+            line-height: 1.55;
+          }
+          .modern-compare-card {
+            padding: 22px 18px;
+          }
+          .compare-card-head {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+          }
+          .compare-title {
+            font-size: 1.1rem;
+          }
+          .analyze-tags-cloud {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+          }
+          .analyze-tag-item {
+            padding: 6px 10px;
+            font-size: 0.75rem;
+          }
+          .modern-sequence-strip {
+            padding: 20px 16px;
+          }
+          .sequence-steps-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            overflow-x: visible;
+            padding-bottom: 0;
+            margin-bottom: 16px;
+          }
+          .sequence-step-card {
+            padding: 8px 10px;
+            font-size: 0.75rem;
+            white-space: normal;
+          }
+          .seq-arrow {
+            display: none;
+          }
+          .modern-closing-quote {
+            font-size: 0.84375rem;
+            line-height: 1.5;
+            padding-top: 14px;
+          }
+        }
+
+        @media (max-width: 420px) {
           .analyze-tags-cloud {
             grid-template-columns: 1fr;
           }
           .sequence-steps-container {
-            flex-direction: column;
-            align-items: stretch;
-          }
-          .seq-arrow {
-            display: none;
+            grid-template-columns: 1fr;
           }
         }
       `}</style>

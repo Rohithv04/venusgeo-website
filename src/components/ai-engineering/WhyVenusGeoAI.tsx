@@ -295,8 +295,33 @@ export const WhyVenusGeoAI: React.FC = () => {
         }
 
         @media (max-width: 640px) {
+          .why-layout-grid {
+            gap: 28px;
+          }
+          .why-lead-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 24px;
+          }
+          .why-proven-box {
+            max-width: 100%;
+            padding: 14px 16px;
+          }
+          .proven-stat-num {
+            font-size: 1.5rem;
+          }
           .principle-card {
-            padding: 24px 20px;
+            padding: 22px 18px;
+          }
+          .principle-title {
+            font-size: 1.05rem;
+          }
+          .principle-statement {
+            font-size: 0.95rem;
+          }
+          .principle-body {
+            font-size: 0.875rem;
+            margin-bottom: 16px;
           }
         }
       `}</style>

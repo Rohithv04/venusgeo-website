@@ -619,6 +619,13 @@ export const FivePillarsSection: React.FC = () => {
           background-color: var(--surface-white);
         }
 
+        @media (max-width: 768px) {
+          .five-pillars-wrapper {
+            padding-top: 32px;
+            padding-bottom: 48px;
+          }
+        }
+
         .pillars-split-layout {
           display: grid;
           grid-template-columns: 360px 1fr;
@@ -630,7 +637,7 @@ export const FivePillarsSection: React.FC = () => {
         @media (max-width: 992px) {
           .pillars-split-layout {
             grid-template-columns: 1fr;
-            gap: 36px;
+            gap: 24px;
           }
         }
 
@@ -652,6 +659,46 @@ export const FivePillarsSection: React.FC = () => {
           padding: 28px 24px;
           background-color: var(--surface-white);
           border: 1px solid var(--border-card);
+        }
+
+        @media (max-width: 992px) {
+          .sticky-controller-inner {
+            padding: 16px 14px;
+          }
+          .active-num-display {
+            display: none !important;
+          }
+          .active-pillar-summary {
+            display: none !important;
+          }
+          .controller-eyebrow {
+            margin-bottom: 8px !important;
+          }
+          .active-pillar-title {
+            font-size: 1.1rem !important;
+            margin-bottom: 12px !important;
+          }
+          .pillars-nav-list {
+            flex-direction: row !important;
+            overflow-x: auto;
+            gap: 8px !important;
+            margin-bottom: 12px !important;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+          .pillars-nav-list::-webkit-scrollbar {
+            display: none;
+          }
+          .pillar-nav-btn {
+            flex-shrink: 0;
+            padding: 8px 12px !important;
+            font-size: 0.8125rem !important;
+            white-space: nowrap;
+          }
+          .nav-btn-active-bar {
+            display: none !important;
+          }
         }
 
         .controller-eyebrow {
@@ -810,6 +857,12 @@ export const FivePillarsSection: React.FC = () => {
           gap: 48px;
         }
 
+        @media (max-width: 768px) {
+          .pillars-content-stack {
+            gap: 28px;
+          }
+        }
+
         .pillar-card {
           padding: 40px;
           scroll-margin-top: 100px;
@@ -818,7 +871,29 @@ export const FivePillarsSection: React.FC = () => {
 
         @media (max-width: 600px) {
           .pillar-card {
-            padding: 24px;
+            padding: 20px 16px;
+            scroll-margin-top: 70px;
+          }
+          .pillar-heading {
+            font-size: 1.25rem !important;
+            line-height: 1.25 !important;
+            margin-bottom: 12px !important;
+          }
+          .pillar-text {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 12px !important;
+          }
+          .pipeline-card {
+            padding: 16px 14px !important;
+          }
+          .constellation-box {
+            padding: 16px 14px !important;
+          }
+          .constellation-title-bar {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
           }
         }
 
@@ -1052,11 +1127,27 @@ export const FivePillarsSection: React.FC = () => {
           margin-bottom: 18px;
         }
 
+        @media (max-width: 600px) {
+          .quality-callout-quote {
+            font-size: 1.05rem !important;
+            padding-left: 12px !important;
+            margin-bottom: 14px !important;
+          }
+        }
+
         .quality-equation-card {
           padding: 24px;
           border-radius: var(--panel-radius-sm);
           margin-top: 20px;
           margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+          .quality-equation-card {
+            padding: 16px 14px !important;
+            margin-top: 14px !important;
+            margin-bottom: 14px !important;
+          }
         }
 
         .equation-label {
@@ -1073,6 +1164,23 @@ export const FivePillarsSection: React.FC = () => {
           align-items: center;
           gap: 12px;
           flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+          .equation-formula {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 8px !important;
+          }
+          .equation-operator {
+            text-align: center;
+            font-size: 1.1rem !important;
+            line-height: 1;
+          }
+          .equation-term {
+            text-align: center;
+            padding: 8px 12px !important;
+          }
         }
 
         .equation-term {
@@ -1116,6 +1224,10 @@ export const FivePillarsSection: React.FC = () => {
         @media (max-width: 600px) {
           .quality-kpi-grid {
             grid-template-columns: 1fr;
+            gap: 10px;
+          }
+          .quality-kpi-box {
+            padding: 12px 14px !important;
           }
         }
 
@@ -1165,6 +1277,12 @@ export const FivePillarsSection: React.FC = () => {
           color: var(--text-primary);
         }
 
+        @media (max-width: 600px) {
+          .guarantee-prominent-heading {
+            font-size: 1.25rem !important;
+          }
+        }
+
         .guarantee-points-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
@@ -1176,6 +1294,10 @@ export const FivePillarsSection: React.FC = () => {
         @media (max-width: 600px) {
           .guarantee-points-grid {
             grid-template-columns: 1fr;
+            gap: 8px;
+          }
+          .guarantee-point-item {
+            padding: 12px 14px !important;
           }
         }
 
@@ -1200,6 +1322,13 @@ export const FivePillarsSection: React.FC = () => {
           padding: 18px;
           border-radius: 6px;
           border-left: 3px solid var(--brand-red);
+        }
+
+        @media (max-width: 600px) {
+          .guarantee-sla-bar {
+            padding: 14px !important;
+            gap: 10px !important;
+          }
         }
 
         .sla-title {
@@ -1227,6 +1356,10 @@ export const FivePillarsSection: React.FC = () => {
         @media (max-width: 600px) {
           .diversity-dimensions-grid {
             grid-template-columns: 1fr;
+            gap: 10px;
+          }
+          .dimension-mosaic-item {
+            padding: 16px 14px !important;
           }
         }
 

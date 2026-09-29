@@ -198,16 +198,29 @@ export const HumanAccountability: React.FC = () => {
         }
 
         @media (max-width: 900px) {
+          .accountability-lead {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 32px;
+          }
           .equation-container {
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
           }
           .eq-term {
             width: 100%;
-            padding: 24px 20px;
+            padding: 20px 16px;
+          }
+          .eq-main {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+          }
+          .eq-note {
+            font-size: 0.8125rem;
           }
           .eq-plus {
             height: 24px;
+            font-size: 1.5rem;
           }
         }
       `}</style>

@@ -384,12 +384,55 @@ export const AIEngineeringLifecycle: React.FC = () => {
         }
 
         @media (max-width: 768px) {
-          .lifecycle-steps-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
+          .lifecycle-header {
+            margin-bottom: 28px;
+          }
+          .lifecycle-copy {
+            font-size: 0.95rem;
+            line-height: 1.55;
           }
           .context-pipeline-container {
-            padding: 20px;
+            padding: 18px 14px;
+            margin-bottom: 36px;
+          }
+          .pipeline-header-bar {
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+          }
+          .context-stages-track {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+          }
+          .context-stages-track::-webkit-scrollbar {
+            display: none;
+          }
+          .pipeline-stage-box {
+            min-width: 90px;
+            padding: 10px 12px;
+          }
+          .context-statement-strip {
+            padding: 10px 12px;
+            font-size: 0.8125rem;
+          }
+          .lifecycle-subhead {
+            margin-bottom: 20px;
+          }
+          .subhead-title {
+            font-size: 1.25rem;
+          }
+          .subhead-desc {
+            font-size: 0.875rem;
+          }
+          .lifecycle-steps-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
+          .lifecycle-step-card {
+            padding: 16px 14px;
           }
         }
       `}</style>

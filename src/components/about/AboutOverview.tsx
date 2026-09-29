@@ -179,6 +179,13 @@ export const AboutOverview: React.FC = () => {
           .overview-header-row {
             flex-direction: column;
             align-items: flex-start;
+            margin-bottom: 28px;
+            gap: 16px;
+          }
+          .overview-statement-badge {
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            white-space: normal;
           }
         }
 
@@ -217,11 +224,26 @@ export const AboutOverview: React.FC = () => {
         @media (max-width: 860px) {
           .heritage-connector-container {
             grid-template-columns: 1fr;
-            padding: 24px;
-            gap: 20px;
+            padding: 20px 16px;
+            gap: 16px;
+            margin-bottom: 32px;
           }
           .heritage-line-wrap {
-            margin: 12px 0;
+            margin: 8px 0;
+            padding: 0;
+            width: 100%;
+          }
+          .heritage-line-bg {
+            width: 100% !important;
+            margin-bottom: 8px;
+          }
+          .heritage-span-tag {
+            white-space: normal;
+            text-align: center;
+            line-height: 1.35;
+          }
+          .milestone-desc {
+            max-width: 100% !important;
           }
         }
 
@@ -272,12 +294,6 @@ export const AboutOverview: React.FC = () => {
           margin-bottom: 12px;
         }
 
-        @media (max-width: 860px) {
-          .heritage-line-bg {
-            width: 100%;
-          }
-        }
-
         .overview-progress-line {
           position: absolute;
           inset: 0;
@@ -313,6 +329,7 @@ export const AboutOverview: React.FC = () => {
         @media (max-width: 992px) {
           .overview-narrative-grid {
             grid-template-columns: 1fr;
+            gap: 20px;
           }
         }
 
@@ -326,7 +343,28 @@ export const AboutOverview: React.FC = () => {
 
         @media (max-width: 600px) {
           .narrative-main-panel {
-            padding: 24px;
+            padding: 20px 16px;
+          }
+          .narrative-heading {
+            font-size: 1.2rem !important;
+            margin-bottom: 14px !important;
+          }
+          .narrative-body {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+          }
+          .keypoint-item {
+            font-size: 0.8125rem !important;
+          }
+          .dimension-card {
+            padding: 18px 16px !important;
+          }
+          .dimension-title {
+            font-size: 0.95rem !important;
+          }
+          .dimension-desc {
+            font-size: 0.8125rem !important;
+            line-height: 1.5 !important;
           }
         }
 

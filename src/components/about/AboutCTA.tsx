@@ -92,6 +92,13 @@ export const AboutCTA: React.FC = () => {
           padding-bottom: 84px;
         }
 
+        @media (max-width: 768px) {
+          .about-cta-section {
+            padding-top: 40px;
+            padding-bottom: 56px;
+          }
+        }
+
         .about-cta-card {
           padding: 48px;
           display: grid;
@@ -109,6 +116,30 @@ export const AboutCTA: React.FC = () => {
             grid-template-columns: 1fr;
             padding: 32px 24px;
             gap: 32px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .about-cta-card {
+            padding: 24px 18px;
+            gap: 24px;
+          }
+          .cta-supporting {
+            font-size: 0.95rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 20px !important;
+          }
+          .cta-btn-group {
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+          }
+          .cta-action-btn {
+            width: 100%;
+            justify-content: center;
+          }
+          .cta-contact-direct-card {
+            padding: 20px 16px !important;
           }
         }
 

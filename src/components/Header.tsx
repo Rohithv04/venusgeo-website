@@ -293,7 +293,7 @@ export const Header: React.FC = () => {
         .mobile-drawer {
           display: none;
           position: fixed;
-          top: 64px;
+          top: 74px;
           left: 0;
           right: 0;
           bottom: 0;
@@ -301,6 +301,7 @@ export const Header: React.FC = () => {
           border-top: 1px solid var(--border-subtle);
           padding: 24px var(--page-padding-mobile);
           overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
           z-index: 499;
           animation: fadeIn 150ms ease;
         }
@@ -311,19 +312,27 @@ export const Header: React.FC = () => {
           }
         }
 
+        @media (max-width: 768px) {
+          .mobile-drawer {
+            top: 64px;
+          }
+        }
+
         .mobile-nav-list {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 4px;
         }
 
         .mobile-nav-link {
-          font-size: 1.125rem;
+          font-size: 1.0625rem;
           font-weight: 600;
           letter-spacing: var(--tracking-title);
           color: var(--text-primary);
-          padding: 12px 0;
+          padding: 14px 4px;
           border-bottom: 1px solid var(--border-subtle);
+          display: flex;
+          align-items: center;
         }
 
         .mobile-nav-link:hover,
@@ -332,7 +341,7 @@ export const Header: React.FC = () => {
         }
 
         .mobile-nav-cta {
-          margin-top: 20px;
+          margin-top: 24px;
         }
       `}</style>
     </header>

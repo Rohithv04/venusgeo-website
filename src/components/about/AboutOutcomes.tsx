@@ -122,9 +122,26 @@ export const AboutOutcomes: React.FC = () => {
           padding-bottom: 72px;
         }
 
+        @media (max-width: 768px) {
+          .about-outcomes-section {
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+        }
+
         .outcomes-header {
           max-width: 680px;
           margin-bottom: 48px;
+        }
+
+        @media (max-width: 600px) {
+          .outcomes-header {
+            margin-bottom: 28px;
+          }
+          .outcomes-subcopy {
+            font-size: 0.95rem !important;
+            line-height: 1.55 !important;
+          }
         }
 
         .outcomes-headline {
@@ -159,6 +176,27 @@ export const AboutOutcomes: React.FC = () => {
           flex-direction: column;
           background: #ffffff;
           transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        @media (max-width: 600px) {
+          .outcome-large-panel {
+            padding: 22px 18px;
+          }
+          .panel-top-row {
+            margin-bottom: 16px !important;
+          }
+          .panel-main-heading {
+            font-size: 1.25rem !important;
+            margin-bottom: 12px !important;
+          }
+          .panel-description {
+            font-size: 0.875rem !important;
+            line-height: 1.55 !important;
+            margin-bottom: 18px !important;
+          }
+          .panel-impact-list {
+            padding-top: 16px !important;
+          }
         }
 
         .outcome-large-panel:hover {

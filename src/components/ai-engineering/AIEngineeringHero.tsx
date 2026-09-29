@@ -623,27 +623,77 @@ export const AIEngineeringHero: React.FC = () => {
 
         @media (max-width: 640px) {
           .ai-hero-section {
-            padding-top: 40px;
-            padding-bottom: 48px;
+            padding-top: 36px;
+            padding-bottom: 44px;
+          }
+          .ai-hero-headline {
+            font-size: clamp(1.85rem, 6.8vw, 2.5rem);
+            margin-bottom: 16px;
+          }
+          .ai-hero-copy {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
           }
           .ai-hero-actions {
             flex-direction: column;
             align-items: stretch;
+            gap: 12px;
+            margin-bottom: 24px;
           }
           .hero-btn-main, .hero-btn-sub {
             width: 100%;
             justify-content: center;
           }
           .hero-trust-bar {
-            flex-wrap: wrap;
-            gap: 14px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding-top: 16px;
           }
           .trust-sep {
             display: none;
           }
+          .trust-number {
+            font-size: 1.0625rem;
+          }
+          .trust-label {
+            font-size: 0.625rem;
+            line-height: 1.25;
+          }
+          .system-diagram-card {
+            padding: 16px 14px;
+          }
+          .diagram-header {
+            flex-wrap: wrap;
+            gap: 6px;
+          }
+          .diagram-title {
+            font-size: 0.625rem;
+          }
+          .diagram-node-info {
+            min-height: 28px;
+            padding: 5px 8px;
+            font-size: 0.6875rem;
+          }
+          .info-active, .info-hint {
+            font-size: 0.6875rem;
+            flex-wrap: wrap;
+          }
           .hero-pipeline-strip {
             flex-direction: column;
             align-items: flex-start;
+            gap: 6px;
+            width: 100%;
+          }
+          .pipeline-steps-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            white-space: normal;
+          }
+          .pipeline-arrow {
+            display: none;
           }
         }
       `}</style>

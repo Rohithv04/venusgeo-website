@@ -111,6 +111,13 @@ button, input, textarea, select {
   }
 }
 
+@media (max-width: 380px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 .section {
   padding-top: var(--section-spacing-desktop);
   padding-bottom: var(--section-spacing-desktop);
@@ -121,6 +128,26 @@ button, input, textarea, select {
     padding-top: var(--section-spacing-mobile);
     padding-bottom: var(--section-spacing-mobile);
   }
+  
+  /* Safeguard heading line wrapping and word breaks on mobile */
+  h1, h2, h3, h4 {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+  
+  .btn {
+    min-height: 44px; /* Accessible mobile touch target */
+  }
+}
+
+/* Horizontal scroll utility for chips & badges without ugly scrollbars */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Eyebrow badge with refined letter-spacing */
