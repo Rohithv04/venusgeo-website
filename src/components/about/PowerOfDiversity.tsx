@@ -128,6 +128,10 @@ export const PowerOfDiversity: React.FC = () => {
           border-top: 1px solid var(--border-subtle);
           border-bottom: 1px solid var(--border-subtle);
           overflow: hidden;
+          contain: paint;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
           padding-top: 80px;
           padding-bottom: 84px;
         }
@@ -145,7 +149,9 @@ export const PowerOfDiversity: React.FC = () => {
           left: 0;
           right: 0;
           width: 100%;
+          max-width: 100%;
           overflow: hidden;
+          contain: paint;
           white-space: nowrap;
           pointer-events: none;
           opacity: 0.045;

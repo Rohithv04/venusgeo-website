@@ -209,6 +209,13 @@ export const AboutOverview: React.FC = () => {
           white-space: nowrap;
         }
 
+        .about-overview-section {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+          overflow-x: hidden;
+        }
+
         /* Heritage Connector: 2001 -> TODAY */
         .heritage-connector-container {
           display: grid;
@@ -219,28 +226,39 @@ export const AboutOverview: React.FC = () => {
           margin-bottom: 48px;
           background: linear-gradient(135deg, #ffffff 0%, var(--surface-soft) 100%);
           border: 1px solid var(--border-card);
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
         }
 
         @media (max-width: 860px) {
           .heritage-connector-container {
-            grid-template-columns: 1fr;
-            padding: 20px 16px;
+            grid-template-columns: minmax(0, 1fr);
+            padding: 20px 14px;
             gap: 16px;
             margin-bottom: 32px;
+            width: 100%;
+            overflow: hidden;
           }
           .heritage-line-wrap {
             margin: 8px 0;
             padding: 0;
             width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
           }
           .heritage-line-bg {
             width: 100% !important;
+            max-width: 100%;
             margin-bottom: 8px;
           }
           .heritage-span-tag {
             white-space: normal;
             text-align: center;
             line-height: 1.35;
+            display: inline-block;
+            max-width: 100%;
+            box-sizing: border-box;
           }
           .milestone-desc {
             max-width: 100% !important;

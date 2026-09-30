@@ -20,6 +20,8 @@ html {
   text-rendering: optimizeLegibility;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11", "kern" 1;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -29,12 +31,23 @@ body {
   background-color: var(--surface-white);
   color: var(--text-primary);
   overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Typography Defaults with Fine-tuned Kerning */

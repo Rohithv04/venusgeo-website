@@ -617,6 +617,10 @@ export const FivePillarsSection: React.FC = () => {
           padding-top: 48px;
           padding-bottom: 72px;
           background-color: var(--surface-white);
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+          overflow-x: hidden;
         }
 
         @media (max-width: 768px) {
@@ -628,16 +632,21 @@ export const FivePillarsSection: React.FC = () => {
 
         .pillars-split-layout {
           display: grid;
-          grid-template-columns: 360px 1fr;
+          grid-template-columns: 360px minmax(0, 1fr);
           gap: 48px;
           align-items: flex-start;
           position: relative;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
         }
 
         @media (max-width: 992px) {
           .pillars-split-layout {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 24px;
+            width: 100%;
+            max-width: 100%;
           }
         }
 
@@ -646,12 +655,17 @@ export const FivePillarsSection: React.FC = () => {
           position: sticky;
           top: 96px;
           z-index: 10;
+          min-width: 0;
+          max-width: 100%;
         }
 
         @media (max-width: 992px) {
           .pillars-sticky-sidebar {
             position: static;
             top: auto;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
           }
         }
 
@@ -659,11 +673,18 @@ export const FivePillarsSection: React.FC = () => {
           padding: 28px 24px;
           background-color: var(--surface-white);
           border: 1px solid var(--border-card);
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
         }
 
         @media (max-width: 992px) {
           .sticky-controller-inner {
             padding: 16px 14px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
           }
           .active-num-display {
             display: none !important;
@@ -679,13 +700,18 @@ export const FivePillarsSection: React.FC = () => {
             margin-bottom: 12px !important;
           }
           .pillars-nav-list {
+            display: flex !important;
             flex-direction: row !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
             overflow-x: auto;
             gap: 8px !important;
             margin-bottom: 12px !important;
-            padding-bottom: 4px;
+            padding-bottom: 6px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            box-sizing: border-box;
           }
           .pillars-nav-list::-webkit-scrollbar {
             display: none;
@@ -768,6 +794,8 @@ export const FivePillarsSection: React.FC = () => {
           flex-direction: column;
           gap: 6px;
           margin-bottom: 24px;
+          min-width: 0;
+          max-width: 100%;
         }
 
         .pillar-nav-btn {
@@ -855,11 +883,18 @@ export const FivePillarsSection: React.FC = () => {
           display: flex;
           flex-direction: column;
           gap: 48px;
+          min-width: 0;
+          max-width: 100%;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         @media (max-width: 768px) {
           .pillars-content-stack {
             gap: 28px;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
           }
         }
 
@@ -867,33 +902,49 @@ export const FivePillarsSection: React.FC = () => {
           padding: 40px;
           scroll-margin-top: 100px;
           transition: border-color var(--transition-normal);
+          min-width: 0;
+          max-width: 100%;
+          width: 100%;
+          box-sizing: border-box;
+          overflow-wrap: break-word;
+          word-break: normal;
         }
 
         @media (max-width: 600px) {
           .pillar-card {
-            padding: 20px 16px;
+            padding: 20px 14px;
             scroll-margin-top: 70px;
+            border-radius: var(--panel-radius-sm);
           }
           .pillar-heading {
             font-size: 1.25rem !important;
-            line-height: 1.25 !important;
+            line-height: 1.28 !important;
             margin-bottom: 12px !important;
+            overflow-wrap: break-word !important;
+            word-break: normal !important;
           }
           .pillar-text {
             font-size: 0.875rem !important;
             line-height: 1.55 !important;
             margin-bottom: 12px !important;
+            overflow-wrap: break-word !important;
+            word-break: normal !important;
           }
           .pipeline-card {
-            padding: 16px 14px !important;
+            padding: 16px 12px !important;
+            width: 100%;
+            box-sizing: border-box;
           }
           .constellation-box {
-            padding: 16px 14px !important;
+            padding: 16px 12px !important;
+            width: 100%;
+            box-sizing: border-box;
           }
           .constellation-title-bar {
             flex-direction: column;
             align-items: flex-start;
             gap: 4px;
+            width: 100%;
           }
         }
 
@@ -902,6 +953,8 @@ export const FivePillarsSection: React.FC = () => {
           align-items: center;
           justify-content: space-between;
           margin-bottom: 20px;
+          flex-wrap: wrap;
+          gap: 8px;
         }
 
         .pillar-index-badge {
@@ -937,6 +990,8 @@ export const FivePillarsSection: React.FC = () => {
           letter-spacing: var(--tracking-heading);
           line-height: 1.2;
           margin-bottom: 16px;
+          overflow-wrap: break-word;
+          word-break: normal;
         }
 
         .pillar-text {
@@ -944,6 +999,8 @@ export const FivePillarsSection: React.FC = () => {
           line-height: 1.65;
           color: var(--text-secondary);
           margin-bottom: 14px;
+          overflow-wrap: break-word;
+          word-break: normal;
         }
 
         /* Micro-Labels Row */
@@ -952,6 +1009,7 @@ export const FivePillarsSection: React.FC = () => {
           flex-wrap: wrap;
           gap: 8px;
           margin: 18px 0 24px;
+          width: 100%;
         }
 
         .micro-label-pill {
@@ -970,6 +1028,9 @@ export const FivePillarsSection: React.FC = () => {
           padding: 24px;
           border-radius: var(--panel-radius-sm);
           margin-top: 20px;
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
         }
 
         .pipeline-header {
@@ -981,6 +1042,8 @@ export const FivePillarsSection: React.FC = () => {
           font-weight: 700;
           letter-spacing: 0.06em;
           color: var(--text-secondary);
+          flex-wrap: wrap;
+          gap: 6px;
         }
 
         .pipeline-status {
@@ -991,14 +1054,17 @@ export const FivePillarsSection: React.FC = () => {
           display: flex;
           flex-direction: column;
           gap: 12px;
+          width: 100%;
         }
 
         .pipeline-step-node {
           display: grid;
-          grid-template-columns: 28px 1fr;
+          grid-template-columns: 28px minmax(0, 1fr);
           gap: 14px;
           align-items: flex-start;
           position: relative;
+          min-width: 0;
+          width: 100%;
         }
 
         .node-circle-wrap {
@@ -1039,6 +1105,8 @@ export const FivePillarsSection: React.FC = () => {
 
         .node-label-wrap {
           padding-bottom: 8px;
+          min-width: 0;
+          overflow-wrap: break-word;
         }
 
         .node-step-name {
@@ -1057,6 +1125,10 @@ export const FivePillarsSection: React.FC = () => {
           padding: 24px;
           border-radius: var(--panel-radius-sm);
           margin-top: 20px;
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
+          overflow: hidden;
         }
 
         .constellation-title-bar {
@@ -1068,6 +1140,9 @@ export const FivePillarsSection: React.FC = () => {
           font-weight: 700;
           letter-spacing: 0.06em;
           color: var(--text-secondary);
+          flex-wrap: wrap;
+          gap: 6px;
+          width: 100%;
         }
 
         .constellation-tag {
@@ -1076,11 +1151,14 @@ export const FivePillarsSection: React.FC = () => {
 
         .constellation-svg-wrap {
           width: 100%;
+          max-width: 100%;
           margin-bottom: 16px;
+          overflow: hidden;
         }
 
         .constellation-svg {
           width: 100%;
+          max-width: 100%;
           height: auto;
           display: block;
         }
@@ -1088,6 +1166,7 @@ export const FivePillarsSection: React.FC = () => {
         .sourcing-factors-cloud {
           padding-top: 14px;
           border-top: 1px solid var(--border-subtle);
+          width: 100%;
         }
 
         .factors-label {
@@ -1103,6 +1182,7 @@ export const FivePillarsSection: React.FC = () => {
           display: flex;
           flex-wrap: wrap;
           gap: 6px;
+          width: 100%;
         }
 
         .factor-tag {
@@ -1125,6 +1205,8 @@ export const FivePillarsSection: React.FC = () => {
           padding-left: 18px;
           border-left: 3px solid var(--brand-red);
           margin-bottom: 18px;
+          overflow-wrap: break-word;
+          word-break: normal;
         }
 
         @media (max-width: 600px) {
@@ -1140,13 +1222,47 @@ export const FivePillarsSection: React.FC = () => {
           border-radius: var(--panel-radius-sm);
           margin-top: 20px;
           margin-bottom: 20px;
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
         }
 
         @media (max-width: 600px) {
           .quality-equation-card {
-            padding: 16px 14px !important;
+            padding: 16px 12px !important;
             margin-top: 14px !important;
             margin-bottom: 14px !important;
+          }
+          .equation-formula {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 8px !important;
+            width: 100% !important;
+          }
+          .equation-operator {
+            text-align: center;
+            font-size: 1.1rem !important;
+            line-height: 1;
+            padding: 2px 0;
+          }
+          .equation-term {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            padding: 10px 12px !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+          .term-main {
+            font-size: 0.8125rem !important;
+            word-break: break-word;
+          }
+          .term-sub {
+            font-size: 0.6875rem !important;
+            word-break: break-word;
           }
         }
 
@@ -1164,23 +1280,8 @@ export const FivePillarsSection: React.FC = () => {
           align-items: center;
           gap: 12px;
           flex-wrap: wrap;
-        }
-
-        @media (max-width: 600px) {
-          .equation-formula {
-            flex-direction: column !important;
-            align-items: stretch !important;
-            gap: 8px !important;
-          }
-          .equation-operator {
-            text-align: center;
-            font-size: 1.1rem !important;
-            line-height: 1;
-          }
-          .equation-term {
-            text-align: center;
-            padding: 8px 12px !important;
-          }
+          width: 100%;
+          box-sizing: border-box;
         }
 
         .equation-term {
@@ -1190,6 +1291,8 @@ export const FivePillarsSection: React.FC = () => {
           border: 1px solid var(--border-card);
           padding: 10px 14px;
           border-radius: 6px;
+          box-sizing: border-box;
+          min-width: 0;
         }
 
         .equation-term.result-term {
@@ -1219,15 +1322,19 @@ export const FivePillarsSection: React.FC = () => {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
+          width: 100%;
         }
 
         @media (max-width: 600px) {
           .quality-kpi-grid {
             grid-template-columns: 1fr;
             gap: 10px;
+            width: 100%;
           }
           .quality-kpi-box {
             padding: 12px 14px !important;
+            box-sizing: border-box !important;
+            width: 100%;
           }
         }
 
@@ -1236,6 +1343,8 @@ export const FivePillarsSection: React.FC = () => {
           border: 1px solid var(--border-subtle);
           padding: 16px;
           border-radius: 6px;
+          min-width: 0;
+          box-sizing: border-box;
         }
 
         .kpi-val {
@@ -1260,6 +1369,7 @@ export const FivePillarsSection: React.FC = () => {
         /* Guarantee Section */
         .guarantee-statement-box {
           margin-bottom: 18px;
+          width: 100%;
         }
 
         .guarantee-accent-line {
@@ -1275,6 +1385,8 @@ export const FivePillarsSection: React.FC = () => {
           font-weight: 800;
           letter-spacing: var(--tracking-heading);
           color: var(--text-primary);
+          overflow-wrap: break-word;
+          word-break: normal;
         }
 
         @media (max-width: 600px) {
@@ -1289,15 +1401,19 @@ export const FivePillarsSection: React.FC = () => {
           gap: 12px;
           margin-top: 20px;
           margin-bottom: 20px;
+          width: 100%;
         }
 
         @media (max-width: 600px) {
           .guarantee-points-grid {
             grid-template-columns: 1fr;
             gap: 8px;
+            width: 100%;
           }
           .guarantee-point-item {
             padding: 12px 14px !important;
+            box-sizing: border-box !important;
+            width: 100%;
           }
         }
 
@@ -1307,12 +1423,16 @@ export const FivePillarsSection: React.FC = () => {
           gap: 10px;
           padding: 14px 16px;
           border-radius: 6px;
+          min-width: 0;
+          box-sizing: border-box;
         }
 
         .point-text {
           font-size: 0.875rem;
           font-weight: 600;
           color: var(--text-primary);
+          min-width: 0;
+          overflow-wrap: break-word;
         }
 
         .guarantee-sla-bar {
@@ -1322,12 +1442,16 @@ export const FivePillarsSection: React.FC = () => {
           padding: 18px;
           border-radius: 6px;
           border-left: 3px solid var(--brand-red);
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
         }
 
         @media (max-width: 600px) {
           .guarantee-sla-bar {
             padding: 14px !important;
             gap: 10px !important;
+            width: 100%;
           }
         }
 
@@ -1345,21 +1469,30 @@ export const FivePillarsSection: React.FC = () => {
           line-height: 1.45;
         }
 
+        .sla-text-block {
+          min-width: 0;
+          overflow-wrap: break-word;
+        }
+
         /* Diversity Mosaic */
         .diversity-dimensions-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 14px;
           margin-top: 22px;
+          width: 100%;
         }
 
         @media (max-width: 600px) {
           .diversity-dimensions-grid {
             grid-template-columns: 1fr;
             gap: 10px;
+            width: 100%;
           }
           .dimension-mosaic-item {
             padding: 16px 14px !important;
+            box-sizing: border-box !important;
+            width: 100%;
           }
         }
 
@@ -1367,6 +1500,8 @@ export const FivePillarsSection: React.FC = () => {
           padding: 20px;
           border-radius: 8px;
           transition: transform 160ms ease, border-color 160ms ease;
+          min-width: 0;
+          box-sizing: border-box;
         }
 
         .dimension-mosaic-item:hover {
