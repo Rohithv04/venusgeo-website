@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ExternalLink, Award, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Award, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { gsap, prefersReducedMotion } from '../utils/animations';
 
 export const Hero: React.FC = () => {
@@ -13,6 +14,42 @@ export const Hero: React.FC = () => {
   const statRef = useRef<HTMLDivElement>(null);
   const dockGridRef = useRef<HTMLDivElement>(null);
   const ecosystemRef = useRef<HTMLDivElement>(null);
+  const badgesListRef = useRef<HTMLDivElement>(null);
+
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkBadgesScroll = () => {
+    const el = badgesListRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 4);
+  };
+
+  const scrollBadges = (direction: 'left' | 'right') => {
+    const el = badgesListRef.current;
+    if (!el) return;
+    const scrollAmount = Math.max(el.clientWidth * 0.65, 220);
+    el.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    const el = badgesListRef.current;
+    if (!el) return;
+
+    checkBadgesScroll();
+    el.addEventListener('scroll', checkBadgesScroll, { passive: true });
+    window.addEventListener('resize', checkBadgesScroll);
+
+    return () => {
+      el.removeEventListener('scroll', checkBadgesScroll);
+      window.removeEventListener('resize', checkBadgesScroll);
+    };
+  }, []);
 
   // Determine if already docked based on URL hash or previous scroll depth
   const [isDocked, setIsDocked] = useState<boolean>(() => {
@@ -409,15 +446,13 @@ export const Hero: React.FC = () => {
                   <ArrowRight size={16} />
                 </a>
 
-                <a
-                  href="https://www.venusgeo.com/gen-ai-integration/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/ai-engineering"
                   className="btn btn-secondary hero-btn-secondary"
                 >
                   <span>Explore AI Engineering Solutions</span>
-                  <ExternalLink size={15} />
-                </a>
+                  <ArrowRight size={16} />
+                </Link>
               </div>
             </div>
 
@@ -503,16 +538,28 @@ export const Hero: React.FC = () => {
           <div ref={ecosystemRef} className="ecosystem-strip">
             <div className="ecosystem-header">
               <span className="ecosystem-title">Enterprise Cloud & Stacks:</span>
-              <div className="ecosystem-nav-arrows" aria-hidden="true">
-                <button type="button" className="eco-arrow-btn" aria-label="Previous technologies">
+              <div className="ecosystem-nav-arrows">
+                <button
+                  type="button"
+                  className="eco-arrow-btn"
+                  onClick={() => scrollBadges('left')}
+                  disabled={!canScrollLeft}
+                  aria-label="Previous technologies"
+                >
                   <ChevronLeft size={14} />
                 </button>
-                <button type="button" className="eco-arrow-btn" aria-label="Next technologies">
+                <button
+                  type="button"
+                  className="eco-arrow-btn"
+                  onClick={() => scrollBadges('right')}
+                  disabled={!canScrollRight}
+                  aria-label="Next technologies"
+                >
                   <ChevronRight size={14} />
                 </button>
               </div>
             </div>
-            <div className="ecosystem-badges-list">
+            <div ref={badgesListRef} className="ecosystem-badges-list">
               <span className="eco-badge">Microsoft .NET</span>
               <span className="eco-badge">AWS Cloud</span>
               <span className="eco-badge">Google Cloud</span>
@@ -521,6 +568,8 @@ export const Hero: React.FC = () => {
               <span className="eco-badge">NVIDIA AI</span>
               <span className="eco-badge">React & TypeScript</span>
               <span className="eco-badge">PostgreSQL</span>
+              <span className="eco-badge">Docker</span>
+              <span className="eco-badge">Python & PyTorch</span>
             </div>
           </div>
         </div>
@@ -1027,20 +1076,39 @@ export const Hero: React.FC = () => {
 
         .ecosystem-nav-arrows {
           display: flex;
-          gap: 4px;
+          align-items: center;
+          gap: 6px;
         }
 
         .eco-arrow-btn {
-          width: 24px;
-          height: 24px;
+          width: 26px;
+          height: 26px;
           border-radius: 50%;
-          border: 1px solid var(--border-subtle);
+          border: 1px solid var(--border-medium);
           background-color: var(--surface-white);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          color: var(--text-secondary);
+          color: var(--text-primary);
+          transition: all 0.2s ease;
+          padding: 0;
+        }
+
+        .eco-arrow-btn:hover:not(:disabled) {
+          background-color: var(--surface-soft);
+          border-color: var(--border-strong);
+          color: var(--brand-red);
+          transform: scale(1.08);
+        }
+
+        .eco-arrow-btn:active:not(:disabled) {
+          transform: scale(0.94);
+        }
+
+        .eco-arrow-btn:disabled {
+          opacity: 0.35;
+          cursor: not-allowed;
         }
 
         .ecosystem-badges-list {
@@ -1049,7 +1117,9 @@ export const Hero: React.FC = () => {
           gap: 12px;
           flex-wrap: nowrap;
           overflow-x: auto;
+          scroll-behavior: smooth;
           scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
         }
 
         .ecosystem-badges-list::-webkit-scrollbar {
