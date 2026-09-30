@@ -58,6 +58,7 @@ export const AIApplicationLayer: React.FC = () => {
     if (prefersReducedMotion() || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth <= 1024;
       // Architectural diagram entrance sequence
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -67,42 +68,57 @@ export const AIApplicationLayer: React.FC = () => {
         }
       });
 
-      tl.from('.diag-col-app', {
-        opacity: 0,
-        x: -24,
-        duration: 0.7,
-        ease: 'power3.out'
-      })
-        .from(
-          '.diag-col-service',
-          {
-            opacity: 0,
-            scale: 0.94,
-            duration: 0.75,
-            ease: 'back.out(1.4)'
-          },
-          '-=0.3'
-        )
-        .from(
-          '.diag-col-capabilities',
-          {
-            opacity: 0,
-            x: 24,
-            duration: 0.7,
-            ease: 'power3.out'
-          },
-          '-=0.4'
-        )
-        .from(
-          '.connector-beam',
-          {
-            scaleX: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: 'power2.out'
-          },
-          '-=0.3'
-        );
+      if (isMobile) {
+        tl.from('.diag-col-app, .diag-col-service, .diag-col-capabilities', {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'power3.out',
+          clearProps: 'all'
+        });
+      } else {
+        tl.from('.diag-col-app', {
+          opacity: 0,
+          x: -24,
+          duration: 0.7,
+          ease: 'power3.out',
+          clearProps: 'all'
+        })
+          .from(
+            '.diag-col-service',
+            {
+              opacity: 0,
+              scale: 0.94,
+              duration: 0.75,
+              ease: 'back.out(1.4)',
+              clearProps: 'all'
+            },
+            '-=0.3'
+          )
+          .from(
+            '.diag-col-capabilities',
+            {
+              opacity: 0,
+              x: 24,
+              duration: 0.7,
+              ease: 'power3.out',
+              clearProps: 'all'
+            },
+            '-=0.4'
+          )
+          .from(
+            '.connector-beam',
+            {
+              scaleX: 0,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: 'power2.out',
+              clearProps: 'all'
+            },
+            '-=0.3'
+          );
+      }
 
       // Triad statement sequential reveal
       gsap.from('.triad-box', {
@@ -115,7 +131,8 @@ export const AIApplicationLayer: React.FC = () => {
         y: 20,
         stagger: 0.18,
         duration: 0.7,
-        ease: 'power3.out'
+        ease: 'power3.out',
+        clearProps: 'all'
       });
     }, sectionRef);
 
@@ -329,6 +346,7 @@ export const AIApplicationLayer: React.FC = () => {
           border-radius: var(--panel-radius);
           box-shadow: var(--shadow-card);
           margin-bottom: 48px;
+          overflow: hidden;
         }
 
         .diagram-top-bar {
@@ -633,6 +651,8 @@ export const AIApplicationLayer: React.FC = () => {
           font-size: 1.25rem;
           font-weight: 700;
           color: var(--text-muted);
+        }
+
         .triad-arrow-mobile {
           display: none;
         }
@@ -642,52 +662,82 @@ export const AIApplicationLayer: React.FC = () => {
             grid-template-columns: 1fr;
             gap: 12px;
           }
+          .diag-col {
+            width: 100%;
+          }
           .diag-connector {
             width: 100%;
             height: auto;
+            display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin: 6px 0;
+            gap: 10px;
+            margin: 8px 0;
+            padding: 4px 0;
             transform: none;
           }
           .connector-beam {
-            width: 36px;
+            flex: 1;
+            max-width: 60px;
             height: 2px;
+            background-color: var(--brand-red);
+            opacity: 0.5;
           }
           .connector-label {
-            font-size: 0.625rem;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             color: var(--brand-red);
+            background-color: var(--brand-red-light);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(237, 27, 36, 0.15);
+            white-space: nowrap;
           }
           .in-app-features-grid {
             grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
           }
           .triad-grid {
             grid-template-columns: 1fr;
-            gap: 8px;
+            gap: 0;
+          }
+          .triad-box {
+            width: 100%;
           }
           .triad-divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 24px;
+            height: 36px;
             color: var(--brand-red);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transform: none;
-            margin: 0 auto;
+            margin: 2px auto;
           }
           .triad-arrow-desktop {
             display: none;
           }
           .triad-arrow-mobile {
-            display: inline;
+            display: inline-block;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .in-app-features-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
           }
         }
 
         @media (max-width: 640px) {
           .app-layer-header {
             margin-bottom: 28px;
+          }
+          .app-layer-heading {
+            font-size: clamp(1.65rem, 5.5vw, 2.1rem);
+            margin-bottom: 14px;
           }
           .app-layer-copy {
             font-size: 0.95rem;
@@ -699,29 +749,70 @@ export const AIApplicationLayer: React.FC = () => {
           }
           .diagram-top-bar {
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 18px;
             padding-bottom: 14px;
+            justify-content: space-between;
+          }
+          .diagram-subtag {
+            margin-left: 0;
           }
           .diag-col {
             padding: 18px 14px;
           }
-          .in-app-features-grid {
-            grid-template-columns: 1fr;
-            gap: 14px;
-            margin-bottom: 32px;
+          .col-title {
+            font-size: 1rem;
+          }
+          .col-desc {
+            font-size: 0.75rem;
+            margin-bottom: 14px;
+          }
+          .element-chip {
+            padding: 6px 9px;
+            font-size: 0.75rem;
+          }
+          .service-feature {
+            padding: 7px 9px;
+          }
+          .service-feature strong {
+            font-size: 0.75rem;
+          }
+          .service-feature span {
+            font-size: 0.6875rem;
+          }
+          .cap-mini-item {
+            padding: 6px 9px;
+            font-size: 0.75rem;
           }
           .in-app-feat-card {
             padding: 20px 16px;
           }
+          .feat-card-title {
+            font-size: 0.95rem;
+          }
+          .feat-card-copy {
+            font-size: 0.84375rem;
+            line-height: 1.55;
+          }
           .ai-rule-triad-wrap {
             padding: 22px 14px;
           }
+          .triad-label {
+            margin-bottom: 18px;
+          }
           .triad-box {
-            padding: 16px 14px;
+            padding: 18px 16px;
+          }
+          .triad-step {
+            font-size: 0.6875rem;
           }
           .triad-text {
-            font-size: 1.1rem;
+            font-size: 1.125rem;
+            margin-bottom: 6px;
+          }
+          .triad-sub {
+            font-size: 0.8125rem;
+            line-height: 1.45;
           }
         }
       `}</style>

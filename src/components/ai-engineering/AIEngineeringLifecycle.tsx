@@ -189,6 +189,7 @@ export const AIEngineeringLifecycle: React.FC = () => {
           border-radius: var(--panel-radius);
           box-shadow: var(--shadow-card);
           margin-bottom: 56px;
+          overflow: hidden;
         }
 
         .pipeline-header-bar {
@@ -376,10 +377,26 @@ export const AIEngineeringLifecycle: React.FC = () => {
           color: var(--text-secondary);
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1024px) {
           .lifecycle-steps-grid {
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
+          }
+          .context-stages-track {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            overflow-x: visible;
+            padding-bottom: 0;
+            margin-bottom: 18px;
+          }
+          .stage-arrow-wrap {
+            display: none;
+          }
+          .pipeline-stage-box {
+            min-width: 0;
+            width: 100%;
+            padding: 12px 10px;
           }
         }
 
@@ -387,36 +404,59 @@ export const AIEngineeringLifecycle: React.FC = () => {
           .lifecycle-header {
             margin-bottom: 28px;
           }
+          .lifecycle-heading {
+            font-size: clamp(1.65rem, 5.5vw, 2.1rem);
+            margin-bottom: 14px;
+          }
           .lifecycle-copy {
             font-size: 0.95rem;
             line-height: 1.55;
           }
           .context-pipeline-container {
-            padding: 18px 14px;
+            padding: 20px 16px;
             margin-bottom: 36px;
           }
           .pipeline-header-bar {
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 16px;
             padding-bottom: 12px;
+            justify-content: space-between;
+          }
+          .pipeline-note {
+            margin-left: 0;
           }
           .context-stages-track {
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            padding-bottom: 12px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            overflow-x: visible;
+            padding-bottom: 0;
             margin-bottom: 16px;
           }
-          .context-stages-track::-webkit-scrollbar {
+          .stage-arrow-wrap {
             display: none;
           }
           .pipeline-stage-box {
-            min-width: 90px;
-            padding: 10px 12px;
+            min-width: 0;
+            width: 100%;
+            padding: 12px 10px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          .stage-number {
+            font-size: 0.6875rem;
+            margin-bottom: 3px;
+          }
+          .stage-name {
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
           }
           .context-statement-strip {
-            padding: 10px 12px;
+            padding: 12px 14px;
             font-size: 0.8125rem;
+            line-height: 1.45;
           }
           .lifecycle-subhead {
             margin-bottom: 20px;
