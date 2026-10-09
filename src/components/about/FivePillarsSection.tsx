@@ -620,7 +620,7 @@ export const FivePillarsSection: React.FC = () => {
           width: 100%;
           max-width: 100%;
           box-sizing: border-box;
-          overflow-x: hidden;
+          overflow-x: clip;
         }
 
         @media (max-width: 768px) {

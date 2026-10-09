@@ -141,7 +141,9 @@ export const WhyVenusGeoAI: React.FC = () => {
 
         .why-sticky-col {
           position: sticky;
-          top: 100px;
+          top: 96px;
+          align-self: start;
+          z-index: 10;
         }
 
         .sticky-content-wrap {
