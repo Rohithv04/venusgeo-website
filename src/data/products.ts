@@ -18,6 +18,7 @@ export interface ProductItem {
   destinationType: 'external' | 'internal-panel';
   url?: string;
   pdf?: ProductPdf;
+  tags?: string[];
   // Detail metadata for products using internal detail panel
   detail?: {
     overview: string;
@@ -33,37 +34,19 @@ export const products: ProductItem[] = [
     id: 'pammy-ai',
     name: 'Pammy AI',
     industry: 'Maritime Operations',
-    shortBenefit: 'Document intelligence for maritime & crew operations.',
-    description: 'Automate crew onboarding, flag compliance risks, and streamline maritime documents across fleet operations.',
+    shortBenefit: 'Cruise Operations Intelligence',
+    description: 'Mobile-first workflows for guest, crew and maritime operations.',
+    tags: ['Embarkation', 'Gangway', 'Mustering', 'Debarkation'],
     image: '/assets/products/pammy-ai.jpg',
     actionText: 'Explore Pammy AI',
     destinationType: 'internal-panel',
     pdf: {
       title: 'Pammy AI Business Presentation',
-      subtitle: 'Pammy AI Maritime Operations & Intelligent Automation (12 Slides)',
+      subtitle: 'Cruise Operations & Maritime Intelligence (12 Slides)',
       url: '/assets/docs/document-ai-business-presentation.pdf',
       fileName: 'Pammy-AI-Business-Presentation.pdf',
       slideCount: 12,
       fileSize: '2.5 MB'
-    },
-    detail: {
-      overview: 'Pammy AI accelerates maritime crew readiness and compliance by automating document ingestion, cross-checks, and validation for cruise lines and commercial vessels.',
-      features: [
-        'Multi-format document ingestion (Passports, Visas, Seaman Books, STCW certificates)',
-        'Automated OCR extraction with real-time confidence scoring and anomaly detection',
-        'Regulatory compliance cross-checks against flag state and port authority rules',
-        'Direct integration with onboard crew management and enterprise ERP systems'
-      ],
-      useCases: [
-        'Rapid maritime crew onboarding and pre-joining verification',
-        'STCW, medical fitness, and seamanship license compliance tracking',
-        'Port clearance document preparation and audit readiness'
-      ],
-      technicalHighlights: [
-        'Maritime-specialized OCR models fine-tuned on multinational document standards',
-        'Offline-ready edge processing for low-bandwidth satellite connectivity at sea',
-        'Zero-data retention and enterprise cryptographic security standards'
-      ]
     }
   },
   // Row 1, Right

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ProductCard } from './ProductCard';
+import { PammyAiModal } from './PammyAiModal';
 import { products, type ProductItem, type ProductPdf } from '../data/products';
 import { X, CheckCircle2, MessageSquare, Mail, ArrowRight, FileText, Eye, Download, ExternalLink } from 'lucide-react';
 
@@ -109,8 +110,16 @@ export const ProductGrid: React.FC = () => {
         </div>
       </div>
 
-      {/* Accessible Detail Modal for Internal Products */}
-      {selectedProduct && selectedProduct.detail && (
+      {/* Redesigned Pammy AI Cruise Operations Modal */}
+      {selectedProduct && selectedProduct.id === 'pammy-ai' && (
+        <PammyAiModal
+          onClose={() => setSelectedProduct(null)}
+          onInquire={handleInquire}
+        />
+      )}
+
+      {/* Accessible Detail Modal for Other Internal Products (Posmate, ITAL) */}
+      {selectedProduct && selectedProduct.id !== 'pammy-ai' && selectedProduct.detail && (
         <div
           className="modal-overlay"
           role="dialog"

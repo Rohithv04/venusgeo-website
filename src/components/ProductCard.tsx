@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock, FileText, Eye, Download } from 'lucide-react';
+import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock, FileText, Eye, Download, Ship } from 'lucide-react';
 import type { ProductItem, ProductPdf } from '../data/products';
 
 interface ProductCardProps {
@@ -14,6 +14,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
   const getProductIcon = (id: string) => {
     switch (id) {
       case 'pammy-ai':
+        return <Ship size={18} />;
       case 'document-ai':
         return <FileSearch size={18} />;
       case 'ultra-passkey':
@@ -74,6 +75,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
         </div>
 
         <p className="product-desc">{product.description}</p>
+
+        {/* Workflow / Capability Tags */}
+        {product.tags && product.tags.length > 0 && (
+          <div className="product-tags-row" aria-label={`${product.name} workflows`}>
+            {product.tags.map((tag) => (
+              <span key={tag} className="product-card-tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Presentation PDF Attachment Row */}
         {product.pdf && (
@@ -296,6 +308,32 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
           flex-grow: 1;
         }
 
+        .product-tags-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-top: auto;
+          margin-bottom: 12px;
+        }
+
+        .product-card-tag {
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          color: var(--text-secondary);
+          background-color: var(--surface-soft);
+          border: 1px solid var(--border-subtle);
+          padding: 4px 9px;
+          border-radius: 4px;
+          transition: border-color var(--transition-quick), color var(--transition-quick), background-color var(--transition-quick);
+        }
+
+        .product-card:hover .product-card-tag {
+          border-color: #cbd5e1;
+          background-color: #f1f4f9;
+          color: var(--text-primary);
+        }
+
         /* Presentation PDF Strip */
         .product-pdf-strip {
           margin-top: auto;
@@ -307,6 +345,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
           display: flex;
           flex-direction: column;
           gap: 8px;
+        }
+
+        .product-tags-row + .product-pdf-strip {
+          margin-top: 0;
         }
 
         .pdf-strip-header {
