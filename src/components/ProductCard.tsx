@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock, FileText, Eye, Download, Ship } from 'lucide-react';
+import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock, FileText, Eye, Download, LogIn, ArrowLeftRight, Users, LogOut } from 'lucide-react';
 import type { ProductItem, ProductPdf } from '../data/products';
 
 interface ProductCardProps {
@@ -14,9 +14,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
   const getProductIcon = (id: string) => {
     switch (id) {
       case 'pammy-ai':
-        return <Ship size={18} />;
       case 'document-ai':
         return <FileSearch size={18} />;
+      case 'embarkation':
+        return <LogIn size={18} />;
+      case 'gangway':
+        return <ArrowLeftRight size={18} />;
+      case 'mustering':
+        return <Users size={18} />;
+      case 'debarkation':
+        return <LogOut size={18} />;
       case 'ultra-passkey':
       case 'private-id':
         return <ShieldCheck size={18} />;

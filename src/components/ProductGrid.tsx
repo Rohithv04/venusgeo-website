@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ProductCard } from './ProductCard';
-import { PammyAiModal } from './PammyAiModal';
 import { products, type ProductItem, type ProductPdf } from '../data/products';
 import { X, CheckCircle2, MessageSquare, Mail, ArrowRight, FileText, Eye, Download, ExternalLink } from 'lucide-react';
 
@@ -110,16 +109,154 @@ export const ProductGrid: React.FC = () => {
         </div>
       </div>
 
-      {/* Redesigned Pammy AI Cruise Operations Modal */}
-      {selectedProduct && selectedProduct.id === 'pammy-ai' && (
-        <PammyAiModal
-          onClose={() => setSelectedProduct(null)}
-          onInquire={handleInquire}
-        />
+      {/* Accessible Detail Modal for Cruise Operations Process Products (Embarkation, Gangway, Mustering, Debarkation) */}
+      {selectedProduct && selectedProduct.process && (
+        <div
+          className="modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          onClick={() => setSelectedProduct(null)}
+        >
+          <div
+            className="modal-content cruise-product-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header Bar */}
+            <div className="modal-header">
+              <div className="modal-header-text">
+                <span className="modal-badge">{selectedProduct.industry}</span>
+                <h3 id="modal-title" className="modal-title">{selectedProduct.name}</h3>
+                <p className="modal-subtitle">{selectedProduct.shortBenefit}</p>
+              </div>
+              <button
+                type="button"
+                className="modal-close-btn"
+                onClick={() => setSelectedProduct(null)}
+                aria-label="Close dialog"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Modal Media */}
+            <div className="modal-media">
+              <img
+                src={selectedProduct.image}
+                alt={selectedProduct.name}
+                className="modal-img"
+              />
+            </div>
+
+            {/* Modal Body */}
+            <div className="modal-body">
+              <p className="modal-overview">{selectedProduct.process.intro}</p>
+
+              {/* Process Workflow Section */}
+              <div className="modal-spec-block">
+                <h4 className="spec-heading">Process Workflow</h4>
+
+                {/* Desktop Horizontal Linear Flow Strip */}
+                <div className="workflow-linear-strip" aria-label="Sequential workflow flow">
+                  {selectedProduct.process.steps.map((st, idx, arr) => (
+                    <React.Fragment key={st.step}>
+                      <div className="workflow-linear-node">
+                        <span className="node-dot" />
+                        <span className="node-text">{st.title}</span>
+                      </div>
+                      {idx < arr.length - 1 && (
+                        <span className="node-arrow" aria-hidden="true">→</span>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+
+                {/* Desktop 4 Step Cards Grid */}
+                <div className="process-cards-grid">
+                  {selectedProduct.process.steps.map((st) => (
+                    <div key={st.step} className="process-card-box">
+                      <div className="process-card-top">
+                        <span className="process-step-badge">{st.step}</span>
+                        <h5 className="process-step-name">{st.title}</h5>
+                      </div>
+                      {st.desc && (
+                        <p className="process-step-details">{st.desc}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mobile Process Stepper Flow (Vertical on <= 640px) */}
+                <div className="mobile-process-stepper">
+                  {selectedProduct.process.steps.map((st, idx, arr) => (
+                    <React.Fragment key={st.step}>
+                      <div className="mobile-stepper-box">
+                        <span className="mobile-step-num">{st.step}</span>
+                        <div className="mobile-stepper-body">
+                          <span className="mobile-step-title">{st.title}</span>
+                          {st.desc && <p className="mobile-step-desc">{st.desc}</p>}
+                        </div>
+                      </div>
+                      {idx < arr.length - 1 && (
+                        <div className="mobile-stepper-arrow" aria-hidden="true">
+                          <span className="stepper-line" />
+                          <span className="stepper-arrow-down">↓</span>
+                        </div>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+
+              {/* Supporting Capabilities (e.g. for Embarkation) */}
+              {selectedProduct.process.capabilities && (
+                <div className="modal-spec-block">
+                  <h4 className="spec-heading">Supporting Capabilities</h4>
+                  <ul className="spec-list">
+                    {selectedProduct.process.capabilities.map((cap, idx) => (
+                      <li key={idx} className="spec-item">
+                        <CheckCircle2 size={16} className="spec-icon" />
+                        <span>{cap}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Supporting Statement (e.g. for Gangway) */}
+              {selectedProduct.process.supportingStatement && (
+                <div className="process-supporting-banner">
+                  <span className="supporting-banner-dot" />
+                  <span>{selectedProduct.process.supportingStatement}</span>
+                </div>
+              )}
+
+              {/* Modal Actions */}
+              <div className="modal-footer-actions">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleInquire}
+                >
+                  <MessageSquare size={16} />
+                  <span>Talk to Our Team About {selectedProduct.name}</span>
+                </button>
+
+                <a
+                  href={`mailto:contact@venusgeo.com?subject=Inquiry regarding ${encodeURIComponent(selectedProduct.name)}`}
+                  className="btn btn-secondary"
+                >
+                  <Mail size={16} />
+                  <span>Email Inquiries</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
 
-      {/* Accessible Detail Modal for Other Internal Products (Posmate, ITAL) */}
-      {selectedProduct && selectedProduct.id !== 'pammy-ai' && selectedProduct.detail && (
+      {/* Accessible Detail Modal for Internal Products with Detailed Specs (Pammy AI, Posmate, ITAL) */}
+      {selectedProduct && selectedProduct.detail && (
         <div
           className="modal-overlay"
           role="dialog"
@@ -540,6 +677,196 @@ export const ProductGrid: React.FC = () => {
           margin-top: 28px;
           padding-top: 20px;
           border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Cruise Product Process Modal */
+        .cruise-product-modal {
+          max-width: 740px;
+        }
+
+        .workflow-linear-strip {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+          padding: 10px 14px;
+          background-color: var(--surface-soft);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--panel-radius-xs);
+          margin-bottom: 16px;
+        }
+
+        .workflow-linear-node {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: 0.03em;
+          color: var(--text-primary);
+        }
+
+        .node-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: var(--brand-red);
+        }
+
+        .node-arrow {
+          font-size: 0.8125rem;
+          color: var(--brand-red);
+          font-weight: bold;
+        }
+
+        .process-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+          margin-bottom: 20px;
+        }
+
+        .process-card-box {
+          background-color: var(--surface-soft);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--panel-radius-xs);
+          padding: 14px;
+          transition: border-color var(--transition-quick), background-color var(--transition-quick);
+        }
+
+        .process-card-box:hover {
+          border-color: #cbd5e1;
+          background-color: #f1f4f9;
+        }
+
+        .process-card-top {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 6px;
+        }
+
+        .process-step-badge {
+          font-size: 0.6875rem;
+          font-weight: 800;
+          color: var(--brand-red);
+          background-color: #ffffff;
+          border: 1px solid var(--border-subtle);
+          padding: 1px 6px;
+          border-radius: 4px;
+        }
+
+        .process-step-name {
+          font-size: 0.8125rem;
+          font-weight: 700;
+          letter-spacing: 0.03em;
+          color: var(--text-primary);
+          margin: 0;
+        }
+
+        .process-step-details {
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+          line-height: 1.45;
+          margin: 0;
+        }
+
+        .mobile-process-stepper {
+          display: none;
+        }
+
+        .process-supporting-banner {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: var(--text-primary);
+          padding: 10px 14px;
+          background-color: #ffffff;
+          border: 1px dashed var(--border-card);
+          border-radius: 6px;
+          margin-top: 14px;
+        }
+
+        .supporting-banner-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: var(--brand-red);
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+          .workflow-linear-strip {
+            display: none;
+          }
+
+          .process-cards-grid {
+            display: none;
+          }
+
+          .mobile-process-stepper {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 18px;
+          }
+
+          .mobile-stepper-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background-color: var(--surface-soft);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 10px 12px;
+          }
+
+          .mobile-step-num {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--brand-red);
+            background-color: #ffffff;
+            border: 1px solid var(--border-subtle);
+            padding: 2px 6px;
+            border-radius: 4px;
+            flex-shrink: 0;
+          }
+
+          .mobile-step-body {
+            flex: 1;
+          }
+
+          .mobile-step-title {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+            margin-bottom: 2px;
+          }
+
+          .mobile-step-desc {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            margin: 0;
+          }
+
+          .mobile-stepper-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 16px;
+          }
+
+          .stepper-arrow-down {
+            color: var(--brand-red);
+            font-size: 0.8125rem;
+            line-height: 1;
+          }
         }
 
         /* Presentation PDF Banner in Detail Modal */
