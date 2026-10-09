@@ -433,7 +433,7 @@ export const Hero: React.FC = () => {
               </h1>
 
               <p className="hero-description">
-                VenusGeo brings AI, product design, and enterprise engineering together to build and scale software around your business.
+                Venusgeo brings AI, product design, and enterprise engineering together to build and scale software around your business.
               </p>
 
               <div className="hero-actions">
@@ -469,7 +469,7 @@ export const Hero: React.FC = () => {
                   playsInline
                   loop
                   className="hero-main-video"
-                  aria-label="VenusGeo AI Platform Interactive Demonstration"
+                  aria-label="Venusgeo AI Platform Interactive Demonstration"
                 />
 
                 <div className="hero-img-gradient-overlay" aria-hidden="true" />

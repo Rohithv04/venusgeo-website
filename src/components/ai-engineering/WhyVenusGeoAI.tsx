@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Layers, ShieldCheck, Terminal, Check } from 'lucide-react';
 import { gsap, prefersReducedMotion } from '../../utils/animations';
 
-export const WhyVenusGeoAI: React.FC = () => {
+export const WhyVenusgeoAI: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const principlesRef = useRef<HTMLDivElement>(null);
 
@@ -59,13 +59,13 @@ export const WhyVenusGeoAI: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section why-venusgeo-section" aria-label="Why VenusGeo AI Engineering">
+    <section ref={sectionRef} className="section why-venusgeo-section" aria-label="Why Venusgeo AI Engineering">
       <div className="container">
         <div className="why-layout-grid">
           {/* Left Column: Sticky Editorial Heading & Heritage Statement */}
           <div className="why-sticky-col">
             <div className="sticky-content-wrap">
-              <div className="eyebrow">WHY VENUSGEO</div>
+              <div className="eyebrow">Why Venusgeo</div>
 
               <h2 className="why-headline">
                 AI is easier to start<br />

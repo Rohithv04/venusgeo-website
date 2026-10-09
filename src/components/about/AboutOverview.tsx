@@ -100,7 +100,7 @@ export const AboutOverview: React.FC = () => {
               Technology must respond to the realities of the business using it.
             </h3>
             <p className="narrative-body">
-              VenusGeo was founded in 2001 and has spent more than two decades helping enterprises adopt and evolve digital technology.
+              Venusgeo was founded in 2001 and has spent more than two decades helping enterprises adopt and evolve digital technology.
               Our approach has always been grounded in a simple principle: technology must respond to the realities of the business using it.
             </p>
             <p className="narrative-body">

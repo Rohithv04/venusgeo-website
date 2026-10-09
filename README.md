@@ -1,6 +1,6 @@
-# VenusGeo — AI-First Enterprise Product Development
+# Venusgeo — AI-First Enterprise Product Development
 
-> Modern, responsive enterprise website for **VenusGeo**, positioning the company as an AI-first product leader with 25+ years of enterprise engineering excellence.
+> Modern, responsive enterprise website for **Venusgeo**, positioning the company as an AI-first product leader with 25+ years of enterprise engineering excellence.
 
 [![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue.svg)](https://www.typescriptlang.org/)
@@ -84,4 +84,4 @@ npm run preview
 ---
 
 ## 📄 License
-Private and proprietary. All rights reserved by VenusGeo.
+Private and proprietary. All rights reserved by Venusgeo.

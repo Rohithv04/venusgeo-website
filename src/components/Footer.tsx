@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
             <div className="footer-logo-surface">
               <img
                 src="/assets/brand/venusgeo-logo.png"
-                alt="VenusGeo Logo"
+                alt="Venusgeo Logo"
                 className="footer-logo"
                 width="170"
                 height="52"
@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © {new Date().getFullYear()} VenusGeo Solutions Inc. All rights reserved.
+            © {new Date().getFullYear()} Venusgeo Solutions Inc. All rights reserved.
           </p>
           <div className="footer-status-pill">
             <span className="status-dot"></span>

@@ -133,7 +133,7 @@ export const AIEngineeringHero: React.FC = () => {
             </h1>
 
             <p ref={copyRef} className="ai-hero-copy">
-              AI is changing what businesses build, and how software gets built. VenusGeo brings deep
+              AI is changing what businesses build, and how software gets built. Venusgeo brings deep
               enterprise engineering experience to both.
               <br /><br />
               We build AI-powered products, make existing products intelligent, modernize legacy

@@ -62,7 +62,7 @@ export const AboutHero: React.FC = () => {
   }, []);
 
   return (
-    <section ref={heroRef} className="about-hero-section" aria-label="About VenusGeo Hero">
+    <section ref={heroRef} className="about-hero-section" aria-label="About Venusgeo Hero">
       {/* Subtle background tech grid */}
       <div className="about-hero-grid-bg" aria-hidden="true" />
 
@@ -70,7 +70,7 @@ export const AboutHero: React.FC = () => {
         <div className="about-hero-layout">
           {/* Left Column: Eyebrow, Large Headline, Story Copy, Heritage Strip */}
           <div className="about-hero-content">
-            <div className="eyebrow about-hero-eyebrow">ABOUT VENUSGEO</div>
+            <div className="eyebrow about-hero-eyebrow">About Venusgeo</div>
 
             <h1 ref={headlineRef} className="about-hero-headline">
               Built on experience.<br />
@@ -78,7 +78,7 @@ export const AboutHero: React.FC = () => {
             </h1>
 
             <p ref={copyRef} className="about-hero-copy">
-              VenusGeo has been helping enterprises navigate technology transformation since 2001.
+              Venusgeo has been helping enterprises navigate technology transformation since 2001.
               Our work combines deep research, disciplined engineering and an understanding of
               real-world business operations to create technology that remains relevant long after launch.
             </p>
@@ -141,7 +141,7 @@ export const AboutHero: React.FC = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   className="topology-svg"
-                  aria-label="VenusGeo enterprise technology architecture diagram"
+                  aria-label="Venusgeo enterprise technology architecture diagram"
                 >
                   <defs>
                     <radialGradient id="heroRedGlow" cx="50%" cy="50%" r="50%">
@@ -174,7 +174,7 @@ export const AboutHero: React.FC = () => {
                   <path d="M 230 190 Q 230 265 140 280" stroke="url(#heroLineGrad)" strokeWidth="1.8" />
                   <path d="M 230 190 Q 300 240 330 270" stroke="url(#heroLineGrad)" strokeWidth="1.8" />
 
-                  {/* Center Node: VenusGeo Core */}
+                  {/* Center Node: Venusgeo Core */}
                   <circle cx="230" cy="190" r="28" fill="#141416" />
                   <circle cx="230" cy="190" r="24" fill="#ffffff" />
                   <circle cx="230" cy="190" r="9" fill="#ed1b24" />

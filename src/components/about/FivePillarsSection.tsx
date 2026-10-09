@@ -63,7 +63,7 @@ export const FivePillarsSection: React.FC = () => {
       tagline: 'Innovation begins long before development',
       icon: Search,
       content:
-        'VenusGeo approaches enterprise product development through investigation, assessment, analysis and validation. Our research can span computer science, intelligent algorithms, digital devices and emerging technology ecosystems.',
+        'Venusgeo approaches enterprise product development through investigation, assessment, analysis and validation. Our research can span computer science, intelligent algorithms, digital devices and emerging technology ecosystems.',
       secondaryContent:
         'Rather than optimizing only for immediate returns, we evaluate ideas against their ability to create lasting operational efficiency, business value and competitive relevance.',
       microLabels: ['ASSESS', 'ANALYZE', 'VALIDATE', 'BUILD'],
@@ -116,7 +116,7 @@ export const FivePillarsSection: React.FC = () => {
       statement: 'Quality should make complexity feel simple.',
       icon: CheckSquare,
       content:
-        'VenusGeo defines product quality through stability, reliability and clear business outcomes. Quality begins early—by defining product goals and measurable KPIs before unnecessary complexity enters the product.',
+        'Venusgeo defines product quality through stability, reliability and clear business outcomes. Quality begins early—by defining product goals and measurable KPIs before unnecessary complexity enters the product.',
       secondaryContent:
         'Experienced multidisciplinary teams, strong delivery practices and lessons accumulated through years of real-world implementation help turn initial concepts into dependable products.',
       equation: [
@@ -139,7 +139,7 @@ export const FivePillarsSection: React.FC = () => {
       statement: 'We stand behind what we build.',
       icon: ShieldCheck,
       content:
-        'Building technology means accepting experimentation while taking responsibility for outcomes. VenusGeo works to deliver products at a high standard while relying on carefully selected technology partners and vendors.',
+        'Building technology means accepting experimentation while taking responsibility for outcomes. Venusgeo works to deliver products at a high standard while relying on carefully selected technology partners and vendors.',
       secondaryContent:
         'When technology impacts customer operations, our responsibility does not end at deployment. We work alongside customers to investigate issues, mitigate operational impact and drive resolution.',
       guaranteePoints: [
@@ -157,7 +157,7 @@ export const FivePillarsSection: React.FC = () => {
       statement: 'Different perspectives create stronger technology.',
       icon: HeartHandshake,
       content:
-        'VenusGeo believes meaningful innovation comes from environments where people with different backgrounds, experiences and ways of thinking can contribute.',
+        'Venusgeo believes meaningful innovation comes from environments where people with different backgrounds, experiences and ways of thinking can contribute.',
       secondaryContent:
         'Our view of diversity extends across identity, age, ability, culture, belief, experience and perspective. Diverse teams bring different ways of understanding problems—and that makes teams more adaptable, creative and capable of solving complex challenges.',
       dimensions: [
@@ -381,12 +381,12 @@ export const FivePillarsSection: React.FC = () => {
                     <path d="M 90 60 Q 270 20 450 60" stroke="rgba(237, 27, 36, 0.2)" strokeWidth="1.2" />
                     <path d="M 110 165 Q 270 210 430 165" stroke="rgba(237, 27, 36, 0.2)" strokeWidth="1.2" />
 
-                    {/* Central Core: VenusGeo Evaluation Engine */}
+                    {/* Central Core: Venusgeo Evaluation Engine */}
                     <circle cx="270" cy="110" r="32" fill="#141416" />
                     <circle cx="270" cy="110" r="28" fill="#ffffff" />
                     <circle cx="270" cy="110" r="10" fill="#ed1b24" />
                     <text x="270" y="114" textAnchor="middle" fontSize="9" fontWeight="800" fill="#ffffff">
-                      VENUSGEO
+                      Venusgeo
                     </text>
 
                     {/* Node 1: Software */}

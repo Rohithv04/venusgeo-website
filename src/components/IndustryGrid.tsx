@@ -139,7 +139,7 @@ export const IndustryGrid: React.FC = () => {
                     className="industry-panel-img"
                     loading="lazy"
                   />
-                  {/* VenusGeo Red & Dark Gradient Overlays */}
+                  {/* Venusgeo Red & Dark Gradient Overlays */}
                   <div className="industry-panel-overlay" />
                   <div className="industry-panel-vignette" />
                 </div>
@@ -427,7 +427,7 @@ export const IndustryGrid: React.FC = () => {
         }
 
         /* ---------------------------------------------------
-           PANEL BACKGROUND MEDIA & VENUSGEO RED OVERLAY
+           PANEL BACKGROUND MEDIA & Venusgeo RED OVERLAY
            --------------------------------------------------- */
         .industry-panel-media {
           position: absolute;
@@ -453,7 +453,7 @@ export const IndustryGrid: React.FC = () => {
           filter: grayscale(0%) contrast(1.08) brightness(0.95);
         }
 
-        /* VenusGeo Red Overlay (Collapsed default) */
+        /* Venusgeo Red Overlay (Collapsed default) */
         .industry-panel-overlay {
           position: absolute;
           inset: 0;

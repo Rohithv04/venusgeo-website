@@ -40,7 +40,7 @@ export const AboutStatement: React.FC = () => {
           </h2>
 
           <p className="statement-supporting-copy">
-            VenusGeo specializes in helping technology stacks work seamlessly across complex enterprise environments, disparate hardware, and critical operational sectors.
+            Venusgeo specializes in helping technology stacks work seamlessly across complex enterprise environments, disparate hardware, and critical operational sectors.
           </p>
 
           <div className="statement-pillars-accent">

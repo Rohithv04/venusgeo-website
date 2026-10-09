@@ -517,7 +517,7 @@ export const EnterpriseMobility: React.FC = () => {
                   <div key={idx} className="diagram-frame">
                     <img
                       src={diagram}
-                      alt={`VenusGeo Enterprise IoT Architecture Diagram ${idx + 1}`}
+                      alt={`Venusgeo Enterprise IoT Architecture Diagram ${idx + 1}`}
                       className="diagram-img"
                       loading="lazy"
                     />

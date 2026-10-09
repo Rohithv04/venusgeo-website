@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { AIEngineeringHero } from '../components/ai-engineering/AIEngineeringHero';
 import { AIOutcomes } from '../components/ai-engineering/AIOutcomes';
-import { WhyVenusGeoAI } from '../components/ai-engineering/WhyVenusGeoAI';
+import { WhyVenusgeoAI } from '../components/ai-engineering/WhyVenusGeoAI';
 import { AIProof } from '../components/ai-engineering/AIProof';
 import { AICapabilities } from '../components/ai-engineering/AICapabilities';
 import { AIApplicationLayer } from '../components/ai-engineering/AIApplicationLayer';
@@ -20,12 +20,12 @@ export const AIEngineering: React.FC = () => {
 
   useEffect(() => {
     // Dynamic SEO title & description
-    document.title = 'AI Engineering | VenusGeo';
+    document.title = 'AI Engineering | Venusgeo';
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        "Build AI-powered products, modernize legacy systems, add intelligence to existing applications, and accelerate engineering with VenusGeo's enterprise AI engineering expertise."
+        "Build AI-powered products, modernize legacy systems, add intelligence to existing applications, and accelerate engineering with Venusgeo's enterprise AI engineering expertise."
       );
     }
 
@@ -42,7 +42,7 @@ export const AIEngineering: React.FC = () => {
     }
 
     return () => {
-      document.title = 'VenusGeo | Built AI-first. Engineered for your business.';
+      document.title = 'Venusgeo | Built AI-first. Engineered for your business.';
     };
   }, [location]);
 
@@ -56,8 +56,8 @@ export const AIEngineering: React.FC = () => {
         {/* 02. Four Outcomes: Build, Transform, Modernize, Accelerate */}
         <AIOutcomes />
 
-        {/* 03. Why VenusGeo */}
-        <WhyVenusGeoAI />
+        {/* 03. Why Venusgeo */}
+        <WhyVenusgeoAI />
 
         {/* 04. Proven in Real Work */}
         <AIProof />

@@ -48,10 +48,10 @@ export const Header: React.FC = () => {
     <header className="site-header" role="banner">
       <div className="container header-inner">
         {/* Logo: Preserved original white wave, red square, black lowercase venusgeo */}
-        <Link to="/" className="header-logo-link" aria-label="VenusGeo Homepage">
+        <Link to="/" className="header-logo-link" aria-label="Venusgeo Homepage">
           <img
             src="/assets/brand/venusgeo-logo.png"
-            alt="VenusGeo Logo"
+            alt="Venusgeo Logo"
             className="site-logo"
             width="170"
             height="52"

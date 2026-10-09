@@ -224,7 +224,7 @@ export const AIEngineeringCTA: React.FC<AIEngineeringCTAProps> = ({
         {/* Closing Brand Statement */}
         <div className="closing-brand-bar">
           <p className="brand-statement-text">
-            <strong>VenusGeo:</strong> Engineering the next generation of software with AI.
+            <strong>Venusgeo:</strong> Engineering the next generation of software with AI.
           </p>
         </div>
       </div>

@@ -36,7 +36,7 @@ export const AboutCTA: React.FC = () => {
               Turn complexity into your next advantage.
             </h2>
             <p className="cta-supporting">
-              Whether you&apos;re modernizing an existing enterprise platform or building something entirely new with AI and mobile edge technology, VenusGeo can help shape the path forward.
+              Whether you&apos;re modernizing an existing enterprise platform or building something entirely new with AI and mobile edge technology, Venusgeo can help shape the path forward.
             </p>
 
             <div className="cta-btn-group">

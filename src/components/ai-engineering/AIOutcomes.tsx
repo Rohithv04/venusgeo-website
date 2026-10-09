@@ -88,7 +88,7 @@ export const AIOutcomes: React.FC = () => {
           </h2>
           <p className="outcomes-subheading">
             Whether starting fresh, augmenting live software, deciphering legacy platforms, or
-            supercharging your internal engineers — VenusGeo provides disciplined, production-tested execution.
+            supercharging your internal engineers — Venusgeo provides disciplined, production-tested execution.
           </p>
         </div>
 

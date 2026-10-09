@@ -16,12 +16,12 @@ export const AboutUs: React.FC = () => {
 
   useEffect(() => {
     // Dynamic SEO title & description
-    document.title = 'About VenusGeo | Enterprise Technology & AI Innovation';
+    document.title = 'About Venusgeo | Enterprise Technology & AI Innovation';
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        'Learn how VenusGeo combines more than two decades of enterprise technology experience, research, engineering and innovation to build reliable, future-ready digital solutions.'
+        'Learn how Venusgeo combines more than two decades of enterprise technology experience, research, engineering and innovation to build reliable, future-ready digital solutions.'
       );
     }
 
@@ -38,7 +38,7 @@ export const AboutUs: React.FC = () => {
     }
 
     return () => {
-      document.title = 'VenusGeo | Built AI-first. Engineered for your business.';
+      document.title = 'Venusgeo | Built AI-first. Engineered for your business.';
     };
   }, [location]);
 

@@ -56,7 +56,7 @@ export const EnterpriseMobilityBanner: React.FC = () => {
               <div className="media-container-frame">
                 <img
                   src="/assets/mobility/enterprise-mobility.png"
-                  alt="VenusGeo Enterprise Mobility applications and connected fleet systems"
+                  alt="Venusgeo Enterprise Mobility applications and connected fleet systems"
                   className="editorial-img"
                   loading="lazy"
                   width="800"

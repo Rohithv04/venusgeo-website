@@ -175,7 +175,7 @@ export const AINativeFuture: React.FC = () => {
             <div className="footer-statement-inner">
               <Sparkles size={16} className="text-red" />
               <p className="footer-statement-text">
-                &ldquo;This is the engineering model we are building at VenusGeo, and the one we bring to our clients.&rdquo;
+                &ldquo;This is the engineering model we are building at Venusgeo, and the one we bring to our clients.&rdquo;
               </p>
             </div>
           </div>
