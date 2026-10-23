@@ -107,7 +107,9 @@ export const PRODUCT_DOWNLOAD_FILENAMES: Record<string, string> = {
   'document-ai': 'VenusGeo-Pammy-AI.pdf',
   'posmate': 'VenusGeo-POSMATE.pdf',
   'postmate': 'VenusGeo-POSMATE.pdf',
-  'ital': 'VenusGeo-ITAL.pdf'
+  'ital': 'VenusGeo-ITAL.pdf',
+  'fido2-ultrapass': 'VenusGeo-FIDO2-Ultrapass.pdf',
+  'ultra-passkey': 'VenusGeo-FIDO2-Ultrapass.pdf'
 };
 
 export interface EmailValidationResult {

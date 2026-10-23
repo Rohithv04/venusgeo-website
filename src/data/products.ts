@@ -91,8 +91,44 @@ export const products: ProductItem[] = [
     description: 'Privacy-preserving identity powered by homomorphic tokens at the Edge.',
     image: '/assets/products/private-id.jpg',
     actionText: 'Explore FIDO2 Ultrapass™',
-    destinationType: 'external',
-    url: 'https://privateid.com/'
+    destinationType: 'internal-panel',
+    pdf: {
+      title: 'Ultrapass® for Carnival',
+      subtitle: 'Standards-Based Identity for Guests, Crew, and the Connected Ship (14 Slides)',
+      url: '/assets/docs/fido2-ultrapass-business-presentation.pdf',
+      fileName: 'Ultrapass-Carnival-Business-Presentation.pdf',
+      slideCount: 14,
+      fileSize: '844 KB'
+    },
+    tags: [
+      'On-Device Biometrics',
+      'FIDO2 Passkeys',
+      'NIST 800-63 IAL2/AAL2',
+      'Zero Central Database'
+    ],
+    detail: {
+      overview: 'FIDO2 Ultrapass™ delivers standards-based, on-device biometric identity verification and FIDO2 passkey authentication for cruise guests and crew. Operating on the principle that "answers travel, biometrics do not," all face matching, liveness detection, and age estimation run on-device in 25ms—transmitting kilobyte-scale cryptographic verdicts with zero central biometric databases and full offline-first resilience at sea.',
+      features: [
+        'Guest DigitalID Wallet: Remote identity proofing to NIST 800-63 IAL2 at home (passport ICAO Doc 9303 & DMV records) into an ISO/IEC 18013-5 & W3C Verifiable Credential wallet',
+        'CrewID Workforce Access: Sub-second on-device face match + FIDO2 passkey login across shared shipboard devices—eliminating PINs, passwords, and credential sharing',
+        'Real-Time On-Device Age Assurance: Instant 18/21 age verification at bars, casino entrances, and adult venues without handling physical documents',
+        'Manager Selfie Approvals: Instant cryptographic sign-off for comps, refunds, and voids on any nearby tablet with an immutable audit trail',
+        'Signed Bluetooth Presence: Emergency muster station accountability and watchkeeping check-in via BLE presence rolling up to the bridge in real time',
+        'Privacy-by-Design Posture: Zero central biometric database to breach or secure, ensuring natural compliance with GDPR Article 9 and BIPA statutes'
+      ],
+      useCases: [
+        'Pre-cruise online verification & ~94% embarkation processing time reduction (~2 hrs cut to ~30 mins)',
+        'Frictionless onboard purchases, bar orders, and casino access with selfie re-authentication',
+        'Shared-tablet crew authentication across dining, housekeeping, POS, inventory, and property management',
+        'Emergency muster accountability and SOLAS Chapter III compliance with offline-ready bridge roll-call'
+      ],
+      technicalHighlights: [
+        'NIST FRTE 1:1 Verification track participant (privid_004) with certified Level 3 presentation attack detection (ISO/IEC 30107-3)',
+        'NIST CMVP validated cryptographic module (Certificate #4985) and FIDO2 / WebAuthn / CTAP2 standards compliance',
+        'Offline-native architecture: Local matching, signed verdict queues, and zero satellite dependency in the identity critical path',
+        'Low adoption cost: Software-only SDK integration in ~1–2 weeks per application with zero middleware server estate'
+      ]
+    }
   },
 
   // Row 2, Left: Cruise Operations 01 - Embarkation
