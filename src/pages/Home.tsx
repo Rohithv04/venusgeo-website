@@ -28,8 +28,8 @@ export const Home: React.FC = () => {
       if (!el && location.hash === '#card-document-ai') {
         el = document.querySelector('#card-pammy-ai');
       }
-      if (!el && location.hash === '#card-private-id') {
-        el = document.querySelector('#card-ultra-passkey');
+      if (!el && (location.hash === '#card-private-id' || location.hash === '#card-ultra-passkey' || location.hash === '#card-fido2-ultrapass')) {
+        el = document.querySelector('#card-fido2-ultrapass') || document.querySelector('#card-ultra-passkey');
       }
       if (el) {
         setTimeout(() => {

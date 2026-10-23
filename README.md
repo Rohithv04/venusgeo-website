@@ -26,7 +26,7 @@
   - Autonomous lifecycle control stage indicator (`Ingest → Process → Deploy`).
 
 - **📦 Comprehensive Product & Engineering Ecosystem**:
-  - Interactive product catalog: **E-commerce Posmate**, **Digital Twin DrQueues**, **Ultra passkey Decentralized Identity**, and **Pammy AI**.
+  - Interactive product catalog: **E-commerce Posmate**, **Digital Twin DrQueues**, **FIDO2 Ultrapass™ Decentralized Identity**, and **Pammy AI**.
   - 4-Stage Product Lifecycle & Architecture workflow (`Discovery & Strategy`, `AI-Native Architecture`, `Zero-Trust Engineering`, `Continuous Evolution`).
   - Enterprise Mobility page (`/enterprise-mobility/`) detailing fleet management, native cross-platform mobility, IoT edge sync, and offline-first data sync.
   - Full enterprise stack strip (Microsoft .NET, AWS, Google Cloud, Azure, Kubernetes, NVIDIA AI, React, PostgreSQL).

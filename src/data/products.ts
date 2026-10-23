@@ -82,15 +82,15 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 1, Right: Ultra passkey
+  // Row 1, Right: FIDO2 Ultrapass™
   {
-    id: 'ultra-passkey',
-    name: 'Ultra passkey',
+    id: 'fido2-ultrapass',
+    name: 'FIDO2 Ultrapass™',
     industry: 'Identity & Security',
-    shortBenefit: 'Verify identity. Preserve privacy.',
-    description: 'Privacy-preserving identity verification for trusted digital access.',
+    shortBenefit: 'On-device biometric authentication in 25ms without any images leaving your device.',
+    description: 'Privacy-preserving identity powered by homomorphic tokens at the Edge.',
     image: '/assets/products/private-id.jpg',
-    actionText: 'Explore Ultra passkey',
+    actionText: 'Explore FIDO2 Ultrapass™',
     destinationType: 'external',
     url: 'https://privateid.com/'
   },

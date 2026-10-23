@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
             <h4 className="footer-group-title">Products</h4>
             <ul className="footer-link-list">
               <li><a href="/#card-pammy-ai" className="footer-link">Pammy AI</a></li>
-              <li><a href="https://privateid.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Ultra passkey</a></li>
+              <li><a href="https://privateid.com/" target="_blank" rel="noopener noreferrer" className="footer-link">FIDO2 Ultrapass™</a></li>
               <li><a href="/#card-posmate" className="footer-link">Posmate</a></li>
               <li><a href="/#card-ital" className="footer-link">ITAL</a></li>
               <li><a href="https://www.medugo.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Medugo</a></li>

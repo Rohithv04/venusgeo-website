@@ -30,6 +30,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         return <Users size={18} />;
       case 'debarkation':
         return <LogOut size={18} />;
+      case 'fido2-ultrapass':
       case 'ultra-passkey':
       case 'private-id':
         return <ShieldCheck size={18} />;
