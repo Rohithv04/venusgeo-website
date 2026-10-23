@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, Award, ChevronDown } from 'lucide-react';
 import { gsap, prefersReducedMotion } from '../utils/animations';
 
 export const Hero: React.FC = () => {
@@ -13,43 +13,6 @@ export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const statRef = useRef<HTMLDivElement>(null);
   const dockGridRef = useRef<HTMLDivElement>(null);
-  const ecosystemRef = useRef<HTMLDivElement>(null);
-  const badgesListRef = useRef<HTMLDivElement>(null);
-
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkBadgesScroll = () => {
-    const el = badgesListRef.current;
-    if (!el) return;
-    const { scrollLeft, scrollWidth, clientWidth } = el;
-    setCanScrollLeft(scrollLeft > 4);
-    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 4);
-  };
-
-  const scrollBadges = (direction: 'left' | 'right') => {
-    const el = badgesListRef.current;
-    if (!el) return;
-    const scrollAmount = Math.max(el.clientWidth * 0.65, 220);
-    el.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth'
-    });
-  };
-
-  useEffect(() => {
-    const el = badgesListRef.current;
-    if (!el) return;
-
-    checkBadgesScroll();
-    el.addEventListener('scroll', checkBadgesScroll, { passive: true });
-    window.addEventListener('resize', checkBadgesScroll);
-
-    return () => {
-      el.removeEventListener('scroll', checkBadgesScroll);
-      window.removeEventListener('resize', checkBadgesScroll);
-    };
-  }, []);
 
   // Determine if already docked based on URL hash or previous scroll depth
   const [isDocked, setIsDocked] = useState<boolean>(() => {
@@ -86,7 +49,6 @@ export const Hero: React.FC = () => {
       const darkCurtain = darkCurtainRef.current;
       const heroContent = heroContentRef.current;
       const dockGrid = dockGridRef.current;
-      const ecosystem = ecosystemRef.current;
 
       if (!videoCard || !loaderHud || !heroContent) return;
 
@@ -138,8 +100,10 @@ export const Hero: React.FC = () => {
       gsap.set(loaderHud, { opacity: 1, pointerEvents: 'auto' });
       if (darkCurtain) gsap.set(darkCurtain, { opacity: 1 });
       gsap.set(heroContent, { opacity: 0, x: -32 });
-      if (dockGrid) gsap.set(dockGrid, { opacity: 0, y: 30 });
-      if (ecosystem) gsap.set(ecosystem, { opacity: 0, y: 15 });
+      if (dockGrid) {
+        const dockCards = dockGrid.querySelectorAll('.dock-card');
+        if (dockCards.length) gsap.set(dockCards, { opacity: 0, y: 20 });
+      }
 
       // Handle window resize while intro is active
       const handleResize = () => {
@@ -205,22 +169,16 @@ export const Hero: React.FC = () => {
       );
 
 
-      // 5. Dock Grid: fades in
+      // 5. Dock Cards: fade and stagger in
       if (dockGrid) {
-        tl.to(
-          dockGrid,
-          { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' },
-          0.35
-        );
-      }
-
-      // 6. Ecosystem Strip: fades in
-      if (ecosystem) {
-        tl.to(
-          ecosystem,
-          { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' },
-          0.45
-        );
+        const dockCards = dockGrid.querySelectorAll('.dock-card');
+        if (dockCards.length) {
+          tl.to(
+            dockCards,
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' },
+            0.35
+          );
+        }
       }
 
       // Generous scroll depth required to transition into hero section
@@ -425,15 +383,16 @@ export const Hero: React.FC = () => {
           <div className="hero-grid">
             {/* Left Column: Typography & CTAs */}
             <div ref={heroContentRef} className="hero-content">
-              <div className="eyebrow">AI-FIRST PRODUCT DEVELOPMENT</div>
+              <div className="eyebrow">PRODUCT DEVELOPMENT WITH AI NOW</div>
 
               <h1 className="hero-headline">
-                Built AI-first.<br />
-                <span className="text-red">Engineered for your business.</span>
+                <span className="headline-nowrap">Product Engineered</span><br className="hero-br-desktop" />{' '}
+                for your Business<br className="hero-br-desktop" />{' '}
+                <span className="text-red">with AI</span>
               </h1>
 
               <p className="hero-description">
-                Venusgeo brings AI, product design, and enterprise engineering together to build and scale software around your business.
+                Venusgeo engineers digital products around your business and transforms legacy products into AI-enabled solutions, modernizing existing applications, workflows, and platforms without discarding what already works.
               </p>
 
               <div className="hero-actions">
@@ -473,8 +432,6 @@ export const Hero: React.FC = () => {
                 />
 
                 <div className="hero-img-gradient-overlay" aria-hidden="true" />
-
-
               </div>
             </div>
           </div>
@@ -488,11 +445,11 @@ export const Hero: React.FC = () => {
                   <div ref={statRef} className="dock-big-stat">25+</div>
                   <div className="dock-stat-badge">Product-led</div>
                 </div>
-                <div className="dock-dark-title">Years of Experience</div>
+                <div className="dock-dark-title">Years of Product Engineering</div>
               </div>
               <div className="dock-dark-bullet">
                 <span className="bullet-dot" />
-                <span>25+ years of enterprise engineering excellence</span>
+                <span>Built on decades of experience. Engineering what comes next.</span>
               </div>
             </div>
 
@@ -515,61 +472,44 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* Card 3: Multi-Stage Lifecycle & Control Card */}
-            <div className="dock-card dock-card-white card-panel">
+            {/* Card 3: Five Principles of How We Work */}
+            <div className="dock-card dock-card-white card-panel dock-card-principles">
               <div className="dock-card-top-group">
-                <div className="dock-stages-indicator">
-                  <span className="stage-step active">Ingest</span>
-                  <span className="stage-divider">──</span>
-                  <span className="stage-step active">Process</span>
-                  <span className="stage-divider">──</span>
-                  <span className="stage-step">Deploy</span>
+                <div className="dock-card-header">
+                  <div>
+                    <div className="dock-eyebrow-label uppercase-eyebrow">HOW WE WORK</div>
+                    <div className="dock-white-title">Five principles behind every product we build.</div>
+                  </div>
                 </div>
-                <div className="dock-white-title">End-to-end control across all stages</div>
+                <div className="dock-principles-grid">
+                  <span className="dock-principle-item">
+                    <span className="principle-num">01</span>
+                    <span className="principle-name">Research</span>
+                  </span>
+                  <span className="dock-principle-item">
+                    <span className="principle-num">02</span>
+                    <span className="principle-name">Sourcing</span>
+                  </span>
+                  <span className="dock-principle-item">
+                    <span className="principle-num">03</span>
+                    <span className="principle-name">Quality</span>
+                  </span>
+                  <span className="dock-principle-item">
+                    <span className="principle-num">04</span>
+                    <span className="principle-name">Guarantee</span>
+                  </span>
+                  <span className="dock-principle-item">
+                    <span className="principle-num">05</span>
+                    <span className="principle-name">Diversity</span>
+                  </span>
+                </div>
               </div>
-              <div className="dock-live-status">
-                <span className="live-pulse-dot" />
-                <span className="live-status-text">Autonomous orchestration active</span>
+              <div className="dock-principles-footer">
+                <Link to="/about-us#pillars" className="dock-principles-link" aria-label="Explore how we work">
+                  <span>Explore how we work</span>
+                  <ArrowRight size={13} className="dock-link-arrow" />
+                </Link>
               </div>
-            </div>
-          </div>
-
-          {/* Ecosystem Logos Strip */}
-          <div ref={ecosystemRef} className="ecosystem-strip">
-            <div className="ecosystem-header">
-              <span className="ecosystem-title">Enterprise Cloud & Stacks:</span>
-              <div className="ecosystem-nav-arrows">
-                <button
-                  type="button"
-                  className="eco-arrow-btn"
-                  onClick={() => scrollBadges('left')}
-                  disabled={!canScrollLeft}
-                  aria-label="Previous technologies"
-                >
-                  <ChevronLeft size={14} />
-                </button>
-                <button
-                  type="button"
-                  className="eco-arrow-btn"
-                  onClick={() => scrollBadges('right')}
-                  disabled={!canScrollRight}
-                  aria-label="Next technologies"
-                >
-                  <ChevronRight size={14} />
-                </button>
-              </div>
-            </div>
-            <div ref={badgesListRef} className="ecosystem-badges-list">
-              <span className="eco-badge">Microsoft .NET</span>
-              <span className="eco-badge">AWS Cloud</span>
-              <span className="eco-badge">Google Cloud</span>
-              <span className="eco-badge">Microsoft Azure</span>
-              <span className="eco-badge">Kubernetes</span>
-              <span className="eco-badge">NVIDIA AI</span>
-              <span className="eco-badge">React & TypeScript</span>
-              <span className="eco-badge">PostgreSQL</span>
-              <span className="eco-badge">Docker</span>
-              <span className="eco-badge">Python & PyTorch</span>
             </div>
           </div>
         </div>
@@ -787,10 +727,23 @@ export const Hero: React.FC = () => {
         }
 
         .hero-headline {
-          font-size: var(--font-hero);
+          font-size: clamp(2rem, 3.8vw, 3.35rem);
           letter-spacing: var(--tracking-hero);
           margin-bottom: 20px;
-          line-height: 1.06;
+          line-height: 1.08;
+          overflow-wrap: break-word;
+        }
+
+        @media (min-width: 601px) {
+          .headline-nowrap {
+            white-space: nowrap;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .hero-br-desktop {
+            display: none;
+          }
         }
 
         .hero-description {
@@ -871,7 +824,7 @@ export const Hero: React.FC = () => {
           grid-template-columns: 1fr 1.25fr 1.25fr;
           grid-auto-rows: 1fr;
           gap: 16px;
-          margin-bottom: 40px;
+          margin-bottom: 0;
           align-items: stretch;
         }
 
@@ -942,10 +895,11 @@ export const Hero: React.FC = () => {
 
         .dock-dark-bullet {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 8px;
           font-size: 0.8125rem;
           color: #a1a1aa;
+          line-height: 1.45;
         }
 
         .bullet-dot {
@@ -954,13 +908,14 @@ export const Hero: React.FC = () => {
           border-radius: 50%;
           background-color: var(--brand-red);
           flex-shrink: 0;
+          margin-top: 6px;
         }
 
         .dock-card-header {
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
-          margin-bottom: 16px;
+          margin-bottom: 14px;
         }
 
         .dock-eyebrow-label {
@@ -969,11 +924,20 @@ export const Hero: React.FC = () => {
           margin-bottom: 4px;
         }
 
+        .dock-eyebrow-label.uppercase-eyebrow {
+          text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: var(--tracking-eyebrow);
+          color: var(--brand-red);
+          font-size: 0.6875rem;
+        }
+
         .dock-white-title {
           font-size: 1.0625rem;
           font-weight: 600;
           letter-spacing: var(--tracking-title);
           color: var(--text-primary);
+          line-height: 1.3;
         }
 
         .dock-standards-pills {
@@ -995,153 +959,105 @@ export const Hero: React.FC = () => {
           white-space: nowrap;
         }
 
-        .dock-stages-indicator {
+        /* Card 3: Five Principles */
+        .dock-card-principles {
           display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: var(--text-muted);
-          margin-bottom: 12px;
-        }
-
-        .stage-step.active {
-          color: var(--brand-red);
-        }
-
-        .stage-divider {
-          color: var(--border-subtle);
-        }
-
-        .dock-live-status {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          margin-top: 14px;
-          font-size: 0.8125rem;
-          color: var(--text-secondary);
-        }
-
-        .live-pulse-dot {
-          width: 7px;
-          height: 7px;
-          border-radius: 50%;
-          background-color: #22c55e;
-          box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-          flex-shrink: 0;
-        }
-
-        /* Ecosystem Logos Strip */
-        .ecosystem-strip {
-          padding-top: 24px;
-          border-top: 1px solid var(--border-subtle);
-          display: flex;
-          align-items: center;
+          flex-direction: column;
           justify-content: space-between;
-          gap: 24px;
-          overflow: hidden;
         }
 
-        @media (max-width: 768px) {
-          .ecosystem-strip {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-          }
-          .ecosystem-header {
-            width: 100%;
-            justify-content: space-between;
-          }
-          .ecosystem-badges-list {
-            width: 100%;
-            overflow-x: auto;
-            padding-bottom: 4px;
+        .dock-principles-grid {
+          display: grid;
+          grid-template-columns: repeat(3, auto);
+          row-gap: 8px;
+          column-gap: 12px;
+          margin-top: 2px;
+          margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+          .dock-principles-grid {
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 10px;
+            column-gap: 14px;
           }
         }
 
-        .ecosystem-header {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          flex-shrink: 0;
-        }
-
-        .ecosystem-title {
-          font-size: 0.8125rem;
-          font-weight: 600;
-          color: var(--text-secondary);
-          text-transform: uppercase;
-          letter-spacing: var(--tracking-pill);
-        }
-
-        .ecosystem-nav-arrows {
-          display: flex;
-          align-items: center;
+        .dock-principle-item {
+          display: inline-flex;
+          align-items: baseline;
           gap: 6px;
+          font-size: 0.8125rem;
+          cursor: default;
+          padding: 2px 0;
+          transition: transform var(--transition-quick);
         }
 
-        .eco-arrow-btn {
-          width: 26px;
-          height: 26px;
-          border-radius: 50%;
-          border: 1px solid var(--border-medium);
-          background-color: var(--surface-white);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          color: var(--text-primary);
-          transition: all 0.2s ease;
-          padding: 0;
-        }
-
-        .eco-arrow-btn:hover:not(:disabled) {
-          background-color: var(--surface-soft);
-          border-color: var(--border-strong);
+        .dock-principle-item .principle-num {
+          font-size: 0.6875rem;
+          font-weight: 700;
           color: var(--brand-red);
+          letter-spacing: 0.04em;
+          flex-shrink: 0;
+          transition: transform var(--transition-quick);
+        }
+
+        .dock-principle-item .principle-name {
+          font-weight: 600;
+          color: var(--text-primary);
+          position: relative;
+          white-space: nowrap;
+        }
+
+        .dock-principle-item .principle-name::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          width: 0;
+          height: 1px;
+          background-color: var(--brand-red);
+          transition: width var(--transition-quick);
+        }
+
+        .dock-principle-item:hover .principle-name::after {
+          width: 100%;
+        }
+
+        .dock-principle-item:hover .principle-num {
           transform: scale(1.08);
         }
 
-        .eco-arrow-btn:active:not(:disabled) {
-          transform: scale(0.94);
-        }
-
-        .eco-arrow-btn:disabled {
-          opacity: 0.35;
-          cursor: not-allowed;
-        }
-
-        .ecosystem-badges-list {
+        .dock-principles-footer {
+          margin-top: 10px;
+          padding-top: 8px;
+          border-top: 1px solid var(--border-subtle);
           display: flex;
           align-items: center;
-          gap: 12px;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          scroll-behavior: smooth;
-          scrollbar-width: none;
-          -webkit-overflow-scrolling: touch;
         }
 
-        .ecosystem-badges-list::-webkit-scrollbar {
-          display: none;
-        }
-
-        .eco-badge {
-          font-size: 0.8125rem;
+        .dock-principles-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 0.75rem;
           font-weight: 600;
-          letter-spacing: var(--tracking-pill);
           color: var(--text-secondary);
-          background-color: var(--surface-soft);
-          padding: 6px 14px;
-          border-radius: 20px;
-          border: 1px solid var(--border-subtle);
-          white-space: nowrap;
-          transition: border-color var(--transition-quick), color var(--transition-quick);
+          letter-spacing: -0.01em;
+          transition: color var(--transition-quick);
         }
 
-        .eco-badge:hover {
-          border-color: #cacace;
-          color: var(--text-primary);
+        .dock-principles-link .dock-link-arrow {
+          color: var(--brand-red);
+          transition: transform var(--transition-quick);
+        }
+
+        .dock-principles-link:hover {
+          color: var(--brand-red);
+        }
+
+        .dock-principles-link:hover .dock-link-arrow {
+          transform: translateX(3px);
         }
       `}</style>
     </section>

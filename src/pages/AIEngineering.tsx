@@ -42,7 +42,7 @@ export const AIEngineering: React.FC = () => {
     }
 
     return () => {
-      document.title = 'Venusgeo | Built AI-first. Engineered for your business.';
+      document.title = 'Venusgeo | Product Engineered for your Business with AI';
     };
   }, [location]);
 

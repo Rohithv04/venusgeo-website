@@ -14,6 +14,15 @@ export const Home: React.FC = () => {
 
   // Scroll to hash on load or navigation
   useEffect(() => {
+    document.title = 'Venusgeo | Product Engineered for your Business with AI';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        'content',
+        'Venusgeo engineers digital products around your business and transforms legacy products into AI-enabled solutions, modernizing existing applications, workflows, and platforms without discarding what already works.'
+      );
+    }
+
     if (location.hash) {
       let el = document.querySelector(location.hash);
       if (!el && location.hash === '#card-document-ai') {
