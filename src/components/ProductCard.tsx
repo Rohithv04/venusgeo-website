@@ -6,9 +6,15 @@ interface ProductCardProps {
   product: ProductItem;
   onOpenDetail: (product: ProductItem) => void;
   onPreviewPdf?: (pdf: ProductPdf) => void;
+  onDownloadPdf?: (product: ProductItem) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail, onPreviewPdf }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  onOpenDetail,
+  onPreviewPdf,
+  onDownloadPdf
+}) => {
   const isExternal = product.destinationType === 'external' && product.url;
 
   const getProductIcon = (id: string) => {
@@ -116,23 +122,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onOpenDetail,
                   onPreviewPdf?.(product.pdf!);
                 }}
                 title={`Preview ${product.pdf.title}`}
-                aria-label={`Preview ${product.pdf.title} PDF`}
+                aria-label={`Preview ${product.pdf.title} Deck`}
               >
                 <Eye size={13} />
-                <span>Preview PDF</span>
+                <span>Preview Deck</span>
               </button>
 
-              <a
-                href={product.pdf.url}
-                download={product.pdf.fileName}
+              <button
+                type="button"
                 className="pdf-btn pdf-btn-download"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDownloadPdf?.(product);
+                }}
                 title={`Download ${product.pdf.title}`}
                 aria-label={`Download ${product.pdf.title} PDF`}
               >
                 <Download size={13} />
-                <span>Download</span>
-              </a>
+                <span>Download PDF</span>
+              </button>
             </div>
           </div>
         )}

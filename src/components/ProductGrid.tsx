@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ProductCard } from './ProductCard';
+import { GatedPdfDownload } from './GatedPdfDownload';
 import { products, type ProductItem, type ProductPdf } from '../data/products';
-import { X, CheckCircle2, MessageSquare, Mail, ArrowRight, FileText, Eye, Download, ExternalLink } from 'lucide-react';
+import { X, CheckCircle2, MessageSquare, Mail, ArrowRight, FileText, Eye, Download } from 'lucide-react';
 
 export const ProductGrid: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [previewPdf, setPreviewPdf] = useState<ProductPdf | null>(null);
+  const [gatedProduct, setGatedProduct] = useState<ProductItem | null>(null);
 
   // ProductGrid is kept 100% visible, sharp, and instant without opacity hiding
 
@@ -13,7 +15,9 @@ export const ProductGrid: React.FC = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (previewPdf) {
+        if (gatedProduct) {
+          setGatedProduct(null);
+        } else if (previewPdf) {
           setPreviewPdf(null);
         } else if (selectedProduct) {
           setSelectedProduct(null);
@@ -22,11 +26,11 @@ export const ProductGrid: React.FC = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [previewPdf, selectedProduct]);
+  }, [previewPdf, selectedProduct, gatedProduct]);
 
   // Lock body scroll when any modal is open
   useEffect(() => {
-    if (selectedProduct || previewPdf) {
+    if (selectedProduct || previewPdf || gatedProduct) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -34,7 +38,7 @@ export const ProductGrid: React.FC = () => {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [selectedProduct, previewPdf]);
+  }, [selectedProduct, previewPdf, gatedProduct]);
 
   const handleInquire = () => {
     const productName = selectedProduct?.name;
@@ -90,6 +94,7 @@ export const ProductGrid: React.FC = () => {
                 product={product}
                 onOpenDetail={(prod) => setSelectedProduct(prod)}
                 onPreviewPdf={(pdf) => setPreviewPdf(pdf)}
+                onDownloadPdf={(prod) => setGatedProduct(prod)}
               />
             </div>
           ))}
@@ -328,14 +333,14 @@ export const ProductGrid: React.FC = () => {
                       <Eye size={14} />
                       <span>Preview Deck</span>
                     </button>
-                    <a
-                      href={selectedProduct.pdf.url}
-                      download={selectedProduct.pdf.fileName}
+                    <button
+                      type="button"
                       className="btn btn-primary pres-btn"
+                      onClick={() => setGatedProduct(selectedProduct)}
                     >
                       <Download size={14} />
                       <span>Download PDF</span>
-                    </a>
+                    </button>
                   </div>
                 </div>
               )}
@@ -431,26 +436,18 @@ export const ProductGrid: React.FC = () => {
               </div>
 
               <div className="pdf-header-actions">
-                <a
-                  href={previewPdf.url}
-                  download={previewPdf.fileName}
+                <button
+                  type="button"
                   className="btn btn-primary pdf-action-btn"
+                  onClick={() => {
+                    const prod = products.find((p) => p.pdf?.url === previewPdf.url);
+                    if (prod) setGatedProduct(prod);
+                  }}
                   title="Download PDF"
                 >
                   <Download size={14} />
-                  <span>Download</span>
-                </a>
-
-                <a
-                  href={previewPdf.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary pdf-action-btn"
-                  title="Open presentation in new browser tab"
-                >
-                  <ExternalLink size={14} />
-                  <span className="pdf-tab-text">Full View</span>
-                </a>
+                  <span>Download PDF</span>
+                </button>
 
                 <button
                   type="button"
@@ -466,7 +463,7 @@ export const ProductGrid: React.FC = () => {
             {/* PDF Viewer */}
             <div className="pdf-embed-wrapper">
               <iframe
-                src={`${previewPdf.url}#toolbar=1&navpanes=0`}
+                src={`${previewPdf.url}#toolbar=0&navpanes=0`}
                 title={previewPdf.title}
                 className="pdf-iframe"
               />
@@ -475,16 +472,29 @@ export const ProductGrid: React.FC = () => {
             {/* PDF Footer Bar */}
             <div className="pdf-modal-footer">
               <span className="pdf-footer-note">
-                High-resolution executive presentation. Use the viewer controls or download for offline access.
+                High-resolution executive presentation preview. Navigate or view pages above.
               </span>
-              <a href={previewPdf.url} download={previewPdf.fileName} className="pdf-footer-link">
+              <button
+                type="button"
+                className="pdf-footer-link-btn"
+                onClick={() => {
+                  const prod = products.find((p) => p.pdf?.url === previewPdf.url);
+                  if (prod) setGatedProduct(prod);
+                }}
+              >
                 <Download size={13} />
-                <span>Save PDF ({previewPdf.fileSize || 'Presentation'})</span>
-              </a>
+                <span>Download PDF ({previewPdf.fileSize || 'Presentation'})</span>
+              </button>
             </div>
           </div>
         </div>
       )}
+
+      {/* Gated Lead Form Modal for PDF Downloads */}
+      <GatedPdfDownload
+        product={gatedProduct}
+        onClose={() => setGatedProduct(null)}
+      />
 
       <style>{`
         .products-section {
@@ -1076,7 +1086,8 @@ export const ProductGrid: React.FC = () => {
           color: var(--text-secondary);
         }
 
-        .pdf-footer-link {
+        .pdf-footer-link,
+        .pdf-footer-link-btn {
           display: inline-flex;
           align-items: center;
           gap: 6px;
@@ -1084,9 +1095,14 @@ export const ProductGrid: React.FC = () => {
           font-weight: 600;
           color: var(--brand-red);
           text-decoration: none;
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
         }
 
-        .pdf-footer-link:hover {
+        .pdf-footer-link:hover,
+        .pdf-footer-link-btn:hover {
           text-decoration: underline;
         }
 
