@@ -7,6 +7,7 @@ import {
   iotContent,
   mobilityFormsContent
 } from '../data/mobilityContent';
+import { products } from '../data/products';
 import {
   CheckCircle,
   Smartphone,
@@ -14,7 +15,9 @@ import {
   Send,
   Building,
   Clock,
-  Briefcase
+  Briefcase,
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react';
 import { gsap, prefersReducedMotion } from '../utils/animations';
 
@@ -31,7 +34,16 @@ export const EnterpriseMobility: React.FC = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
 
     if (prefersReducedMotion() || !pageRef.current) return;
 
@@ -56,17 +68,20 @@ export const EnterpriseMobility: React.FC = () => {
         ease: 'power2.out'
       });
 
-      // Case studies
-      gsap.from('.cases-grid .case-card', {
-        scrollTrigger: {
-          trigger: '.cases-grid',
-          start: 'top 95%',
-          toggleActions: 'play none none none'
-        },
-        y: 12,
-        duration: 0.4,
-        stagger: 0.05,
-        ease: 'power2.out'
+      // Case studies & Products grids
+      const caseGrids = pageRef.current?.querySelectorAll('.cases-grid');
+      caseGrids?.forEach((grid) => {
+        gsap.from(grid.querySelectorAll('.case-card'), {
+          scrollTrigger: {
+            trigger: grid,
+            start: 'top 95%',
+            toggleActions: 'play none none none'
+          },
+          y: 12,
+          duration: 0.4,
+          stagger: 0.04,
+          ease: 'power2.out'
+        });
       });
 
       // Tech categories
@@ -154,6 +169,9 @@ export const EnterpriseMobility: React.FC = () => {
         <div className="container subnav-inner">
           <button type="button" onClick={() => scrollToSubAnchor('mobility')} className="subnav-link">
             Mobility Overview
+          </button>
+          <button type="button" onClick={() => scrollToSubAnchor('products')} className="subnav-link">
+            Products
           </button>
           <button type="button" onClick={() => scrollToSubAnchor('emp')} className="subnav-link">
             EMP & Cases
@@ -264,6 +282,57 @@ export const EnterpriseMobility: React.FC = () => {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* SECTION: HOMEPAGE PRODUCTS SHOWCASED MINIMALLY                           */}
+        {/* ========================================================================= */}
+        <section id="products" className="section mobility-products-section">
+          <div className="container">
+            <div className="section-intro-block card-panel">
+              <span className="eyebrow">Enterprise Product Portfolio</span>
+              <h2 className="section-title">Engineered Products & Connected Platforms</h2>
+              <p className="section-lead">
+                Full-lifecycle AI, security, healthcare, telecom, and mobility products engineered for real-world enterprise operations.
+              </p>
+            </div>
+
+            <div className="cases-grid">
+              {products.map((prod) => (
+                <div key={prod.id} className="case-card card-panel" id={`mobility-prod-${prod.id}`}>
+                  <div className="case-media">
+                    <img
+                      src={prod.image}
+                      alt={prod.imageAlt || `${prod.name} interface`}
+                      className="case-img"
+                      loading="lazy"
+                    />
+                    <span className="case-tag">{prod.industry}</span>
+                  </div>
+                  <div className="case-body">
+                    <h4 className="case-title">{prod.name}</h4>
+                    <p className="case-desc">{prod.description}</p>
+                    <div className="case-action-row">
+                      <a
+                        href={prod.destinationType === 'external' ? prod.url : `/#card-${prod.id}`}
+                        target={prod.destinationType === 'external' ? '_blank' : undefined}
+                        rel={prod.destinationType === 'external' ? 'noopener noreferrer' : undefined}
+                        className="case-explore-link"
+                        aria-label={`Explore ${prod.name}`}
+                      >
+                        <span>{prod.actionText}</span>
+                        {prod.destinationType === 'external' ? (
+                          <ExternalLink size={13} />
+                        ) : (
+                          <ArrowRight size={13} />
+                        )}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -1155,6 +1224,33 @@ export const EnterpriseMobility: React.FC = () => {
           color: var(--text-secondary);
           line-height: 1.55;
           letter-spacing: var(--tracking-body);
+        }
+
+        .mobility-products-section {
+          background-color: var(--surface-soft);
+          border-top: 1px solid var(--border-subtle);
+          border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .case-action-row {
+          margin-top: auto;
+          padding-top: 16px;
+        }
+
+        .case-explore-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: var(--brand-red);
+          text-decoration: none;
+          transition: gap var(--transition-quick), color var(--transition-quick);
+        }
+
+        .case-explore-link:hover {
+          color: #b80000;
+          gap: 9px;
         }
 
         /* Tech Stacks */
