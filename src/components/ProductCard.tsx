@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock, FileText, Eye, Download, LogIn, ArrowLeftRight, Users, LogOut } from 'lucide-react';
+import { ExternalLink, ArrowRight, FileSearch, ShieldCheck, CreditCard, Compass, HeartPulse, Clock, FileText, Eye, Download, LogIn, ArrowLeftRight, Users, LogOut, RadioTower, Smartphone } from 'lucide-react';
 import type { ProductItem, ProductPdf } from '../data/products';
 
 interface ProductCardProps {
@@ -43,13 +43,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         return <HeartPulse size={18} />;
       case 'dr-queues':
         return <Clock size={18} />;
+      case 'network-services':
+        return <RadioTower size={18} aria-hidden="true" />;
+      case 'device-services':
+        return <Smartphone size={18} aria-hidden="true" />;
       default:
         return <FileSearch size={18} />;
     }
   };
 
   return (
-    <div className="product-card card-panel" id={`card-${product.id}`}>
+    <div
+      className={`product-card card-panel ${product.variant === 'light-red' ? 'card-variant-light-red' : ''}`}
+      id={`card-${product.id}`}
+    >
       {/* Top Bar with Delicate Red Outline Icon */}
       <div className="product-card-top-bar">
         <div className="icon-red-outline">
@@ -154,10 +161,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary product-action-btn"
-              aria-label={`Explore ${product.name} on external site`}
+              aria-label={product.ariaLabel || `Explore ${product.name} on external site`}
             >
               <span>{product.actionText}</span>
-              <ExternalLink size={14} />
+              <ExternalLink size={14} className="action-btn-arrow" />
             </a>
           ) : (
             <button
@@ -167,7 +174,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               aria-label={`View specs for ${product.name}`}
             >
               <span>{product.actionText}</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={14} className="action-btn-arrow" />
             </button>
           )}
         </div>
@@ -458,6 +465,81 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           background-color: #ebebef;
           border-color: #b8b8c0;
           color: var(--brand-red);
+        }
+
+        .action-btn-arrow {
+          transition: transform 0.25s ease;
+        }
+
+        .product-card:hover .action-btn-arrow {
+          transform: translateX(3px);
+        }
+
+        .icon-red-outline {
+          transition: transform 0.25s ease;
+        }
+
+        .product-card:hover .icon-red-outline {
+          transform: scale(1.04);
+        }
+
+        /* Light Red Treatment for Network Services & Device Services */
+        .product-card.card-variant-light-red {
+          background-color: rgba(237, 27, 36, 0.04);
+          background-image: linear-gradient(145deg, rgba(237, 27, 36, 0.055) 0%, rgba(255, 255, 255, 0.96) 100%);
+          border: 1px solid rgba(237, 27, 36, 0.16);
+        }
+
+        .product-card.card-variant-light-red:hover {
+          transform: translateY(-3px);
+          border-color: rgba(237, 27, 36, 0.35);
+          box-shadow: 0 6px 24px rgba(237, 27, 36, 0.08);
+        }
+
+        .product-card.card-variant-light-red .icon-red-outline {
+          background-color: rgba(237, 27, 36, 0.1);
+          border-color: rgba(237, 27, 36, 0.28);
+          color: var(--brand-red);
+        }
+
+        .product-card.card-variant-light-red .product-industry-badge {
+          background-color: rgba(237, 27, 36, 0.06);
+          border-color: rgba(237, 27, 36, 0.22);
+          color: #991b1b;
+        }
+
+        .product-card.card-variant-light-red:hover .product-industry-badge {
+          background-color: rgba(237, 27, 36, 0.1);
+          border-color: rgba(237, 27, 36, 0.4);
+        }
+
+        .product-card.card-variant-light-red .product-benefit {
+          color: #27272a;
+          font-weight: 600;
+        }
+
+        .product-card.card-variant-light-red .product-card-tag {
+          background-color: rgba(255, 255, 255, 0.85);
+          border-color: rgba(237, 27, 36, 0.16);
+          color: #3f3f46;
+        }
+
+        .product-card.card-variant-light-red:hover .product-card-tag {
+          background-color: #ffffff;
+          border-color: rgba(237, 27, 36, 0.32);
+          color: var(--text-primary);
+        }
+
+        .product-card.card-variant-light-red .product-action-btn {
+          background-color: #ffffff;
+          border-color: rgba(237, 27, 36, 0.24);
+          color: var(--brand-red);
+        }
+
+        .product-card.card-variant-light-red .product-action-btn:hover {
+          background-color: rgba(237, 27, 36, 0.07);
+          border-color: var(--brand-red);
+          color: #b80000;
         }
       `}</style>
     </div>

@@ -49,6 +49,21 @@ export const IndustryGrid: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  const highlightKeyTerms = (text: string) => {
+    const pattern = /(Pammy AI|FIDO2 Ultrapass™|Ultrapass™|MEDUGO|DRQUEUES|Network Services|Device Services|POSMATE|Reservations & Sales|Embarkation|Accommodation|Food & Beverage|Entertainment|Recreation & Wellness|Retail & Shopping|Shore Excursions|Guest Services|Safety & Security|Marine Operations|Debarkation)/g;
+    const parts = text.split(pattern);
+    return parts.map((part, i) => {
+      if (part.match(pattern)) {
+        return (
+          <strong key={i} className="text-highlight">
+            {part}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
   const getIcon = (iconName: IndustryItem['iconName']) => {
     switch (iconName) {
       case 'Landmark':
@@ -179,36 +194,54 @@ export const IndustryGrid: React.FC = () => {
                       </div>
                       <h3 className="expanded-title">{ind.title}</h3>
                       <p className="expanded-desc">{ind.description}</p>
+
+                      {ind.productIndicators && ind.productIndicators.length > 0 && (
+                        <div className="expanded-products-strip" aria-label={`Featured Products for ${ind.title}`}>
+                          {ind.productIndicators.map((p) => (
+                            <div key={p.name} className="product-indicator-chip">
+                              <span className="product-chip-name">{p.name}</span>
+                              <span className="product-chip-role">{p.role}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     <div className="expanded-divider" />
 
-                    {/* Three Structured Categories */}
+                    {/* Three Structured Categories: DELIVERING, SOLVING, ENABLING */}
                     <div className="expanded-capabilities">
                       <div className="capability-row">
                         <div className="capability-meta">
                           <span className="capability-num">01</span>
-                          <span className="capability-title">WHAT WE’VE DELIVERED</span>
+                          <span className="capability-title">WHAT WE'RE DELIVERING</span>
                         </div>
-                        <p className="capability-text">{ind.capabilities.delivered}</p>
+                        <p className="capability-text">{highlightKeyTerms(ind.capabilities.delivering)}</p>
                       </div>
 
                       <div className="capability-row">
                         <div className="capability-meta">
                           <span className="capability-num">02</span>
-                          <span className="capability-title">WHAT WE’RE SOLVING</span>
+                          <span className="capability-title">WHAT WE'RE SOLVING</span>
                         </div>
-                        <p className="capability-text">{ind.capabilities.solving}</p>
+                        <p className="capability-text">{highlightKeyTerms(ind.capabilities.solving)}</p>
                       </div>
 
                       <div className="capability-row">
                         <div className="capability-meta">
                           <span className="capability-num">03</span>
-                          <span className="capability-title">WHAT WE CAN ENABLE</span>
+                          <span className="capability-title">WHAT WE'RE ENABLING</span>
                         </div>
-                        <p className="capability-text">{ind.capabilities.enable}</p>
+                        <p className="capability-text">{highlightKeyTerms(ind.capabilities.enabling)}</p>
                       </div>
                     </div>
+
+                    {ind.optionalSummary && (
+                      <div className="expanded-summary-line">
+                        <span className="summary-line-dot" aria-hidden="true" />
+                        <span>{ind.optionalSummary}</span>
+                      </div>
+                    )}
 
                     {/* Footer CTA */}
                     <div className="expanded-footer">
@@ -291,33 +324,51 @@ export const IndustryGrid: React.FC = () => {
 
                     <p className="mobile-desc">{ind.description}</p>
 
+                    {ind.productIndicators && ind.productIndicators.length > 0 && (
+                      <div className="expanded-products-strip mobile-products-strip" aria-label={`Featured Products for ${ind.title}`}>
+                        {ind.productIndicators.map((p) => (
+                          <div key={p.name} className="product-indicator-chip">
+                            <span className="product-chip-name">{p.name}</span>
+                            <span className="product-chip-role">{p.role}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     <div className="mobile-divider" />
 
                     <div className="mobile-capabilities">
                       <div className="mobile-cap-block">
                         <div className="mobile-cap-meta">
                           <span className="cap-num">01</span>
-                          <span className="cap-label">WHAT WE’VE DELIVERED</span>
+                          <span className="cap-label">WHAT WE'RE DELIVERING</span>
                         </div>
-                        <p className="cap-text">{ind.capabilities.delivered}</p>
+                        <p className="cap-text">{highlightKeyTerms(ind.capabilities.delivering)}</p>
                       </div>
 
                       <div className="mobile-cap-block">
                         <div className="mobile-cap-meta">
                           <span className="cap-num">02</span>
-                          <span className="cap-label">WHAT WE’RE SOLVING</span>
+                          <span className="cap-label">WHAT WE'RE SOLVING</span>
                         </div>
-                        <p className="cap-text">{ind.capabilities.solving}</p>
+                        <p className="cap-text">{highlightKeyTerms(ind.capabilities.solving)}</p>
                       </div>
 
                       <div className="mobile-cap-block">
                         <div className="mobile-cap-meta">
                           <span className="cap-num">03</span>
-                          <span className="cap-label">WHAT WE CAN ENABLE</span>
+                          <span className="cap-label">WHAT WE'RE ENABLING</span>
                         </div>
-                        <p className="cap-text">{ind.capabilities.enable}</p>
+                        <p className="cap-text">{highlightKeyTerms(ind.capabilities.enabling)}</p>
                       </div>
                     </div>
+
+                    {ind.optionalSummary && (
+                      <div className="expanded-summary-line mobile-summary-line">
+                        <span className="summary-line-dot" aria-hidden="true" />
+                        <span>{ind.optionalSummary}</span>
+                      </div>
+                    )}
 
                     <div className="mobile-footer">
                       <a
@@ -389,8 +440,8 @@ export const IndustryGrid: React.FC = () => {
            --------------------------------------------------- */
         .industry-panel {
           position: relative;
-          flex: 1 1 16.666%;
-          width: 16.666%;
+          flex: 1 1 20%;
+          width: 20%;
           height: 100%;
           display: flex;
           flex-direction: row;
@@ -421,8 +472,8 @@ export const IndustryGrid: React.FC = () => {
         }
 
         .industry-accordion[data-has-active="true"] .industry-panel[data-active="true"] {
-          flex: 3.2 1 40%;
-          width: 40%;
+          flex: 3.5 1 52%;
+          width: 52%;
           cursor: default;
         }
 
@@ -637,20 +688,20 @@ export const IndustryGrid: React.FC = () => {
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
-          transform: translateX(18px);
-          transition: opacity 0.3s ease,
+          transform: translateY(8px);
+          transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                       transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                      visibility 0.3s ease;
+                      visibility 0.35s ease;
         }
 
         .industry-panel[data-active="true"] .industry-expanded-content {
           opacity: 1;
           visibility: visible;
           pointer-events: auto;
-          transform: translateX(0);
-          transition: opacity 0.45s ease 0.16s,
-                      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
-                      visibility 0.45s 0.16s;
+          transform: translateY(0);
+          transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                      visibility 0.4s 0.1s;
         }
 
         .expanded-inner {
@@ -732,7 +783,7 @@ export const IndustryGrid: React.FC = () => {
         }
 
         .capability-num {
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           font-weight: 800;
           color: var(--brand-red);
           letter-spacing: 0.06em;
@@ -740,19 +791,90 @@ export const IndustryGrid: React.FC = () => {
         }
 
         .capability-title {
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           font-weight: 700;
           color: #ffffff;
-          letter-spacing: 0.09em;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
         }
 
         .capability-text {
           font-size: 0.8125rem;
-          color: rgba(255, 255, 255, 0.78);
-          line-height: 1.45;
+          color: rgba(255, 255, 255, 0.82);
+          line-height: 1.48;
           margin: 0;
           padding-left: 20px;
+        }
+
+        .text-highlight {
+          font-weight: 600;
+          color: #ffffff;
+        }
+
+        /* Product Indicator Chips */
+        .expanded-products-strip {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-top: 10px;
+        }
+
+        .product-indicator-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 3px 9px;
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          border-radius: 20px;
+          backdrop-filter: blur(4px);
+          transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .product-indicator-chip:hover {
+          background: rgba(237, 27, 36, 0.14);
+          border-color: rgba(237, 27, 36, 0.35);
+        }
+
+        .product-chip-name {
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.01em;
+        }
+
+        .product-chip-role {
+          font-size: 0.6875rem;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          border-left: 1px solid rgba(255, 255, 255, 0.22);
+          padding-left: 6px;
+        }
+
+        /* Summary Line */
+        .expanded-summary-line {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          margin-top: 10px;
+          margin-bottom: 12px;
+          padding: 8px 12px;
+          background: rgba(237, 27, 36, 0.08);
+          border-left: 2px solid var(--brand-red);
+          border-radius: 4px;
+          font-size: 0.8125rem;
+          color: rgba(255, 255, 255, 0.92);
+          line-height: 1.45;
+          font-weight: 500;
+        }
+
+        .summary-line-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: var(--brand-red);
+          flex-shrink: 0;
+          margin-top: 6px;
         }
 
         /* Footer CTA */

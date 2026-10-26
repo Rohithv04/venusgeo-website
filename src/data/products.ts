@@ -33,6 +33,8 @@ export interface ProductItem {
   pdf?: ProductPdf;
   tags?: string[];
   process?: ProductProcess;
+  ariaLabel?: string;
+  variant?: 'standard' | 'light-red';
   // Detail metadata for products using internal detail panel
   detail?: {
     overview: string;
@@ -388,5 +390,47 @@ export const products: ProductItem[] = [
     actionText: 'Explore Dr Queues',
     destinationType: 'external',
     url: 'https://www.drqueues.com/'
+  },
+
+  // Row 6, Left: Network Services
+  {
+    id: 'network-services',
+    name: 'Network Services',
+    industry: 'Connectivity Services',
+    shortBenefit: 'Reliable connectivity. Smarter network operations.',
+    description: 'Solutions that support mobile network reliability, interoperability and service quality across modern 4G/5G environments — from network settings and roaming to fraud intelligence and messaging.',
+    image: '/assets/products/network-services.jpg',
+    actionText: 'Explore Network Services',
+    destinationType: 'external',
+    url: 'https://www.gsmaservices.com/network-services/',
+    ariaLabel: 'Explore Network Services on GSMA Services',
+    tags: [
+      '4G/5G',
+      'Interoperability',
+      'Roaming',
+      'Fraud Intelligence'
+    ],
+    variant: 'light-red'
+  },
+
+  // Row 6, Right: Device Services
+  {
+    id: 'device-services',
+    name: 'Device Services',
+    industry: 'Device Intelligence',
+    shortBenefit: 'Know every device. Protect every interaction.',
+    description: 'Device intelligence and validation capabilities that help businesses identify devices, understand compatibility, verify device status and support secure connected-device operations.',
+    image: '/assets/products/device-services.jpg',
+    actionText: 'Explore Device Services',
+    destinationType: 'external',
+    url: 'https://www.gsmaservices.com/device-services/',
+    ariaLabel: 'Explore Device Services on GSMA Services',
+    tags: [
+      'Device Identity',
+      'Compatibility',
+      'Status',
+      'eSIM'
+    ],
+    variant: 'light-red'
   }
 ];
