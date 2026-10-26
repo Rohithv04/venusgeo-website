@@ -276,9 +276,9 @@ export const ProductGrid: React.FC = () => {
             {/* Modal Header Bar */}
             <div className="modal-header">
               <div className="modal-header-text">
-                <span className="modal-badge">{selectedProduct.industry}</span>
+                <span className="modal-badge">{selectedProduct.detail.eyebrow || selectedProduct.industry}</span>
                 <h3 id="modal-title" className="modal-title">{selectedProduct.name}</h3>
-                <p className="modal-subtitle">{selectedProduct.shortBenefit}</p>
+                <p className="modal-subtitle">{selectedProduct.detail.headline || selectedProduct.shortBenefit}</p>
               </div>
               <button
                 type="button"
@@ -294,7 +294,7 @@ export const ProductGrid: React.FC = () => {
             <div className="modal-media">
               <img
                 src={selectedProduct.image}
-                alt={selectedProduct.name}
+                alt={selectedProduct.imageAlt || selectedProduct.name}
                 className="modal-img"
               />
             </div>
@@ -302,6 +302,26 @@ export const ProductGrid: React.FC = () => {
             {/* Modal Details */}
             <div className="modal-body">
               <p className="modal-overview">{selectedProduct.detail.overview}</p>
+
+              {/* Sequential Process Flow Strip */}
+              {selectedProduct.detail.workflowSteps && selectedProduct.detail.workflowSteps.length > 0 && (
+                <div className="modal-spec-block">
+                  <h4 className="spec-heading">Process Flow</h4>
+                  <div className="workflow-linear-strip" aria-label="Sequential workflow flow">
+                    {selectedProduct.detail.workflowSteps.map((st, idx, arr) => (
+                      <React.Fragment key={st}>
+                        <div className="workflow-linear-node">
+                          <span className="node-dot" />
+                          <span className="node-text">{st}</span>
+                        </div>
+                        {idx < arr.length - 1 && (
+                          <span className="node-arrow" aria-hidden="true">→</span>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Presentation PDF Feature Banner */}
               {selectedProduct.pdf && (
@@ -351,7 +371,14 @@ export const ProductGrid: React.FC = () => {
                   {selectedProduct.detail.features.map((feat, idx) => (
                     <li key={idx} className="spec-item">
                       <CheckCircle2 size={16} className="spec-icon" />
-                      <span>{feat}</span>
+                      {feat.includes(':') ? (
+                        <span>
+                          <strong>{feat.slice(0, feat.indexOf(':'))}:</strong>
+                          {feat.slice(feat.indexOf(':') + 1)}
+                        </span>
+                      ) : (
+                        <span>{feat}</span>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -363,7 +390,14 @@ export const ProductGrid: React.FC = () => {
                   {selectedProduct.detail.useCases.map((uc, idx) => (
                     <li key={idx} className="spec-item">
                       <span className="spec-bullet">•</span>
-                      <span>{uc}</span>
+                      {uc.includes(':') ? (
+                        <span>
+                          <strong>{uc.slice(0, uc.indexOf(':'))}:</strong>
+                          {uc.slice(uc.indexOf(':') + 1)}
+                        </span>
+                      ) : (
+                        <span>{uc}</span>
+                      )}
                     </li>
                   ))}
                 </ul>

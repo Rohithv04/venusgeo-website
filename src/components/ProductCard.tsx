@@ -80,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className="product-card-media">
         <img
           src={product.image}
-          alt={`${product.name} interface`}
+          alt={product.imageAlt || `${product.name} interface`}
           className="product-card-img"
           loading="eager"
           width="600"

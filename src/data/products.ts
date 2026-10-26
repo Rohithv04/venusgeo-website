@@ -20,6 +20,16 @@ export interface ProductProcess {
   supportingStatement?: string;
 }
 
+export interface ProductDetail {
+  eyebrow?: string;
+  headline?: string;
+  overview: string;
+  workflowSteps?: string[];
+  features: string[];
+  useCases: string[];
+  technicalHighlights: string[];
+}
+
 export interface ProductItem {
   id: string;
   name: string;
@@ -27,6 +37,7 @@ export interface ProductItem {
   shortBenefit: string;
   description: string;
   image: string;
+  imageAlt?: string;
   actionText: string;
   destinationType: 'external' | 'internal-panel';
   url?: string;
@@ -35,13 +46,7 @@ export interface ProductItem {
   process?: ProductProcess;
   ariaLabel?: string;
   variant?: 'standard' | 'light-red';
-  // Detail metadata for products using internal detail panel
-  detail?: {
-    overview: string;
-    features: string[];
-    useCases: string[];
-    technicalHighlights: string[];
-  };
+  detail?: ProductDetail;
 }
 
 export const products: ProductItem[] = [
@@ -49,37 +54,56 @@ export const products: ProductItem[] = [
   {
     id: 'pammy-ai',
     name: 'Pammy AI',
-    industry: 'Maritime Operations',
-    shortBenefit: 'Document intelligence for maritime & crew operations.',
-    description: 'Automate crew onboarding, flag compliance risks, and streamline maritime documents across fleet operations.',
+    industry: 'Document Intelligence',
+    shortBenefit: 'AI-powered document verification for regulated workflows.',
+    description: 'Pammy AI uses AI to extract, verify and validate information from business documents — helping teams automate document-heavy workflows while keeping rules and human review in control.',
     image: '/assets/products/pammy-ai.jpg',
+    imageAlt: 'AI-assisted enterprise document verification workflow',
     actionText: 'Explore Pammy AI',
     destinationType: 'internal-panel',
+    tags: [
+      'Document Extraction',
+      'Verification',
+      'Rule Validation',
+      'Human Review'
+    ],
     pdf: {
       title: 'Pammy AI Business Presentation',
-      subtitle: 'Pammy AI Maritime Operations & Intelligent Automation (12 Slides)',
+      subtitle: 'AI Document Intelligence & Verification Platform (12 Slides)',
       url: '/assets/docs/document-ai-business-presentation.pdf',
       fileName: 'Pammy-AI-Business-Presentation.pdf',
       slideCount: 12,
       fileSize: '2.5 MB'
     },
     detail: {
-      overview: 'Pammy AI accelerates maritime crew readiness and compliance by automating document ingestion, cross-checks, and validation for cruise lines and commercial vessels.',
+      eyebrow: 'DOCUMENT VERIFICATION AI',
+      headline: 'Verify documents faster. Keep decisions accountable.',
+      overview: 'Pammy AI is an AI-powered document intelligence and verification platform designed for document-heavy and regulated workflows. It extracts information, validates it against defined rules, identifies exceptions, and keeps human review available where confidence or compliance requires it.',
+      workflowSteps: [
+        'INGEST',
+        'EXTRACT',
+        'VERIFY',
+        'VALIDATE',
+        'REVIEW'
+      ],
       features: [
-        'Multi-format document ingestion (Passports, Visas, Seaman Books, STCW certificates)',
-        'Automated OCR extraction with real-time confidence scoring and anomaly detection',
-        'Regulatory compliance cross-checks against flag state and port authority rules',
-        'Direct integration with onboard crew management and enterprise ERP systems'
+        'MULTI-FORMAT DOCUMENT INGESTION: Process business documents, forms, reports, certificates and identity-related documents.',
+        'AI-ASSISTED EXTRACTION: Convert unstructured document content into structured, usable information.',
+        'DOCUMENT VERIFICATION: Compare extracted information, required fields and document data for consistency.',
+        'RULE & REGULATORY VALIDATION: Validate information against configured business, compliance or regulatory requirements.',
+        'CONFIDENCE & EXCEPTION HANDLING: Identify uncertain or anomalous information instead of allowing AI to guess silently.',
+        'HUMAN REVIEW: Route exceptions or sensitive decisions for human confirmation.'
       ],
       useCases: [
-        'Rapid maritime crew onboarding and pre-joining verification',
-        'STCW, medical fitness, and seamanship license compliance tracking',
-        'Port clearance document preparation and audit readiness'
+        'FINANCIAL SERVICES: Document verification, onboarding documents, identity-related workflows and KYC/KYB support.',
+        'HEALTHCARE: Medical reports, certificates, forms and structured information extraction.',
+        'HR & WORKFORCE: Employee documentation, onboarding records and verification workflows.',
+        'COMPLIANCE & ENTERPRISE OPERATIONS: Forms, certificates, licenses and other document-heavy operational processes.'
       ],
       technicalHighlights: [
-        'Maritime-specialized OCR models fine-tuned on multinational document standards',
-        'Offline-ready edge processing for low-bandwidth satellite connectivity at sea',
-        'Zero-data retention and enterprise cryptographic security standards'
+        'Enterprise neural extraction models fine-tuned on diverse structured and semi-structured business forms',
+        'Deterministic validation engines with real-time discrepancy alerts and confidence thresholding',
+        'Zero-data retention architecture with end-to-end audit trails and cryptographic security'
       ]
     }
   },
@@ -288,41 +312,58 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 4, Left: Posmate
+  // Row 4, Left: POSMATE
   {
     id: 'posmate',
-    name: 'Posmate',
-    industry: 'Cruise & Hospitality',
-    shortBenefit: 'Service that moves with the guest.',
-    description: 'Mobile ordering and payments for connected onboard experiences.',
-    image: '/assets/products/postmate.jpg',
-    actionText: 'Explore Posmate',
+    name: 'POSMATE',
+    industry: 'Restaurant & Hospitality',
+    shortBenefit: 'One POS for modern restaurant operations.',
+    description: 'POSMATE is a restaurant and hospitality POS platform that brings ordering, billing, payments and day-to-day service workflows into one connected system.',
+    image: '/assets/products/posmate.jpg',
+    imageAlt: 'Restaurant staff using a modern POS system',
+    actionText: 'Explore POSMATE',
     destinationType: 'internal-panel',
+    tags: [
+      'Ordering',
+      'Billing',
+      'Payments',
+      'Restaurant Operations'
+    ],
     pdf: {
       title: 'POSMATE Business Presentation',
-      subtitle: 'Cruise Ship POS Modernization (10 Slides)',
+      subtitle: 'Modern Restaurant & Hospitality POS Platform (10 Slides)',
       url: '/assets/docs/posmate-business-presentation.pdf',
       fileName: 'POSMATE-Business-Presentation.pdf',
       slideCount: 10,
       fileSize: '2.4 MB'
     },
     detail: {
-      overview: 'Posmate powers seamless, real-time handheld ordering, table management, and instant payment processing across hospitality venues and cruise vessels.',
+      eyebrow: 'RESTAURANT & HOSPITALITY POS',
+      headline: 'Run restaurant service from one connected POS.',
+      overview: 'POSMATE is a modern restaurant and hospitality POS platform designed to simplify ordering, billing, payments and service workflows across busy restaurant environments. It supports restaurant teams from order capture through guest billing while helping front-of-house and service operations stay connected.',
+      workflowSteps: [
+        'ORDER',
+        'KITCHEN / SERVICE',
+        'BILL',
+        'PAY'
+      ],
       features: [
-        'Mobile POS optimized for handheld tablets and ruggedized terminals',
-        'Offline-first synchronization for connectivity-challenged environments',
-        'Live table status, seat-level billing, and split payment flows',
-        'Deep integration with galley/kitchen display systems (KDS)'
+        'ORDER MANAGEMENT: Capture and manage restaurant orders through a connected POS workflow.',
+        'MOBILE / HANDHELD SERVICE: Support faster table-side or mobile order processing where the existing product capability allows it.',
+        'BILLING & PAYMENTS: Manage guest billing and payment workflows through the same operational system.',
+        'MENU & ITEM MANAGEMENT: Keep menu items and ordering workflows organized for service teams.',
+        'RECEIPTS & SERVICE WORKFLOW: Support the operational flow from order capture through billing and receipt completion.'
       ],
       useCases: [
-        'Luxury cruise deck and poolside beverage ordering',
-        'Fine dining table-side order entry and instant checkout',
-        'High-volume event concession and retail transactions'
+        'RESTAURANTS & CAFÉS: Fast ordering, table-side service, and instant checkout for full-service and quick-service dining.',
+        'BARS & HOSPITALITY VENUES: Rapid tab management, mobile payment terminals, and peak-hour service coordination.',
+        'MULTI-LOCATION OPERATIONS: Centralized menu orchestration and consistent service operations across multiple dining locations.',
+        'ONBOARD HOSPITALITY: POSMATE supports restaurant and hospitality POS workflows that can also extend into onboard food and beverage operations.'
       ],
       technicalHighlights: [
-        'Sub-second transaction latency',
-        'PCI-DSS and EMV compliant payment terminal pairing',
-        'Resilient mesh local caching during network dropouts'
+        'Sub-second transaction latency optimized for high-turnover service environments',
+        'Resilient offline-first mesh caching with automatic background synchronization',
+        'PCI-DSS compliant payment processing paired with modern EMV handheld terminals'
       ]
     }
   },
@@ -396,7 +437,7 @@ export const products: ProductItem[] = [
   {
     id: 'network-services',
     name: 'Network Services',
-    industry: 'Connectivity Services',
+    industry: 'Telecom',
     shortBenefit: 'Reliable connectivity. Smarter network operations.',
     description: 'Solutions that support mobile network reliability, interoperability and service quality across modern 4G/5G environments — from network settings and roaming to fraud intelligence and messaging.',
     image: '/assets/products/network-services.jpg',
@@ -417,7 +458,7 @@ export const products: ProductItem[] = [
   {
     id: 'device-services',
     name: 'Device Services',
-    industry: 'Device Intelligence',
+    industry: 'Telecom',
     shortBenefit: 'Know every device. Protect every interaction.',
     description: 'Device intelligence and validation capabilities that help businesses identify devices, understand compatibility, verify device status and support secure connected-device operations.',
     image: '/assets/products/device-services.jpg',
