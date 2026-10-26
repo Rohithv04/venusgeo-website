@@ -66,12 +66,13 @@ export const Header: React.FC = () => {
           >
             About Us
           </Link>
-          <Link
+          {/* AI Engineering page hidden from header for now */}
+          {/* <Link
             to="/ai-engineering"
             className={`nav-link ${location.pathname.startsWith('/ai-engineering') ? 'active' : ''}`}
           >
             AI Engineering
-          </Link>
+          </Link> */}
           <Link
             to="/enterprise-mobility/"
             className={`nav-link ${location.pathname.startsWith('/enterprise-mobility') ? 'active' : ''}`}
@@ -128,13 +129,14 @@ export const Header: React.FC = () => {
             >
               About Us
             </Link>
-            <Link
+            {/* AI Engineering page hidden from header for now */}
+            {/* <Link
               to="/ai-engineering"
               onClick={() => setMobileMenuOpen(false)}
               className={`mobile-nav-link ${location.pathname.startsWith('/ai-engineering') ? 'active' : ''}`}
             >
               AI Engineering
-            </Link>
+            </Link> */}
             <Link
               to="/enterprise-mobility/"
               onClick={() => setMobileMenuOpen(false)}
