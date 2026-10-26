@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Hero } from '../components/Hero';
 import { ProductGrid } from '../components/ProductGrid';
-import { ProcessArchitecture } from '../components/ProcessArchitecture';
 import { IndustryGrid } from '../components/IndustryGrid';
 import { EnterpriseMobilityBanner } from '../components/EnterpriseMobilityBanner';
 import { ContactSection } from '../components/ContactSection';
@@ -47,7 +46,6 @@ export const Home: React.FC = () => {
       <main id="main-content">
         <Hero />
         <ProductGrid />
-        <ProcessArchitecture />
         <IndustryGrid />
         <EnterpriseMobilityBanner />
         <ContactSection />

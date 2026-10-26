@@ -22,7 +22,7 @@
 
 - **🏛️ 25+ Years Experience & Standard Badges**:
   - Dark charcoal dock card prominently featuring **25+ Years of Experience** in enterprise product-led engineering.
-  - Compliance and standards ribbon covering SOC 2 Type II, HIPAA, Zero Trust, and ISO 27001.
+  - Compliance and standards ribbon covering FIDO2 / WebAuthn / CTAP2, NIST CMVP, ISO/IEC 30107-3, NIST FRTE, ISO/IEC 24745 & 30136, NIST SP 800-63, ISO/IEC 18013-5 (W3C VC / OID4VCI), and GDPR / CCPA / BIPA statutes.
   - Autonomous lifecycle control stage indicator (`Ingest → Process → Deploy`).
 
 - **📦 Comprehensive Product & Engineering Ecosystem**:

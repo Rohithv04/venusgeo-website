@@ -449,26 +449,32 @@ export const Hero: React.FC = () => {
               </div>
               <div className="dock-dark-bullet">
                 <span className="bullet-dot" />
-                <span>Built on decades of experience. Engineering what comes next.</span>
+                <span>Focused in Transforming Engineering to Align with Today's AI</span>
               </div>
             </div>
 
             {/* Card 2: Standards & Compliance Card with Award Ribbon */}
             <div className="dock-card dock-card-white card-panel">
-              <div className="dock-card-header">
-                <div>
-                  <div className="dock-eyebrow-label">We engineer by standards:</div>
-                  <div className="dock-white-title">AI-first & Zero Trust</div>
+              <div className="dock-card-top-group">
+                <div className="dock-card-header">
+                  <div>
+                    <div className="dock-eyebrow-label">We engineer by standards:</div>
+                    <div className="dock-white-title">AI-first & Zero Trust</div>
+                  </div>
+                  <div className="icon-red-outline">
+                    <Award size={20} />
+                  </div>
                 </div>
-                <div className="icon-red-outline">
-                  <Award size={20} />
+                <div className="dock-standards-pills">
+                  <span className="std-pill">FIDO2 / WebAuthn / CTAP2</span>
+                  <span className="std-pill">NIST CMVP</span>
+                  <span className="std-pill">ISO/IEC 30107-3</span>
+                  <span className="std-pill">NIST FRTE 1:1 Verification</span>
+                  <span className="std-pill">ISO/IEC 24745; ISO/IEC 30136</span>
+                  <span className="std-pill">NIST SP 800-63</span>
+                  <span className="std-pill">ISO/IEC 18013-5; W3C VC; OID4VCI / OID4VP</span>
+                  <span className="std-pill">GDPR; CCPA; BIPA-class statutes</span>
                 </div>
-              </div>
-              <div className="dock-standards-pills">
-                <span className="std-pill">SOC 2 Type II</span>
-                <span className="std-pill">HIPAA</span>
-                <span className="std-pill">Zero Trust</span>
-                <span className="std-pill">ISO 27001</span>
               </div>
             </div>
 
@@ -948,7 +954,7 @@ export const Hero: React.FC = () => {
         }
 
         .std-pill {
-          font-size: 0.75rem;
+          font-size: 0.72rem;
           font-weight: 600;
           letter-spacing: var(--tracking-pill);
           color: var(--text-primary);
@@ -956,7 +962,15 @@ export const Hero: React.FC = () => {
           border: 1px solid var(--border-subtle);
           padding: 4px 8px;
           border-radius: 4px;
-          white-space: nowrap;
+          white-space: normal;
+          word-break: break-word;
+          line-height: 1.35;
+          transition: border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .std-pill:hover {
+          border-color: rgba(237, 27, 36, 0.3);
+          background-color: rgba(237, 27, 36, 0.04);
         }
 
         /* Card 3: Five Principles */
