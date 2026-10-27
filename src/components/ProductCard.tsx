@@ -502,6 +502,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           color: var(--brand-red);
         }
 
+        .product-card.card-variant-light-red .product-card-media {
+          background-color: #ffffff;
+          border-color: rgba(237, 27, 36, 0.22);
+        }
+
         .product-card.card-variant-light-red .product-industry-badge {
           background-color: rgba(237, 27, 36, 0.06);
           border-color: rgba(237, 27, 36, 0.22);

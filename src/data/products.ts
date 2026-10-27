@@ -438,18 +438,19 @@ export const products: ProductItem[] = [
     id: 'network-services',
     name: 'Network Services',
     industry: 'Telecom',
-    shortBenefit: 'Reliable connectivity. Smarter network operations.',
-    description: 'Solutions that support mobile network reliability, interoperability and service quality across modern 4G/5G environments — from network settings and roaming to fraud intelligence and messaging.',
+    shortBenefit: 'Powering reliable connections across the telecom ecosystem.',
+    description: 'Enterprise telecom services that support roaming data exchange, network interoperability, secure service enablement and reliable connectivity across mobile networks.',
     image: '/assets/products/network-services.jpg',
+    imageAlt: 'Modern telecom cellular towers providing mobile network coverage and connectivity infrastructure',
     actionText: 'Explore Network Services',
     destinationType: 'external',
-    url: 'https://www.gsmaservices.com/network-services/',
+    url: 'https://www.gsmaservices.com/my-services/',
     ariaLabel: 'Explore Network Services on GSMA Services',
     tags: [
-      '4G/5G',
-      'Interoperability',
       'Roaming',
-      'Fraud Intelligence'
+      'Interoperability',
+      'Network Data',
+      'Service Enablement'
     ],
     variant: 'light-red'
   },
@@ -459,18 +460,19 @@ export const products: ProductItem[] = [
     id: 'device-services',
     name: 'Device Services',
     industry: 'Telecom',
-    shortBenefit: 'Know every device. Protect every interaction.',
-    description: 'Device intelligence and validation capabilities that help businesses identify devices, understand compatibility, verify device status and support secure connected-device operations.',
+    shortBenefit: 'Trusted device intelligence for every connection.',
+    description: 'Device verification and intelligence services that help organizations identify devices, check status, understand compatibility and make informed decisions across the connected-device lifecycle.',
     image: '/assets/products/device-services.jpg',
+    imageAlt: 'Modern smartphones arranged on a clean testing desk representing connected device verification and intelligence',
     actionText: 'Explore Device Services',
     destinationType: 'external',
-    url: 'https://www.gsmaservices.com/device-services/',
+    url: 'https://www.gsmaservices.com/my-services/',
     ariaLabel: 'Explore Device Services on GSMA Services',
     tags: [
-      'Device Identity',
-      'Compatibility',
+      'Device Verification',
+      'Identity',
       'Status',
-      'eSIM'
+      'Compatibility'
     ],
     variant: 'light-red'
   }

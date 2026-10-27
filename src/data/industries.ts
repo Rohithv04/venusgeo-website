@@ -72,9 +72,9 @@ export const industries: IndustryItem[] = [
       { name: 'Device Services', role: 'Device Intelligence & Validation' }
     ],
     capabilities: {
-      delivering: "We're delivering Network Services and Device Services that support reliable connectivity, network interoperability, device intelligence, validation, and secure mobile ecosystem operations.",
-      solving: "We're solving network configuration gaps, roaming and interoperability challenges, fraud exposure, device compatibility issues, and uncertainty around device identity and status.",
-      enabling: "We're enabling more reliable 4G/5G services, smarter device decisions, secure device validation, better network-to-device compatibility, fraud intelligence, roaming reliability, and connected-device lifecycle visibility."
+      delivering: "We're delivering Network Services and Device Services supporting connectivity, interoperability, device intelligence and validation.",
+      solving: "We're solving roaming/network complexity, interoperability, fraud exposure, and uncertainty around device identity/status.",
+      enabling: "We're enabling reliable network operations, informed device decisions, and stronger telecom ecosystem workflows."
     }
   },
   {
