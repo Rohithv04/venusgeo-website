@@ -404,14 +404,6 @@ export const Hero: React.FC = () => {
                   <span>Explore Our Products</span>
                   <ArrowRight size={16} />
                 </a>
-
-                <Link
-                  to="/ai-engineering"
-                  className="btn btn-secondary hero-btn-secondary"
-                >
-                  <span>Explore AI Engineering Solutions</span>
-                  <ArrowRight size={16} />
-                </Link>
               </div>
             </div>
 
