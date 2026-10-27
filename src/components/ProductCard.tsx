@@ -37,18 +37,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       case 'posmate':
       case 'postmate':
         return <CreditCard size={18} />;
-      case 'tm-hub':
-      case 'tmhub':
-        return <Users size={18} aria-hidden="true" />;
       case 'ital':
         return <Compass size={18} />;
+      case 'tm-hub':
+        return <Users size={18} />;
       case 'medugo':
         return <HeartPulse size={18} />;
       case 'dr-queues':
-      case 'drqueues':
         return <Clock size={18} />;
       case 'network-services':
-      case 'network-devices':
         return <RadioTower size={18} aria-hidden="true" />;
       case 'device-services':
         return <Smartphone size={18} aria-hidden="true" />;

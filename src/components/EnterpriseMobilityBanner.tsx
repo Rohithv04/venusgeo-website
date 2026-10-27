@@ -10,12 +10,12 @@ export const EnterpriseMobilityBanner: React.FC = () => {
           <div className="mobility-editorial-grid">
             {/* Left Content */}
             <div className="mobility-editorial-content">
-              <div className="eyebrow">Enterprise Products & Modernization</div>
+              <div className="eyebrow">Modernization & Products</div>
 
               <h2 className="mobility-editorial-title">Enterprise Products</h2>
 
               <p className="mobility-editorial-copy">
-                Explore our engineered enterprise products, mobile platforms, and connected operations experience.
+                Explore our mobile application expertise and enterprise delivery experience.
               </p>
 
               <div className="mobility-spec-highlights">
@@ -56,7 +56,7 @@ export const EnterpriseMobilityBanner: React.FC = () => {
               <div className="media-container-frame">
                 <img
                   src="/assets/mobility/enterprise-products.png"
-                  alt="Venusgeo Enterprise Products and connected fleet systems"
+                  alt="Venusgeo Enterprise Products applications and connected fleet systems"
                   className="editorial-img"
                   loading="lazy"
                   width="800"

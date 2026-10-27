@@ -88,7 +88,7 @@ export const ProductGrid: React.FC = () => {
 
         {/* 2-Column, 3-Row Grid with exact sequence */}
         <div className="products-grid" role="list">
-          {products.map((product) => (
+          {products.filter((p) => p.id !== 'tm-hub').map((product) => (
             <div key={product.id} className="grid-item" role="listitem">
               <ProductCard
                 product={product}

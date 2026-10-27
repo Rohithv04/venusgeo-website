@@ -35,8 +35,8 @@ export const Footer: React.FC = () => {
               <li><a href="/#card-posmate" className="footer-link">POSMATE</a></li>
               <li><a href="/#card-ital" className="footer-link">ITAL</a></li>
               <li><a href="https://www.medugo.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Medugo</a></li>
-              <li><a href="https://www.drqueues.com/" target="_blank" rel="noopener noreferrer" className="footer-link">DrQueues</a></li>
-              <li><a href="/#card-network-services" className="footer-link">Network Devices</a></li>
+              <li><a href="https://www.drqueues.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Dr Queues</a></li>
+              <li><a href="/#card-network-services" className="footer-link">Network Services</a></li>
               <li><a href="/#card-device-services" className="footer-link">Device Services</a></li>
             </ul>
           </div>

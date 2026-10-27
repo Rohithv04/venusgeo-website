@@ -17,7 +17,7 @@ export interface IoTModule {
 
 export const mobilityHomeContent = {
   hero: {
-    title: 'Build Your Mobile Apps With Our Enterprise Mobility Expert Team!',
+    title: 'Build Your Mobile Apps With Our Enterprise Products Expert Team!',
     subtitle: '25+ Years of dedication, to only build mobile apps and transform legacy applications',
     stats: [
       { value: '25+', label: 'Mobile Apps' },
@@ -25,19 +25,19 @@ export const mobilityHomeContent = {
       { value: '25+', label: 'Years of Experience' },
       { value: 'TOB’s', label: 'Transfer Operate Build' }
     ] as MobilityStat[],
-    trustHeading: 'Why large Enterprises and Startups Trust Our Enterprise Mobility Expertise',
-    trustText: 'Venusgeo Enterprise Mobility Division has mastered the art to adapt to digital dominance, and elevating our clients to run on top of newer technologies.',
+    trustHeading: 'Why large Enterprises and Startups Trust Our Enterprise Products Expertise',
+    trustText: 'Venusgeo Enterprise Products Division has mastered the art to adapt to digital dominance, and elevating our clients to run on top of newer technologies.',
     tobPoints: [
       'Legacy Systems & versions',
       'Limited Support',
       'Skill Shortage',
       'Client Agility'
     ],
-    empTitle: 'Enterprise Mobility Productization (EMP) Expertise',
+    empTitle: 'Enterprise Products Productization (EMP) Expertise',
     empDescription: 'Building on a Complex Infra Plane, a mix of Legacy and Modern Tech Stacks, making it possible for Customers to Create Mobile Apps with us.'
   },
   engagement: {
-    heading: 'What It’s Like to Engage with Venusgeo Enterprise Mobility Team',
+    heading: 'What It’s Like to Engage with Venusgeo Enterprise Products Team',
     intro: 'Over 25+ years of enterprise engineering, we have transformed many Enterprise Customer applications from a legacy ecosystem to a hybrid digital ecosystem across different departments, bringing them the needed change and efficiency.',
     cases: [
       {
@@ -97,8 +97,8 @@ export const mobilityHomeContent = {
     ] as CaseStudy[]
   },
   building: {
-    heading: 'What It’s Like to Build with Venusgeo Enterprise Mobility Team',
-    description: 'How do we build so many apps. Venusgeo Enterprise Mobility Division is a 140-member core team, who have built 25+ apps, and over 500+ functional modules, with a high degree of digital integration dominance across the APP ecosystem. You name an APP technology our team is already working on it.',
+    heading: 'What It’s Like to Build with Venusgeo Enterprise Products Team',
+    description: 'How do we build so many apps. Venusgeo Enterprise Products Division is a 140-member core team, who have built 25+ apps, and over 500+ functional modules, with a high degree of digital integration dominance across the APP ecosystem. You name an APP technology our team is already working on it.',
     categories: [
       {
         name: 'Mobile Platforms',
@@ -143,8 +143,8 @@ export const mobilityHomeContent = {
     ]
   },
   requirement: {
-    heading: 'What is that you would require from Venusgeo Enterprise Mobility Team',
-    description: 'Customers choosing Venusgeo Enterprise Mobility Team, to build their solution as a Product or as a Project, gives them the option to choose between, Build with us or Use our resource from our expertise pool to build.'
+    heading: 'What is that you would require from Venusgeo Enterprise Products Team',
+    description: 'Customers choosing Venusgeo Enterprise Products Team, to build their solution as a Product or as a Project, gives them the option to choose between, Build with us or Use our resource from our expertise pool to build.'
   }
 };
 
@@ -313,7 +313,7 @@ export const mobilityFormsContent = {
   },
   contactOffice: {
     title: 'Venusgeo Solutions Inc',
-    division: 'Enterprise Mobility',
+    division: 'Enterprise Products',
     address: '3750 NW 87th Avenue, Suite 700, Doral, Florida 33166'
   }
 };
