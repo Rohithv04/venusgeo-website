@@ -7,6 +7,7 @@ export interface CaseStudy {
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
   tag?: string;
 }
 
@@ -93,6 +94,62 @@ export const mobilityHomeContent = {
         description: 'Cattle management made easy for the farmers, from cattle health to cattle inventory',
         image: '/assets/mobility/herdx.jpg',
         tag: 'Agriculture & IoT'
+      },
+      {
+        title: 'Device Check',
+        description: 'Verify a device’s identity and status before it enters a network, transaction or operational workflow.',
+        image: '/assets/mobility/device-check.jpg',
+        imageAlt: 'Diagram showing a mobile device identifier being checked for device status.',
+        tag: 'TELECOM · DEVICE SERVICES'
+      },
+      {
+        title: 'Device Database',
+        description: 'Turn device identity data into structured information about models, capabilities, networks and technical characteristics.',
+        image: '/assets/mobility/device-database.jpg',
+        imageAlt: 'Devices connected to a structured device information database.',
+        tag: 'TELECOM · DEVICE SERVICES'
+      },
+      {
+        title: 'Device Map',
+        description: 'Transform device data into geographic insight for clearer visibility across markets, regions and connected-device operations.',
+        image: '/assets/mobility/device-map.jpg',
+        imageAlt: 'Geographic visualization of device distribution.',
+        tag: 'TELECOM · DEVICE SERVICES'
+      },
+      {
+        title: 'Device Registry',
+        description: 'Maintain trusted device records and status information to support validation, lifecycle management and safer device transactions.',
+        image: '/assets/mobility/device-registry.jpg',
+        imageAlt: 'Multiple mobile devices connected to a central device registry.',
+        tag: 'TELECOM · DEVICE SERVICES'
+      },
+      {
+        title: 'Entitlements',
+        description: 'Enable devices to securely access supported network features and services based on operator and device eligibility.',
+        image: '/assets/mobility/entitlements.jpg',
+        imageAlt: 'Mobile device receiving access to eligible network services.',
+        tag: 'TELECOM · NETWORK SERVICES'
+      },
+      {
+        title: 'Circularity Services',
+        description: 'Support more informed device reuse and lifecycle decisions by connecting device identity, status and technical information.',
+        image: '/assets/mobility/circularity-services.jpg',
+        imageAlt: 'Device verification and reuse lifecycle diagram.',
+        tag: 'TELECOM · NETWORK SERVICES'
+      },
+      {
+        title: 'Network Settings Exchange',
+        description: 'Help network configuration information move efficiently between operators and device ecosystems to support reliable connectivity.',
+        image: '/assets/mobility/network-settings-exchange.jpg',
+        imageAlt: 'Network settings exchanged between mobile networks and device ecosystem participants.',
+        tag: 'TELECOM · NETWORK SERVICES'
+      },
+      {
+        title: 'TAC Allocation',
+        description: 'Support structured device identification workflows by connecting device model information with the identifiers used across mobile ecosystems.',
+        image: '/assets/mobility/tac-allocation.jpg',
+        imageAlt: 'Device model information flowing through TAC and device identity workflow.',
+        tag: 'TELECOM · DEVICE SERVICES'
       }
     ] as CaseStudy[]
   },

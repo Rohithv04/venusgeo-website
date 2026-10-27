@@ -478,27 +478,43 @@ export const EnterpriseProducts: React.FC = () => {
 
             {/* Substantive Case Studies */}
             <div className="cases-grid">
-              {mobilityHomeContent.engagement.cases.map((cs, idx) => (
-                <div key={idx} className="case-card card-panel">
-                  {cs.image ? (
-                    <div className="case-media">
-                      <img src={cs.image} alt={cs.title} className="case-img" loading="lazy" />
-                      <span className="case-tag">{cs.tag}</span>
-                    </div>
-                  ) : (
-                    <div className="case-media-placeholder">
-                      <div className="placeholder-icon">
-                        <Briefcase size={24} />
+              {mobilityHomeContent.engagement.cases.map((cs, idx) => {
+                const isFirstTelecom = cs.title === 'Device Check';
+                return (
+                  <React.Fragment key={cs.title || idx}>
+                    {isFirstTelecom && (
+                      <div id="telecom-productization-divider" className="telecom-expertise-divider">
+                        <span className="telecom-divider-dot"></span>
+                        <span className="telecom-divider-label">TELECOM PRODUCTIZATION</span>
                       </div>
-                      <span className="case-tag">{cs.tag}</span>
+                    )}
+                    <div className="case-card card-panel">
+                      {cs.image ? (
+                        <div className="case-media">
+                          <img
+                            src={cs.image}
+                            alt={cs.imageAlt || cs.title}
+                            className="case-img"
+                            loading="lazy"
+                          />
+                          <span className="case-tag">{cs.tag}</span>
+                        </div>
+                      ) : (
+                        <div className="case-media-placeholder">
+                          <div className="placeholder-icon">
+                            <Briefcase size={24} />
+                          </div>
+                          <span className="case-tag">{cs.tag}</span>
+                        </div>
+                      )}
+                      <div className="case-body">
+                        <h4 className="case-title">{cs.title}</h4>
+                        <p className="case-desc">{cs.description}</p>
+                      </div>
                     </div>
-                  )}
-                  <div className="case-body">
-                    <h4 className="case-title">{cs.title}</h4>
-                    <p className="case-desc">{cs.description}</p>
-                  </div>
-                </div>
-              ))}
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -1553,6 +1569,33 @@ export const EnterpriseProducts: React.FC = () => {
             grid-template-columns: 1fr;
             gap: 16px;
           }
+        }
+
+        .telecom-expertise-divider {
+          grid-column: 1 / -1;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding-top: 36px;
+          margin-top: 8px;
+          margin-bottom: 4px;
+          border-top: 1px solid var(--border-subtle);
+        }
+
+        .telecom-divider-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background-color: var(--brand-red);
+          flex-shrink: 0;
+        }
+
+        .telecom-divider-label {
+          font-size: 0.75rem;
+          font-weight: 700;
+          letter-spacing: var(--tracking-pill);
+          color: var(--text-secondary);
+          text-transform: uppercase;
         }
 
         .case-card {
