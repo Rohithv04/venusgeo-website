@@ -13,10 +13,18 @@ export interface ProcessStep {
   desc?: string;
 }
 
+export interface ProcessCapability {
+  title: string;
+  desc: string;
+}
+
 export interface ProductProcess {
   intro: string;
+  fullDescription?: string;
+  headline?: string;
   steps: ProcessStep[];
-  capabilities?: string[];
+  capabilities?: (ProcessCapability | string)[];
+  benefits?: string[];
   supportingStatement?: string;
 }
 
@@ -169,40 +177,69 @@ export const products: ProductItem[] = [
     id: 'embarkation',
     name: 'Embarkation',
     industry: 'Cruise Operations',
-    shortBenefit: 'Faster check-in from port to ship.',
-    description: 'Mobile-first guest check-in and identity capture designed to reduce reliance on traditional fixed check-in podiums and create a smoother embarkation experience.',
+    shortBenefit: 'Move guests from terminal to ship with less friction.',
+    description: 'Mobile-first check-in, identity verification and boarding workflows built for high-volume cruise operations.',
     image: '/assets/products/embarkation.jpg',
+    imageAlt: 'Passengers moving through a digital cruise terminal check-in process with modern identity kiosks',
     actionText: 'Explore Product',
     destinationType: 'internal-panel',
     process: {
-      intro: 'Embarkation is designed to simplify guest check-in using a lightweight mobile workflow. It helps cruise teams move away from traditional standalone podium setups while securely capturing guest information and supporting smoother boarding operations.',
+      headline: 'Move guests from terminal to ship with less friction.',
+      intro: "VenusGeo's Embarkation software helps cruise operators manage high-volume passenger check-in through a mobile-first digital workflow. It supports guest identification, document verification, boarding validation and operational status updates — helping teams move passengers through the terminal faster and with greater visibility.",
+      fullDescription: 'The goal of the product is to reduce dependence on manual or fixed check-in workflows and create a smoother boarding experience for both guests and terminal teams.',
+      capabilities: [
+        {
+          title: 'MOBILE CHECK-IN',
+          desc: 'Allow cruise staff to process guests using mobile or touchscreen devices instead of relying only on fixed counters.'
+        },
+        {
+          title: 'IDENTITY & DOCUMENT VERIFICATION',
+          desc: 'Capture and verify guest information required for embarkation.'
+        },
+        {
+          title: 'BOARDING VALIDATION',
+          desc: 'Confirm guest boarding status before ship entry.'
+        },
+        {
+          title: 'REAL-TIME STATUS',
+          desc: 'Give operational teams clearer visibility into passenger progression through the embarkation process.'
+        },
+        {
+          title: 'OFFLINE / CONNECTIVITY SUPPORT',
+          desc: 'Maintain continuity across varying network conditions with robust local verification.'
+        }
+      ],
       steps: [
         {
           step: '01',
-          title: 'CHECK IN',
-          desc: 'Start the guest check-in workflow from a mobile device.'
+          title: 'ARRIVAL',
+          desc: 'Guest reaches the cruise terminal.'
         },
         {
           step: '02',
-          title: 'CAPTURE IDENTITY',
-          desc: 'Capture the required guest identity information digitally.'
+          title: 'CHECK-IN',
+          desc: 'Staff begins the embarkation workflow through a mobile or kiosk-assisted interface.'
         },
         {
           step: '03',
           title: 'VERIFY',
-          desc: 'Validate guest and boarding information.'
+          desc: 'Guest identity and required documents are validated.'
         },
         {
           step: '04',
+          title: 'CONFIRM',
+          desc: 'Boarding status is confirmed.'
+        },
+        {
+          step: '05',
           title: 'BOARD',
-          desc: 'Confirm the guest and complete the embarkation process.'
+          desc: 'Guest proceeds to the vessel.'
         }
       ],
-      capabilities: [
-        'Mobile check-in',
-        'Secure identity capture',
-        'Wi-Fi / cellular operation',
-        'Offline-capable workflow'
+      benefits: [
+        'Faster passenger movement.',
+        'Clearer operational visibility.',
+        'Less manual processing.'
       ]
     }
   },
@@ -212,36 +249,65 @@ export const products: ProductItem[] = [
     id: 'gangway',
     name: 'Gangway',
     industry: 'Cruise Operations',
-    shortBenefit: "Know who's on board. And who's off.",
-    description: 'Mobile identity verification for guests, crew and visitors moving between ship and port, with clear IN / OUT movement visibility.',
+    shortBenefit: 'Know every movement between ship and shore.',
+    description: 'Mobile identity verification and IN / OUT tracking for guests, crew and visitors at vessel access points.',
     image: '/assets/products/gangway.jpg',
+    imageAlt: 'Cruise ship gangway entry with officer conducting mobile identity check between ship and shore',
     actionText: 'Explore Product',
     destinationType: 'internal-panel',
     process: {
-      intro: 'Gangway supports mobile identity verification for guests, crew and visitors moving between the ship and port. The workflow helps operators register IN / OUT movement and maintain clearer onboard status without relying entirely on traditional fixed gangway podiums.',
+      headline: 'Know every movement between ship and shore.',
+      intro: "VenusGeo's Gangway software helps cruise operators manage guest, crew and visitor movement at vessel entry and exit points. Mobile identity verification and digital check-in/check-out workflows give teams clearer visibility into who is onboard and who has gone ashore.",
+      fullDescription: 'The software helps replace fragmented manual processes with a more connected and traceable gangway operation.',
+      capabilities: [
+        {
+          title: 'MOBILE IDENTITY CHECK',
+          desc: 'Verify guests, crew and visitors at the gangway.'
+        },
+        {
+          title: 'IN / OUT TRACKING',
+          desc: 'Record whether a person is entering or leaving the vessel.'
+        },
+        {
+          title: 'ONBOARD STATUS',
+          desc: 'Maintain clearer visibility of current onboard and off-board movement.'
+        },
+        {
+          title: 'MOBILE OPERATIONS',
+          desc: 'Allow personnel to perform gangway workflows using handheld mobile devices rather than fixed-only stations.'
+        },
+        {
+          title: 'OPERATIONAL VISIBILITY',
+          desc: 'Give teams a clearer real-time view of movement activity.'
+        }
+      ],
       steps: [
         {
           step: '01',
           title: 'IDENTIFY',
-          desc: 'Identify the guest, crew member or visitor.'
+          desc: 'Guest, crew member or visitor approaches the gangway.'
         },
         {
           step: '02',
           title: 'VERIFY',
-          desc: 'Confirm identity through the mobile workflow.'
+          desc: 'Identity is checked through the digital workflow.'
         },
         {
           step: '03',
           title: 'CHECK IN / OUT',
-          desc: 'Register whether the person is entering or leaving the vessel.'
+          desc: 'The system records whether the person is boarding or leaving.'
         },
         {
           step: '04',
           title: 'UPDATE STATUS',
-          desc: 'Update onboard or off-board status.'
+          desc: 'Onboard / off-board status is updated for operational visibility.'
         }
       ],
-      supportingStatement: 'Clearer souls-on-board and souls-off-board visibility.'
+      benefits: [
+        'Controlled ship/shore movement.',
+        'Clearer operational visibility.',
+        'Less manual processing.'
+      ]
     }
   },
 
@@ -250,34 +316,64 @@ export const products: ProductItem[] = [
     id: 'mustering',
     name: 'Mustering',
     industry: 'Cruise Operations',
-    shortBenefit: 'Clear visibility when every person matters.',
-    description: 'Digital identification and attendance workflows designed to support clearer onboard muster operations.',
+    shortBenefit: 'Make safety accountability clearer and faster.',
+    description: 'Digital identification and attendance workflows that give teams clearer visibility during onboard muster operations.',
     image: '/assets/products/mustering.jpg',
+    imageAlt: 'Cruise passengers gathered at an organized muster station with crew managing attendance on tablets',
     actionText: 'Explore Product',
     destinationType: 'internal-panel',
     process: {
-      intro: 'Mustering can support digital identification and attendance capture during onboard muster operations, helping teams maintain clearer visibility into confirmed and outstanding participation.',
+      headline: 'Make safety accountability clearer and faster.',
+      intro: "VenusGeo's Mustering software supports digital identification and attendance workflows during onboard safety drills and muster operations. It helps crew teams confirm participation, identify outstanding passengers or crew, and maintain a clearer operational view of muster status.",
+      fullDescription: 'The product is designed to replace fragmented manual tracking with a more structured, mobile-first safety workflow.',
+      capabilities: [
+        {
+          title: 'DIGITAL IDENTIFICATION',
+          desc: 'Confirm passenger or crew identity during muster operations.'
+        },
+        {
+          title: 'ATTENDANCE CAPTURE',
+          desc: 'Record participation and completion status digitally.'
+        },
+        {
+          title: 'STATUS MONITORING',
+          desc: 'See which passengers or crew have completed the muster workflow and which remain outstanding.'
+        },
+        {
+          title: 'MOBILE CREW WORKFLOW',
+          desc: 'Allow crew to perform checks using normal mobile devices.'
+        },
+        {
+          title: 'CENTRAL VISIBILITY',
+          desc: 'Provide operational teams with a clearer aggregated muster status.'
+        }
+      ],
       steps: [
         {
           step: '01',
           title: 'IDENTIFY',
-          desc: 'Confirm the passenger or crew member.'
+          desc: 'Passenger or crew member reaches the designated muster location.'
         },
         {
           step: '02',
           title: 'CHECK STATUS',
-          desc: 'Match the person to the relevant muster workflow.'
+          desc: 'The system identifies the relevant record and current status.'
         },
         {
           step: '03',
           title: 'CONFIRM',
-          desc: 'Record attendance or completion status.'
+          desc: 'Attendance or completion is recorded.'
         },
         {
           step: '04',
           title: 'MONITOR',
-          desc: 'Maintain visibility of confirmed and outstanding status.'
+          desc: 'Operations teams see confirmed and outstanding status.'
         }
+      ],
+      benefits: [
+        'Clearer safety accountability.',
+        'Faster safety drill completion.',
+        'Structured crew visibility.'
       ]
     }
   },
@@ -287,34 +383,64 @@ export const products: ProductItem[] = [
     id: 'debarkation',
     name: 'Debarkation',
     industry: 'Cruise Operations',
-    shortBenefit: 'A smoother final step in the guest journey.',
-    description: 'Structured mobile departure workflows designed to simplify guest verification and status updates as passengers leave the vessel.',
+    shortBenefit: 'Make the final passenger movement smoother.',
+    description: 'Structured digital departure workflows that help teams verify guests, update status and manage passenger flow from ship to shore.',
     image: '/assets/products/debarkation.jpg',
+    imageAlt: 'Passengers departing cruise vessel through terminal corridor with staff performing mobile departure verification',
     actionText: 'Explore Product',
     destinationType: 'internal-panel',
     process: {
-      intro: 'Debarkation can support structured guest departure workflows, helping teams verify passenger identity and update departure status as guests complete their journey and leave the vessel.',
+      headline: 'Make the final passenger movement smoother.',
+      intro: "VenusGeo's Debarkation software helps cruise operators manage passenger departure through structured identity confirmation, status updates and digital checkout workflows. It gives operational teams clearer visibility as guests complete their journey and leave the vessel.",
+      fullDescription: 'The product helps reduce manual processing while supporting a more organized final stage of the cruise guest journey.',
+      capabilities: [
+        {
+          title: 'DEPARTURE IDENTIFICATION',
+          desc: 'Confirm the departing guest.'
+        },
+        {
+          title: 'STATUS VERIFICATION',
+          desc: 'Check relevant departure status before final checkout.'
+        },
+        {
+          title: 'DIGITAL CHECKOUT',
+          desc: 'Register the guest leaving the vessel.'
+        },
+        {
+          title: 'OPERATIONAL STATUS',
+          desc: 'Update the system so departure progress is visible to operations teams.'
+        },
+        {
+          title: 'MOBILE WORKFLOW',
+          desc: 'Allow departure processing through mobile or touchscreen devices.'
+        }
+      ],
       steps: [
         {
           step: '01',
           title: 'IDENTIFY',
-          desc: 'Identify the departing guest.'
+          desc: 'Guest approaches the departure point.'
         },
         {
           step: '02',
           title: 'VERIFY',
-          desc: 'Confirm identity and departure status.'
+          desc: 'Identity and relevant departure status are confirmed.'
         },
         {
           step: '03',
           title: 'CHECK OUT',
-          desc: 'Register the guest leaving the vessel.'
+          desc: 'The system records the guest leaving the vessel.'
         },
         {
           step: '04',
           title: 'COMPLETE',
-          desc: 'Complete the departure workflow and update status.'
+          desc: 'Departure status is finalized for operational visibility.'
         }
+      ],
+      benefits: [
+        'Smoother departure flow.',
+        'Clearer operational visibility.',
+        'Less manual processing.'
       ]
     }
   },

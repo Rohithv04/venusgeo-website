@@ -156,10 +156,38 @@ export const ProductGrid: React.FC = () => {
             {/* Modal Body */}
             <div className="modal-body">
               <p className="modal-overview">{selectedProduct.process.intro}</p>
+              {selectedProduct.process.fullDescription && (
+                <p className="modal-overview" style={{ marginTop: '10px' }}>
+                  {selectedProduct.process.fullDescription}
+                </p>
+              )}
 
-              {/* Process Workflow Section */}
+              {/* What the Software Supports */}
+              {selectedProduct.process.capabilities && selectedProduct.process.capabilities.length > 0 && (
+                <div className="modal-spec-block">
+                  <h4 className="spec-heading">What the Software Supports</h4>
+                  <div className="capabilities-spec-grid">
+                    {selectedProduct.process.capabilities.map((cap, i) => {
+                      const isObj = typeof cap === 'object' && cap !== null;
+                      const title = isObj ? cap.title : cap;
+                      const desc = isObj ? cap.desc : '';
+                      return (
+                        <div key={i} className="capability-spec-card">
+                          <div className="cap-card-header">
+                            <span className="cap-accent-dot" aria-hidden="true" />
+                            <h5 className="cap-title">{title}</h5>
+                          </div>
+                          {desc && <p className="cap-desc">{desc}</p>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Operational Process Workflow Section */}
               <div className="modal-spec-block">
-                <h4 className="spec-heading">Process Workflow</h4>
+                <h4 className="spec-heading">Operational Process</h4>
 
                 {/* Desktop Horizontal Linear Flow Strip */}
                 <div className="workflow-linear-strip" aria-label="Sequential workflow flow">
@@ -176,7 +204,7 @@ export const ProductGrid: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Desktop 4 Step Cards Grid */}
+                {/* Desktop Step Cards Grid */}
                 <div className="process-cards-grid">
                   {selectedProduct.process.steps.map((st) => (
                     <div key={st.step} className="process-card-box">
@@ -211,28 +239,28 @@ export const ProductGrid: React.FC = () => {
                     </React.Fragment>
                   ))}
                 </div>
+
+                {/* Supporting Statement (e.g. for Gangway) */}
+                {selectedProduct.process.supportingStatement && (
+                  <div className="process-supporting-banner">
+                    <span className="supporting-banner-dot" />
+                    <span>{selectedProduct.process.supportingStatement}</span>
+                  </div>
+                )}
               </div>
 
-              {/* Supporting Capabilities (e.g. for Embarkation) */}
-              {selectedProduct.process.capabilities && (
+              {/* Operational Results / Benefits */}
+              {selectedProduct.process.benefits && selectedProduct.process.benefits.length > 0 && (
                 <div className="modal-spec-block">
-                  <h4 className="spec-heading">Supporting Capabilities</h4>
-                  <ul className="spec-list">
-                    {selectedProduct.process.capabilities.map((cap, idx) => (
-                      <li key={idx} className="spec-item">
-                        <CheckCircle2 size={16} className="spec-icon" />
-                        <span>{cap}</span>
-                      </li>
+                  <h4 className="spec-heading">Operational Result</h4>
+                  <div className="operational-results-list">
+                    {selectedProduct.process.benefits.map((benefit, i) => (
+                      <div key={i} className="result-item">
+                        <span className="result-check">✓</span>
+                        <span className="result-text">{benefit}</span>
+                      </div>
                     ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Supporting Statement (e.g. for Gangway) */}
-              {selectedProduct.process.supportingStatement && (
-                <div className="process-supporting-banner">
-                  <span className="supporting-banner-dot" />
-                  <span>{selectedProduct.process.supportingStatement}</span>
+                  </div>
                 </div>
               )}
 
@@ -841,7 +869,104 @@ export const ProductGrid: React.FC = () => {
           flex-shrink: 0;
         }
 
+        /* What the Software Supports Grid */
+        .capabilities-spec-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+          margin-top: 8px;
+          margin-bottom: 20px;
+        }
+
+        .capability-spec-card {
+          background-color: var(--surface-soft);
+          border: 1px solid var(--border-subtle);
+          border-radius: 8px;
+          padding: 12px 14px;
+          transition: border-color var(--transition-quick), background-color var(--transition-quick);
+        }
+
+        .capability-spec-card:hover {
+          border-color: #cbd5e1;
+          background-color: #f1f4f9;
+        }
+
+        .cap-card-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 4px;
+        }
+
+        .cap-accent-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: var(--brand-red);
+          flex-shrink: 0;
+        }
+
+        .cap-title {
+          font-size: 0.75rem;
+          font-weight: 800;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--text-primary);
+          margin: 0;
+        }
+
+        .cap-desc {
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+          line-height: 1.45;
+          margin: 0;
+          padding-left: 14px;
+        }
+
+        /* Operational Result Benefits List */
+        .operational-results-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: 8px;
+          margin-bottom: 20px;
+        }
+
+        .result-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background-color: var(--surface-soft);
+          border: 1px solid var(--border-subtle);
+          border-radius: 6px;
+          padding: 10px 14px;
+        }
+
+        .result-check {
+          font-size: 0.875rem;
+          font-weight: 800;
+          color: #16a34a;
+          background-color: #dcfce7;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          line-height: 1;
+        }
+
+        .result-text {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+
         @media (max-width: 640px) {
+          .capabilities-spec-grid {
+            grid-template-columns: 1fr;
+          }
           .workflow-linear-strip {
             display: none;
           }

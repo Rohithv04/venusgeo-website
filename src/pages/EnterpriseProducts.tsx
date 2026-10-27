@@ -379,8 +379,18 @@ export const EnterpriseProducts: React.FC = () => {
                   >
                     {/* Header with Red Dot & Semantic H3 */}
                     <div className="portfolio-group-header">
-                      <span className="group-header-dot" aria-hidden="true" />
-                      <h3 className="portfolio-group-title">{group.industry}</h3>
+                      <div className="portfolio-group-title-row">
+                        <span className="group-header-dot" aria-hidden="true" />
+                        <h3 className="portfolio-group-title">{group.industry}</h3>
+                      </div>
+                      {group.id === 'cruise-hospitality' && (
+                        <div className="cruise-journey-intro">
+                          <p className="journey-lead">Software for the complete passenger movement journey.</p>
+                          <p className="journey-sub">
+                            From terminal check-in to ship access, onboard safety and final departure, VenusGeo builds digital products that help cruise operations move more smoothly.
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     {/* Products Grid inside this Industry Group */}
@@ -417,6 +427,9 @@ export const EnterpriseProducts: React.FC = () => {
                             </div>
                             <div className="case-body">
                               <h4 className="case-title">{displayName}</h4>
+                              {prod.shortBenefit && (
+                                <p className="case-headline">{prod.shortBenefit}</p>
+                              )}
                               <p className="case-desc">{prod.description}</p>
                               <div className="case-action-row">
                                 <a
@@ -913,9 +926,38 @@ export const EnterpriseProducts: React.FC = () => {
 
             <div className="modal-body">
               <p className="modal-overview">{selectedProduct.process.intro}</p>
+              {selectedProduct.process.fullDescription && (
+                <p className="modal-overview" style={{ marginTop: '10px' }}>
+                  {selectedProduct.process.fullDescription}
+                </p>
+              )}
 
+              {/* What the Software Supports / Manages */}
+              {selectedProduct.process.capabilities && selectedProduct.process.capabilities.length > 0 && (
+                <div className="modal-spec-block">
+                  <h4 className="spec-heading">What the Software Supports</h4>
+                  <div className="capabilities-spec-grid">
+                    {selectedProduct.process.capabilities.map((cap, i) => {
+                      const isObj = typeof cap === 'object' && cap !== null;
+                      const title = isObj ? cap.title : cap;
+                      const desc = isObj ? cap.desc : '';
+                      return (
+                        <div key={i} className="capability-spec-card">
+                          <div className="cap-card-header">
+                            <span className="cap-accent-dot" aria-hidden="true" />
+                            <h5 className="cap-title">{title}</h5>
+                          </div>
+                          {desc && <p className="cap-desc">{desc}</p>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Process Workflow Section */}
               <div className="modal-spec-block">
-                <h4 className="spec-heading">Process Workflow</h4>
+                <h4 className="spec-heading">Operational Process</h4>
 
                 <div className="workflow-linear-strip" aria-label="Sequential workflow flow">
                   {selectedProduct.process.steps.map((st, idx, arr) => (
@@ -963,6 +1005,21 @@ export const EnterpriseProducts: React.FC = () => {
                   </div>
                 )}
               </div>
+
+              {/* Operational Results / Benefits */}
+              {selectedProduct.process.benefits && selectedProduct.process.benefits.length > 0 && (
+                <div className="modal-spec-block">
+                  <h4 className="spec-heading">Operational Result</h4>
+                  <div className="operational-results-list">
+                    {selectedProduct.process.benefits.map((benefit, i) => (
+                      <div key={i} className="result-item">
+                        <span className="result-check">✓</span>
+                        <span className="result-text">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="modal-footer">
@@ -1680,6 +1737,14 @@ export const EnterpriseProducts: React.FC = () => {
           font-weight: 700;
           letter-spacing: var(--tracking-title);
           margin-bottom: 6px;
+        }
+
+        .case-headline {
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: var(--brand-red);
+          line-height: 1.4;
+          margin: 0 0 8px 0;
         }
 
         .case-desc {
@@ -2528,11 +2593,18 @@ export const EnterpriseProducts: React.FC = () => {
 
         .portfolio-group-header {
           display: flex;
-          align-items: center;
-          gap: 10px;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
           margin-bottom: 24px;
           padding-bottom: 16px;
           border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .portfolio-group-title-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
 
         .group-header-dot {
@@ -2549,6 +2621,31 @@ export const EnterpriseProducts: React.FC = () => {
           letter-spacing: var(--tracking-pill, 0.08em);
           text-transform: uppercase;
           color: var(--text-primary);
+          margin: 0;
+        }
+
+        .cruise-journey-intro {
+          padding: 12px 16px;
+          background: linear-gradient(135deg, rgba(237, 27, 36, 0.04) 0%, rgba(255, 255, 255, 0.9) 100%);
+          border-left: 3px solid var(--brand-red);
+          border-radius: 0 8px 8px 0;
+          border-top: 1px solid rgba(237, 27, 36, 0.1);
+          border-right: 1px solid rgba(237, 27, 36, 0.1);
+          border-bottom: 1px solid rgba(237, 27, 36, 0.1);
+        }
+
+        .journey-lead {
+          font-size: 0.875rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0 0 4px 0;
+          letter-spacing: -0.01em;
+        }
+
+        .journey-sub {
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+          line-height: 1.45;
           margin: 0;
         }
 
@@ -2912,6 +3009,105 @@ export const EnterpriseProducts: React.FC = () => {
           border-radius: 50%;
           background-color: var(--brand-red);
           flex-shrink: 0;
+        }
+
+        /* What the Software Supports Grid */
+        .capabilities-spec-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+          margin-top: 8px;
+          margin-bottom: 20px;
+        }
+
+        @media (max-width: 640px) {
+          .capabilities-spec-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .capability-spec-card {
+          background-color: var(--surface-soft);
+          border: 1px solid var(--border-subtle);
+          border-radius: 8px;
+          padding: 12px 14px;
+          transition: border-color var(--transition-quick), background-color var(--transition-quick);
+        }
+
+        .capability-spec-card:hover {
+          border-color: #cbd5e1;
+          background-color: #f8fafc;
+        }
+
+        .cap-card-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 4px;
+        }
+
+        .cap-accent-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: var(--brand-red);
+          flex-shrink: 0;
+        }
+
+        .cap-title {
+          font-size: 0.75rem;
+          font-weight: 800;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--text-primary);
+          margin: 0;
+        }
+
+        .cap-desc {
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+          line-height: 1.45;
+          margin: 0;
+          padding-left: 14px;
+        }
+
+        /* Operational Result Benefits List */
+        .operational-results-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: 8px;
+        }
+
+        .result-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background-color: var(--surface-soft);
+          border: 1px solid var(--border-subtle);
+          border-radius: 6px;
+          padding: 10px 14px;
+        }
+
+        .result-check {
+          font-size: 0.875rem;
+          font-weight: 800;
+          color: #16a34a;
+          background-color: #dcfce7;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          line-height: 1;
+        }
+
+        .result-text {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--text-primary);
         }
 
         .modal-presentation-panel {
