@@ -372,9 +372,9 @@ export const products: ProductItem[] = [
   {
     id: 'ital',
     name: 'ITAL',
-    industry: 'Maritime',
+    industry: 'Device Management',
     shortBenefit: 'Every device. One clear view.',
-    description: 'Visibility into devices, users, and applications across vessels and teams.',
+    description: 'Visibility into devices, crews and applications across fleet',
     image: '/assets/products/ital.jpg',
     actionText: 'Explore ITAL',
     destinationType: 'internal-panel',
