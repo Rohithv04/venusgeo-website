@@ -74,10 +74,10 @@ export const Header: React.FC = () => {
             AI Engineering
           </Link> */}
           <Link
-            to="/enterprise-mobility/"
-            className={`nav-link ${location.pathname.startsWith('/enterprise-mobility') ? 'active' : ''}`}
+            to="/enterprise-products/"
+            className={`nav-link ${location.pathname.startsWith('/enterprise-products') ? 'active' : ''}`}
           >
-            Enterprise Mobility
+            Enterprise Products
           </Link>
           <a
             href="/#products"
@@ -138,11 +138,11 @@ export const Header: React.FC = () => {
               AI Engineering
             </Link> */}
             <Link
-              to="/enterprise-mobility/"
+              to="/enterprise-products/"
               onClick={() => setMobileMenuOpen(false)}
-              className={`mobile-nav-link ${location.pathname.startsWith('/enterprise-mobility') ? 'active' : ''}`}
+              className={`mobile-nav-link ${location.pathname.startsWith('/enterprise-products') ? 'active' : ''}`}
             >
-              Enterprise Mobility
+              Enterprise Products
             </Link>
             <a
               href="/#products"

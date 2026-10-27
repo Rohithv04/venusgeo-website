@@ -4,18 +4,18 @@ import { ArrowRight, ShieldCheck, Layers, Award } from 'lucide-react';
 
 export const EnterpriseMobilityBanner: React.FC = () => {
   return (
-    <section className="section mobility-banner-section" aria-label="Enterprise Mobility Spotlight">
+    <section className="section mobility-banner-section" aria-label="Enterprise Products Spotlight">
       <div className="container">
         <div className="mobility-editorial-card card-panel">
           <div className="mobility-editorial-grid">
             {/* Left Content */}
             <div className="mobility-editorial-content">
-              <div className="eyebrow">Modernization & Mobility</div>
+              <div className="eyebrow">Enterprise Products & Modernization</div>
 
-              <h2 className="mobility-editorial-title">Enterprise Mobility</h2>
+              <h2 className="mobility-editorial-title">Enterprise Products</h2>
 
               <p className="mobility-editorial-copy">
-                Explore our mobile application expertise and enterprise delivery experience.
+                Explore our engineered enterprise products, mobile platforms, and connected operations experience.
               </p>
 
               <div className="mobility-spec-highlights">
@@ -42,10 +42,10 @@ export const EnterpriseMobilityBanner: React.FC = () => {
 
               <div className="mobility-editorial-action">
                 <Link
-                  to="/enterprise-mobility/"
+                  to="/enterprise-products/"
                   className="btn btn-primary mobility-cta-btn"
                 >
-                  <span>Explore Enterprise Mobility</span>
+                  <span>Explore Enterprise Products</span>
                   <ArrowRight size={16} />
                 </Link>
               </div>
@@ -55,8 +55,8 @@ export const EnterpriseMobilityBanner: React.FC = () => {
             <div className="mobility-editorial-media">
               <div className="media-container-frame">
                 <img
-                  src="/assets/mobility/enterprise-mobility.png"
-                  alt="Venusgeo Enterprise Mobility applications and connected fleet systems"
+                  src="/assets/mobility/enterprise-products.png"
+                  alt="Venusgeo Enterprise Products and connected fleet systems"
                   className="editorial-img"
                   loading="lazy"
                   width="800"

@@ -43,8 +43,8 @@ export const AboutCTA: React.FC = () => {
               <a href="/#contact" className="btn btn-primary cta-action-btn">
                 Start a Conversation <ArrowRight size={16} />
               </a>
-              <Link to="/enterprise-mobility/" className="btn btn-secondary cta-action-btn">
-                Explore Enterprise Mobility
+              <Link to="/enterprise-products/" className="btn btn-secondary cta-action-btn">
+                Explore Enterprise Products
               </Link>
             </div>
           </div>

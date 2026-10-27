@@ -57,10 +57,10 @@ export const AIProof: React.FC = () => {
     {
       id: 'enterprise-mobile',
       num: '04',
-      label: 'ENTERPRISE MOBILE',
+      label: 'ENTERPRISE PRODUCTS',
       title: 'AI-Assisted Brownfield Analysis',
       description:
-        'AI-assisted analysis helps teams understand an existing enterprise mobile application before deciding how to modernize it.',
+        'AI-assisted analysis helps teams understand an existing enterprise application before deciding how to modernize it.',
       process: ['EXISTING APPLICATION', 'AI-ASSISTED ANALYSIS', 'SYSTEM UNDERSTANDING', 'MODERNIZATION PATH'],
       techTags: ['Static Analysis', 'API Contract Extraction', 'Target Architecture Spec'],
       icon: Smartphone

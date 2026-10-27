@@ -68,11 +68,11 @@ export const industries: IndustryItem[] = [
     description: 'High-availability customer onboarding, identity verification pipelines, and distributed operations at scale.',
     image: '/assets/industries/telecom.jpg',
     productIndicators: [
-      { name: 'Network Services', role: 'Connectivity & Interoperability' },
+      { name: 'Network Devices', role: 'Connectivity & Interoperability' },
       { name: 'Device Services', role: 'Device Intelligence & Validation' }
     ],
     capabilities: {
-      delivering: "We're delivering Network Services and Device Services supporting connectivity, interoperability, device intelligence and validation.",
+      delivering: "We're delivering Network Devices and Device Services supporting connectivity, interoperability, device intelligence and validation.",
       solving: "We're solving roaming/network complexity, interoperability, fraud exposure, and uncertainty around device identity/status.",
       enabling: "We're enabling reliable network operations, informed device decisions, and stronger telecom ecosystem workflows."
     }

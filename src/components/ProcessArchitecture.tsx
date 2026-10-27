@@ -141,9 +141,9 @@ export const ProcessArchitecture: React.FC = () => {
 
               <div className="process-action-corner">
                 <Link
-                  to="/enterprise-mobility/"
+                  to="/enterprise-products/"
                   className="circular-red-btn"
-                  aria-label="Explore Enterprise Mobility"
+                  aria-label="Explore Enterprise Products"
                 >
                   <ArrowRight size={20} />
                 </Link>

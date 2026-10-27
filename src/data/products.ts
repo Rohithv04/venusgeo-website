@@ -49,8 +49,15 @@ export interface ProductItem {
   detail?: ProductDetail;
 }
 
+export interface ProductGroup {
+  id: string;
+  name: string;
+  tagline: string;
+  products: ProductItem[];
+}
+
 export const products: ProductItem[] = [
-  // Row 1, Left: Pammy AI (Standalone Document Intelligence Product)
+  // 1: Pammy AI
   {
     id: 'pammy-ai',
     name: 'Pammy AI',
@@ -108,7 +115,7 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 1, Right: FIDO2 Ultrapass™
+  // 2: FIDO2 Ultrapass™
   {
     id: 'fido2-ultrapass',
     name: 'FIDO2 Ultrapass™',
@@ -116,6 +123,7 @@ export const products: ProductItem[] = [
     shortBenefit: 'On-device biometric authentication in 25ms without any images leaving your device.',
     description: 'Privacy-preserving identity powered by homomorphic tokens at the Edge.',
     image: '/assets/products/private-id.jpg',
+    imageAlt: 'On-device biometric authentication dashboard and security metrics',
     actionText: 'Explore FIDO2 Ultrapass™',
     destinationType: 'internal-panel',
     pdf: {
@@ -157,7 +165,7 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 2, Left: Cruise Operations 01 - Embarkation
+  // 3: Embarkation
   {
     id: 'embarkation',
     name: 'Embarkation',
@@ -165,6 +173,7 @@ export const products: ProductItem[] = [
     shortBenefit: 'Faster check-in from port to ship.',
     description: 'Mobile-first guest check-in and identity capture designed to reduce reliance on traditional fixed check-in podiums and create a smoother embarkation experience.',
     image: '/assets/products/embarkation.jpg',
+    imageAlt: 'Mobile device used for digital passenger check-in and identity verification at cruise terminal',
     actionText: 'Explore Product',
     destinationType: 'internal-panel',
     process: {
@@ -200,7 +209,7 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 2, Right: Cruise Operations 02 - Gangway
+  // 4: Gangway
   {
     id: 'gangway',
     name: 'Gangway',
@@ -208,6 +217,7 @@ export const products: ProductItem[] = [
     shortBenefit: "Know who's on board. And who's off.",
     description: 'Mobile identity verification for guests, crew and visitors moving between ship and port, with clear IN / OUT movement visibility.',
     image: '/assets/products/gangway.jpg',
+    imageAlt: 'Ship officer using a smartphone for passenger boarding pass verification on the gangway',
     actionText: 'Explore Product',
     destinationType: 'internal-panel',
     process: {
@@ -238,7 +248,7 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 3, Left: Cruise Operations 03 - Mustering
+  // 5: Mustering
   {
     id: 'mustering',
     name: 'Mustering',
@@ -246,6 +256,7 @@ export const products: ProductItem[] = [
     shortBenefit: 'Clear visibility when every person matters.',
     description: 'Digital identification and attendance workflows designed to support clearer onboard muster operations.',
     image: '/assets/products/mustering.jpg',
+    imageAlt: 'Crew member using a tablet device for passenger safety muster attendance and verification',
     actionText: 'Explore Product',
     destinationType: 'internal-panel',
     process: {
@@ -275,44 +286,7 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 3, Right: Cruise Operations 04 - Debarkation
-  {
-    id: 'debarkation',
-    name: 'Debarkation',
-    industry: 'Cruise Operations',
-    shortBenefit: 'A smoother final step in the guest journey.',
-    description: 'Structured mobile departure workflows designed to simplify guest verification and status updates as passengers leave the vessel.',
-    image: '/assets/products/debarkation.jpg',
-    actionText: 'Explore Product',
-    destinationType: 'internal-panel',
-    process: {
-      intro: 'Debarkation can support structured guest departure workflows, helping teams verify passenger identity and update departure status as guests complete their journey and leave the vessel.',
-      steps: [
-        {
-          step: '01',
-          title: 'IDENTIFY',
-          desc: 'Identify the departing guest.'
-        },
-        {
-          step: '02',
-          title: 'VERIFY',
-          desc: 'Confirm identity and departure status.'
-        },
-        {
-          step: '03',
-          title: 'CHECK OUT',
-          desc: 'Register the guest leaving the vessel.'
-        },
-        {
-          step: '04',
-          title: 'COMPLETE',
-          desc: 'Complete the departure workflow and update status.'
-        }
-      ]
-    }
-  },
-
-  // Row 4, Left: POSMATE
+  // 6: POSMATE
   {
     id: 'posmate',
     name: 'POSMATE',
@@ -320,7 +294,7 @@ export const products: ProductItem[] = [
     shortBenefit: 'One POS for modern restaurant operations.',
     description: 'POSMATE is a restaurant and hospitality POS platform that brings ordering, billing, payments and day-to-day service workflows into one connected system.',
     image: '/assets/products/posmate.jpg',
-    imageAlt: 'Restaurant staff using a modern POS system',
+    imageAlt: 'Restaurant staff using a modern handheld POS system for tableside service',
     actionText: 'Explore POSMATE',
     destinationType: 'internal-panel',
     tags: [
@@ -368,7 +342,55 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 4, Right: ITAL
+  // 7: TM Hub
+  {
+    id: 'tm-hub',
+    name: 'TM Hub',
+    industry: 'Crew Operations',
+    shortBenefit: 'Connected shift, travel and roster management for crew.',
+    description: 'Digital crew management platform for shift schedules, rosters, travel coordination, and operational compliance across maritime and enterprise fleets.',
+    image: '/assets/products/tmhub.jpg',
+    imageAlt: 'Mobile application interface showing crew rosters, shift schedules, and profile management',
+    actionText: 'Explore TM Hub',
+    destinationType: 'internal-panel',
+    tags: [
+      'Crew Shifts',
+      'Rosters',
+      'Travel & Flights',
+      'Workforce'
+    ],
+    detail: {
+      eyebrow: 'MARITIME WORKFORCE & CREW OPERATIONS',
+      headline: 'Keep shipboard teams organized across every voyage.',
+      overview: 'TM Hub is a digital workforce management platform engineered for maritime and enterprise fleet operations. It simplifies crew scheduling, shift rotations, travel and embarkation coordination, and flight tracking while giving crew members direct mobile access to their schedules and profiles.',
+      workflowSteps: [
+        'ROSTER',
+        'SCHEDULE',
+        'ENGAGE',
+        'TRACK',
+        'COMPLIANCE'
+      ],
+      features: [
+        'SHIFT & ROSTER SCHEDULING: Coordinate bridge watch, deck, engineering, and hotel service rosters in real time.',
+        'CREW PROFILE & COMPLIANCE: Verify officer licenses, maritime certifications, and document validity across voyages.',
+        'TRAVEL & TRANSIT MANAGEMENT: Coordinate port transfers, flight manifests, and hotel reservations for embarking/debarking crew.',
+        'MOBILE-FIRST CREW ACCESS: Enable crew members to check upcoming duty, request roster swaps, and receive shift notifications on personal mobile devices.',
+        'OFFLINE-FIRST SYNCHRONIZATION: Maintain active roster access and attendance verification with automatic sync when satellite connectivity resumes.'
+      ],
+      useCases: [
+        'CRUISE FLEETS: Centralized management of hospitality, deck, and marine crew rotations across global voyages.',
+        'OFFSHORE & MARITIME: Watchkeeping schedule enforcement and compliance tracking for offshore support and commercial ships.',
+        'DISTRIBUTED ENTERPRISE TEAMS: Roster and shift management for multi-site industrial and port terminal operations.'
+      ],
+      technicalHighlights: [
+        'Offline-capable local client storage with lightweight conflict-free delta sync',
+        'Granular role-based permissions separating marine crew, hotel management, and corporate HR',
+        'Seamless integration with shoreside ERP, payroll, and maritime travel management systems'
+      ]
+    }
+  },
+
+  // 8: ITAL
   {
     id: 'ital',
     name: 'ITAL',
@@ -376,6 +398,7 @@ export const products: ProductItem[] = [
     shortBenefit: 'Every device. One clear view.',
     description: 'Visibility into devices, crews and applications across fleet',
     image: '/assets/products/ital.jpg',
+    imageAlt: 'Rugged enterprise smartphone used for fleet device management and health tracking',
     actionText: 'Explore ITAL',
     destinationType: 'internal-panel',
     pdf: {
@@ -407,7 +430,45 @@ export const products: ProductItem[] = [
     }
   },
 
-  // Row 5, Left: Medugo
+  // 9: Debarkation
+  {
+    id: 'debarkation',
+    name: 'Debarkation',
+    industry: 'Cruise Operations',
+    shortBenefit: 'A smoother final step in the guest journey.',
+    description: 'Structured mobile departure workflows designed to simplify guest verification and status updates as passengers leave the vessel.',
+    image: '/assets/products/debarkation.jpg',
+    imageAlt: 'Cruise agent confirming passenger identity using a mobile smartphone at disembarkation',
+    actionText: 'Explore Product',
+    destinationType: 'internal-panel',
+    process: {
+      intro: 'Debarkation can support structured guest departure workflows, helping teams verify passenger identity and update departure status as guests complete their journey and leave the vessel.',
+      steps: [
+        {
+          step: '01',
+          title: 'IDENTIFY',
+          desc: 'Identify the departing guest.'
+        },
+        {
+          step: '02',
+          title: 'VERIFY',
+          desc: 'Confirm identity and departure status.'
+        },
+        {
+          step: '03',
+          title: 'CHECK OUT',
+          desc: 'Register the guest leaving the vessel.'
+        },
+        {
+          step: '04',
+          title: 'COMPLETE',
+          desc: 'Complete the departure workflow and update status.'
+        }
+      ]
+    }
+  },
+
+  // 10: Medugo
   {
     id: 'medugo',
     name: 'Medugo',
@@ -415,37 +476,39 @@ export const products: ProductItem[] = [
     shortBenefit: 'Health information. All together.',
     description: 'Keep medical records, reports, and vitals organised, accessible, and ready to share.',
     image: '/assets/products/medugo.jpg',
+    imageAlt: 'Patient health information and unified records management mobile application',
     actionText: 'Explore Medugo',
     destinationType: 'external',
     url: 'https://www.medugo.com/'
   },
 
-  // Row 5, Right: Dr Queues
+  // 11: DrQueues
   {
     id: 'dr-queues',
-    name: 'Dr Queues',
+    name: 'DrQueues',
     industry: 'Healthcare',
     shortBenefit: 'A smoother journey to care.',
     description: 'Connect patient check-in, live queues, and digital report delivery.',
     image: '/assets/products/dr-queues.jpg',
-    actionText: 'Explore Dr Queues',
+    imageAlt: 'Modern healthcare clinic queue management and live patient check-in platform',
+    actionText: 'Explore DrQueues',
     destinationType: 'external',
     url: 'https://www.drqueues.com/'
   },
 
-  // Row 6, Left: Network Services
+  // 12: Network Devices (Telecom)
   {
     id: 'network-services',
-    name: 'Network Services',
+    name: 'Network Devices',
     industry: 'Telecom',
     shortBenefit: 'Powering reliable connections across the telecom ecosystem.',
     description: 'Enterprise telecom services that support roaming data exchange, network interoperability, secure service enablement and reliable connectivity across mobile networks.',
     image: '/assets/products/network-services.jpg',
     imageAlt: 'Modern telecom cellular towers providing mobile network coverage and connectivity infrastructure',
-    actionText: 'Explore Network Services',
+    actionText: 'Explore Network Devices',
     destinationType: 'external',
     url: 'https://www.gsmaservices.com/my-services/',
-    ariaLabel: 'Explore Network Services on GSMA Services',
+    ariaLabel: 'Explore Network Devices on GSMA Services',
     tags: [
       'Roaming',
       'Interoperability',
@@ -455,7 +518,7 @@ export const products: ProductItem[] = [
     variant: 'light-red'
   },
 
-  // Row 6, Right: Device Services
+  // 13: Device Services (Telecom)
   {
     id: 'device-services',
     name: 'Device Services',
@@ -475,5 +538,26 @@ export const products: ProductItem[] = [
       'Compatibility'
     ],
     variant: 'light-red'
+  }
+];
+
+export const enterpriseProductGroups: ProductGroup[] = [
+  {
+    id: 'cruise-hospitality',
+    name: 'Cruise & Hospitality',
+    tagline: 'Connected products for guest journeys, operations, safety, service, and onboard experiences.',
+    products: products.slice(0, 9)
+  },
+  {
+    id: 'healthcare',
+    name: 'Healthcare',
+    tagline: 'Connected products for patient information, clinical workflows, and healthcare operations.',
+    products: products.slice(9, 11)
+  },
+  {
+    id: 'telecom',
+    name: 'Telecom',
+    tagline: 'Products for network operations, device intelligence, validation, and connected telecom ecosystems.',
+    products: products.slice(11, 13)
   }
 ];
