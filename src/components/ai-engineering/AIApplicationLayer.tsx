@@ -170,7 +170,7 @@ export const AIApplicationLayer: React.FC = () => {
               <div className="col-header">
                 <span className="col-tag">EXISTING FOUNDATION</span>
                 <h4 className="col-title">Existing Application</h4>
-                <p className="col-desc">Your proven software assets and established operational investments</p>
+                <p className="col-desc">Your proven product assets and established operational investments</p>
               </div>
 
               <div className="app-elements-stack">

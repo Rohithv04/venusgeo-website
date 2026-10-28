@@ -1,5 +1,5 @@
 /**
- * VenusGeo Lead-Gating Configuration & Validation Engine
+ * Venusgeo Lead-Gating Configuration & Validation Engine
  * 
  * Central configuration for:
  * - Google Apps Script Web App Endpoint
@@ -103,13 +103,13 @@ export const BLOCKED_EMAIL_PREFIXES: string[] = [
 
 // 4. Download Filenames for Product Presentations
 export const PRODUCT_DOWNLOAD_FILENAMES: Record<string, string> = {
-  'pammy-ai': 'VenusGeo-Pammy-AI.pdf',
-  'document-ai': 'VenusGeo-Pammy-AI.pdf',
-  'posmate': 'VenusGeo-POSMATE.pdf',
-  'postmate': 'VenusGeo-POSMATE.pdf',
-  'ital': 'VenusGeo-ITAL.pdf',
-  'fido2-ultrapass': 'VenusGeo-FIDO2-Ultrapass.pdf',
-  'ultra-passkey': 'VenusGeo-FIDO2-Ultrapass.pdf'
+  'pammy-ai': 'Venusgeo-Pammy-AI.pdf',
+  'document-ai': 'Venusgeo-Pammy-AI.pdf',
+  'posmate': 'Venusgeo-POSMATE.pdf',
+  'postmate': 'Venusgeo-POSMATE.pdf',
+  'ital': 'Venusgeo-ITAL.pdf',
+  'fido2-ultrapass': 'Venusgeo-FIDO2-Ultrapass.pdf',
+  'ultra-passkey': 'Venusgeo-FIDO2-Ultrapass.pdf'
 };
 
 export interface EmailValidationResult {
@@ -293,5 +293,5 @@ export function getProductDownloadFileName(productId: string, productName: strin
     return PRODUCT_DOWNLOAD_FILENAMES[productId];
   }
   const normalized = productName.replace(/\s+/g, '-');
-  return `VenusGeo-${normalized}.pdf`;
+  return `Venusgeo-${normalized}.pdf`;
 }

@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               />
             </div>
             <p className="footer-tagline">
-              AI-first product development and enterprise engineering for software built to scale.
+              AI-first product development and enterprise engineering for products built to scale.
             </p>
             <div className="footer-address">
               3750 NW 87th Avenue, Suite 700<br />

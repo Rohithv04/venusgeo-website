@@ -15,7 +15,7 @@ export const EnterpriseMobilityBanner: React.FC = () => {
               <h2 className="mobility-editorial-title">Enterprise Products</h2>
 
               <p className="mobility-editorial-copy">
-                Explore our mobile application expertise and enterprise delivery experience.
+                Explore our product expertise and enterprise delivery experience.
               </p>
 
               <div className="mobility-spec-highlights">
@@ -24,7 +24,7 @@ export const EnterpriseMobilityBanner: React.FC = () => {
                     <ShieldCheck size={18} />
                   </div>
                   <div>
-                    <div className="spec-row-title">Legacy App Modernization & Migration</div>
+                    <div className="spec-row-title">Legacy Product Modernization & Migration</div>
                     <div className="spec-row-desc">Transitioning monolithic and legacy systems to hybrid digital ecosystems.</div>
                   </div>
                 </div>
@@ -56,7 +56,7 @@ export const EnterpriseMobilityBanner: React.FC = () => {
               <div className="media-container-frame">
                 <img
                   src="/assets/mobility/enterprise-products.png"
-                  alt="Venusgeo Enterprise Products applications and connected fleet systems"
+                  alt="Venusgeo Enterprise Products and connected fleet systems"
                   className="editorial-img"
                   loading="lazy"
                   width="800"
@@ -64,7 +64,7 @@ export const EnterpriseMobilityBanner: React.FC = () => {
                 />
                 <div className="media-corner-badge">
                   <Award size={14} className="text-red" />
-                  <span>25+ Apps Delivered</span>
+                  <span>25+ Products Delivered</span>
                 </div>
               </div>
             </div>

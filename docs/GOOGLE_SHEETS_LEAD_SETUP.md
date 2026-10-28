@@ -1,16 +1,16 @@
 # Google Sheets + Google Apps Script PDF Lead-Gating Setup
 
-This guide walks you through setting up the temporary backend using **Google Sheets** and **Google Apps Script** for gated product PDF downloads on the VenusGeo website.
+This guide walks you through setting up the temporary backend using **Google Sheets** and **Google Apps Script** for gated product PDF downloads on the Venusgeo website.
 
 ---
 
 ## 1. Create the Google Sheet
 
-1. Open [Google Sheets](https://sheets.google.com) using your **VenusGeo / Company Google Account** (or appropriate company-owned account).
+1. Open [Google Sheets](https://sheets.google.com) using your **Venusgeo / Company Google Account** (or appropriate company-owned account).
 2. Create a new blank spreadsheet.
 3. Name the spreadsheet:
    ```text
-   VenusGeo Website PDF Leads
+   Venusgeo Website PDF Leads
    ```
 4. Rename the default sheet tab (at the bottom) to:
    ```text
@@ -65,7 +65,7 @@ The script in `Code.gs` contains an automatic sharing command:
 5. Click the **Save** icon (diskette icon) or press `Cmd + S` / `Ctrl + S`.
 6. Rename the Apps Script project at the top to:
    ```text
-   VenusGeo PDF Lead Gate API
+   Venusgeo PDF Lead Gate API
    ```
 
 ---
@@ -79,7 +79,7 @@ The script in `Code.gs` contains an automatic sharing command:
    - **Execute as:** `Me (your-email@company.com)`
    - **Who has access:** `Anyone` *(Critical: allows the website form to submit leads asynchronously without requiring visitors to sign into Google).*
 4. Click **Deploy**.
-5. If prompted with *"Authorization required"*, click **Authorize access**, select your company account, click **Advanced** → **Go to VenusGeo PDF Lead Gate API (unsafe)**, and click **Allow**.
+5. If prompted with *"Authorization required"*, click **Authorize access**, select your company account, click **Advanced** → **Go to Venusgeo PDF Lead Gate API (unsafe)**, and click **Allow**.
 6. Google will provide a **Web app URL** formatted like:
    ```text
    https://script.google.com/macros/s/AKfycbx.../exec
@@ -111,7 +111,7 @@ export const GOOGLE_APPS_SCRIPT_URL =
 
 | Setting | Required Value | Location |
 | :--- | :--- | :--- |
-| **Google Sheet Name** | `VenusGeo Website PDF Leads` | Google Drive |
+| **Google Sheet Name** | `Venusgeo Website PDF Leads` | Google Drive |
 | **Worksheet Tab Name** | `PDF Downloads` | Inside Google Sheet |
 | **Web App URL** | `https://script.google.com/macros/s/.../exec` | `.env` or `leadGateConfig.ts` |
 | **Pammy AI PDF Path** | `/assets/docs/document-ai-business-presentation.pdf` | `src/data/products.ts` |

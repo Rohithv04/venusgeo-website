@@ -5,7 +5,7 @@
  * 
  * Google Apps Script Web App Endpoint for Google Sheets Lead Capture.
  * 
- * Target Google Sheet: "VenusGeo Website PDF Leads"
+ * Target Google Sheet: "Venusgeo Website PDF Leads"
  * Target Worksheet:    "PDF Downloads"
  * 
  * Columns:
@@ -108,7 +108,7 @@ var BLOCKED_PREFIXES = [
 ];
 
 /**
- * Handles incoming POST requests from the VenusGeo website
+ * Handles incoming POST requests from the Venusgeo website
  */
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -236,7 +236,7 @@ function doPost(e) {
 function doGet(e) {
   return createJsonResponse({
     status: 'online',
-    service: 'VenusGeo PDF Lead Gate API',
+    service: 'Venusgeo PDF Lead Gate API',
     version: '1.0.0',
     timestamp: new Date().toISOString()
   });

@@ -3,7 +3,6 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import {
   mobilityHomeContent,
-  xamarinContent,
   iotContent,
   mobilityFormsContent
 } from '../data/mobilityContent';
@@ -78,7 +77,7 @@ export const EnterpriseProducts: React.FC = () => {
   }, [selectedProduct, previewPdf, gatedProduct]);
 
   useEffect(() => {
-    document.title = 'Enterprise Products | VenusGeo';
+    document.title = 'Enterprise Products | Venusgeo';
 
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
@@ -88,7 +87,7 @@ export const EnterpriseProducts: React.FC = () => {
     }
     metaDesc.setAttribute(
       'content',
-      'Explore VenusGeo enterprise products across cruise and hospitality, healthcare, telecom and connected business operations.'
+      'Explore Venusgeo enterprise products across cruise and hospitality, healthcare, telecom and connected business operations.'
     );
 
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -162,18 +161,6 @@ export const EnterpriseProducts: React.FC = () => {
         ease: 'power2.out'
       });
 
-      // Xamarin section
-      gsap.from('.xamarin-banner, .xamarin-choice-block', {
-        scrollTrigger: {
-          trigger: '.xamarin-section',
-          start: 'top 95%',
-          toggleActions: 'play none none none'
-        },
-        y: 12,
-        duration: 0.4,
-        stagger: 0.05,
-        ease: 'power2.out'
-      });
 
       // IoT section
       gsap.from('.iot-banner, .empower-block', {
@@ -239,13 +226,10 @@ export const EnterpriseProducts: React.FC = () => {
             Products
           </button>
           <button type="button" onClick={() => scrollToSubAnchor('emp')} className="subnav-link">
-            EMP & Cases
+            Product Quick View
           </button>
           <button type="button" onClick={() => scrollToSubAnchor('tech-stacks')} className="subnav-link">
             Tech Stacks
-          </button>
-          <button type="button" onClick={() => scrollToSubAnchor('xamarin')} className="subnav-link">
-            Xamarin & MAUI
           </button>
           <button type="button" onClick={() => scrollToSubAnchor('iot')} className="subnav-link">
             Enterprise IoT
@@ -271,7 +255,7 @@ export const EnterpriseProducts: React.FC = () => {
 
                 <h1 className="banner-title">{mobilityHomeContent.hero.title}</h1>
                 <p className="banner-subtitle">
-                  25+ Years of dedication, building enterprise mobile apps and transforming legacy applications
+                  25+ Years of dedication, building enterprise products and transforming legacy applications
                 </p>
 
                 <div className="banner-actions">
@@ -302,7 +286,7 @@ export const EnterpriseProducts: React.FC = () => {
               <div className="stats-strip">
                 <div className="stat-card">
                   <div className="stat-value">25+</div>
-                  <div className="stat-label">Mobile Apps</div>
+                  <div className="stat-label">Products</div>
                 </div>
                 <div className="stat-card">
                   <div className="stat-value">500+</div>
@@ -337,7 +321,7 @@ export const EnterpriseProducts: React.FC = () => {
               <div className="tob-card card-panel">
                 <div className="tob-badge">TOB’s</div>
                 <h4 className="tob-heading">Transfer Operate Build</h4>
-                <p className="tob-desc">Our team have mastered, how to build enterprise apps over coming barriers</p>
+                <p className="tob-desc">Our team have mastered, how to build enterprise products over coming CAPEX &amp; OPEX barriers</p>
                 <div className="tob-points">
                   {mobilityHomeContent.hero.tobPoints.map((pt, i) => (
                     <div key={i} className="tob-pill">
@@ -385,9 +369,9 @@ export const EnterpriseProducts: React.FC = () => {
                       </div>
                       {group.id === 'cruise-hospitality' && (
                         <div className="cruise-journey-intro">
-                          <p className="journey-lead">Software for the complete passenger movement journey.</p>
+                          <p className="journey-lead">Products for the complete passenger movement journey.</p>
                           <p className="journey-sub">
-                            From terminal check-in to ship access, onboard safety and final departure, VenusGeo builds digital products that help cruise operations move more smoothly.
+                            From terminal check-in to ship access, onboard safety and final departure, Venusgeo builds digital products that help cruise operations move more smoothly.
                           </p>
                         </div>
                       )}
@@ -397,15 +381,11 @@ export const EnterpriseProducts: React.FC = () => {
                     <div className="cases-grid" role="list">
                       {groupProducts.map((prod) => {
                         const displayName =
-                          prod.id === 'network-services'
-                            ? 'Network Devices'
-                            : prod.id === 'dr-queues'
+                          prod.id === 'dr-queues'
                             ? 'DrQueues'
                             : prod.name;
                         const displayAction =
-                          prod.id === 'network-services'
-                            ? 'Explore Network Devices'
-                            : prod.id === 'dr-queues'
+                          prod.id === 'dr-queues'
                             ? 'Explore DrQueues'
                             : prod.actionText;
 
@@ -475,18 +455,13 @@ export const EnterpriseProducts: React.FC = () => {
           </div>
         </section>
 
-        {/* EMP Expertise & Case Studies */}
+        {/* Product Quick View & Case Studies */}
         <section id="emp" className="section emp-section">
           <div className="container">
             <div className="section-intro-block card-panel">
-              <span className="eyebrow">Productization Expertise</span>
+              <span className="eyebrow">Product Quick View</span>
               <h2 className="section-title">{mobilityHomeContent.hero.empTitle}</h2>
               <p className="section-lead">{mobilityHomeContent.hero.empDescription}</p>
-            </div>
-
-            <div className="cases-header-block">
-              <h2 className="cases-heading">{mobilityHomeContent.engagement.heading}</h2>
-              <p className="cases-intro">{mobilityHomeContent.engagement.intro}</p>
             </div>
 
             {/* Substantive Case Studies */}
@@ -556,90 +531,6 @@ export const EnterpriseProducts: React.FC = () => {
           </div>
         </section>
 
-        {/* ========================================================================= */}
-        {/* SECTION 2: XAMARIN & MAUI EXPERTISE MIGRATION                             */}
-        {/* ========================================================================= */}
-        <section id="xamarin" className="section xamarin-section">
-          <div className="container">
-            <div className="xamarin-banner card-panel">
-              <div className="xamarin-banner-content">
-                <span className="eyebrow">Microsoft .NET Specialization</span>
-                <h2 className="xamarin-title">{xamarinContent.hero.title}</h2>
-                <p className="xamarin-subtitle">{xamarinContent.hero.subtitle}</p>
-              </div>
-
-              {/* Exact Xamarin Stats */}
-              <div className="stats-strip">
-                <div className="stat-card">
-                  <div className="stat-value">25+</div>
-                  <div className="stat-label">Mobile Apps</div>
-                </div>
-                <div className="stat-card">
-                  <div className="stat-value">500+</div>
-                  <div className="stat-label">functional scopes</div>
-                </div>
-                <div className="stat-card">
-                  <div className="stat-value">25+</div>
-                  <div className="stat-label">Years of Experience</div>
-                </div>
-                <div className="stat-card">
-                  <div className="stat-value">TOB’s</div>
-                  <div className="stat-label">Transfer Operate Build</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Xamarin & MAUI Choice for Customers */}
-            <div className="xamarin-choice-block card-panel">
-              <h3 className="choice-heading">{xamarinContent.choice.heading}</h3>
-              <p className="choice-para">{xamarinContent.choice.paragraph1}</p>
-              <p className="choice-para highlight-para">{xamarinContent.choice.paragraph2}</p>
-            </div>
-
-            {/* Engage with Xamarin & MAUI Core Team */}
-            <div className="xamarin-engage-block">
-              <h3 className="engage-heading">{xamarinContent.engage.heading}</h3>
-              <p className="engage-intro">{xamarinContent.engage.intro}</p>
-
-              <div className="xamarin-cases-grid">
-                {xamarinContent.engage.cases.map((cs, idx) => (
-                  <div key={idx} className="xamarin-case-item card-panel">
-                    <div className="xamarin-case-header">
-                      <span className="icon-red-outline">
-                        <Smartphone size={16} />
-                      </span>
-                      <h4 className="xamarin-case-title">{cs.title}</h4>
-                    </div>
-                    <p className="xamarin-case-desc">{cs.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Technical Confidence & Infographic Diagram */}
-            <div className="confidence-block card-panel">
-              <div className="confidence-text">
-                <h3 className="confidence-heading">{xamarinContent.confidence.heading}</h3>
-                <p className="confidence-desc">{xamarinContent.confidence.description}</p>
-                <div className="confidence-tagline">{xamarinContent.confidence.tagline}</div>
-              </div>
-              <div className="confidence-media">
-                <img
-                  src={xamarinContent.confidence.infographic}
-                  alt="Xamarin & MAUI Technical Architecture Diagram"
-                  className="infographic-img"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            {/* What team can do for you */}
-            <div className="can-do-box card-panel">
-              <h3 className="can-do-title">{xamarinContent.deliverables.heading}</h3>
-              <p className="can-do-text">{xamarinContent.deliverables.description}</p>
-            </div>
-          </div>
-        </section>
 
         {/* ========================================================================= */}
         {/* SECTION 3: ENTERPRISE IOT MIGRATION                                       */}
@@ -932,10 +823,10 @@ export const EnterpriseProducts: React.FC = () => {
                 </p>
               )}
 
-              {/* What the Software Supports / Manages */}
+              {/* What the Product Supports / Manages */}
               {selectedProduct.process.capabilities && selectedProduct.process.capabilities.length > 0 && (
                 <div className="modal-spec-block">
-                  <h4 className="spec-heading">What the Software Supports</h4>
+                  <h4 className="spec-heading">What the Product Supports</h4>
                   <div className="capabilities-spec-grid">
                     {selectedProduct.process.capabilities.map((cap, i) => {
                       const isObj = typeof cap === 'object' && cap !== null;
@@ -1881,252 +1772,7 @@ export const EnterpriseProducts: React.FC = () => {
           color: var(--text-primary);
         }
 
-        /* Xamarin Section */
-        .xamarin-section {
-          background-color: var(--surface-white);
-        }
 
-        .xamarin-banner {
-          background-color: var(--surface-white);
-          padding: 40px;
-          margin-bottom: 32px;
-        }
-
-        @media (max-width: 768px) {
-          .xamarin-banner {
-            padding: 22px 18px;
-            margin-bottom: 24px;
-          }
-          .xamarin-subtitle {
-            font-size: 0.95rem !important;
-            line-height: 1.55 !important;
-            margin-bottom: 20px !important;
-          }
-        }
-
-        .xamarin-title {
-          font-size: var(--font-section-heading);
-          letter-spacing: var(--tracking-heading);
-          margin-bottom: 10px;
-          line-height: 1.12;
-        }
-
-        .xamarin-subtitle {
-          font-size: 1.0625rem;
-          color: var(--text-secondary);
-          margin-bottom: 28px;
-        }
-
-        .xamarin-choice-block {
-          padding: 32px;
-          margin-bottom: 32px;
-          background-color: var(--surface-soft);
-        }
-
-        @media (max-width: 768px) {
-          .xamarin-choice-block {
-            padding: 22px 18px;
-            margin-bottom: 24px;
-          }
-          .choice-heading {
-            font-size: 1.2rem !important;
-          }
-          .choice-para {
-            font-size: 0.875rem !important;
-            line-height: 1.55 !important;
-          }
-        }
-
-        .choice-heading {
-          font-size: 1.35rem;
-          font-weight: 700;
-          letter-spacing: var(--tracking-title);
-          margin-bottom: 12px;
-        }
-
-        .choice-para {
-          font-size: 0.9375rem;
-          color: var(--text-secondary);
-          margin-bottom: 12px;
-          line-height: 1.6;
-          letter-spacing: var(--tracking-body);
-        }
-
-        .highlight-para {
-          font-weight: 600;
-          color: var(--text-primary);
-          border-left: 3px solid var(--brand-red);
-          padding-left: 14px;
-        }
-
-        .xamarin-engage-block {
-          margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-          .xamarin-engage-block {
-            margin-bottom: 24px;
-          }
-          .engage-heading {
-            font-size: 1.2rem !important;
-          }
-          .engage-intro {
-            font-size: 0.875rem !important;
-            line-height: 1.55 !important;
-            margin-bottom: 18px !important;
-          }
-        }
-
-        .engage-heading {
-          font-size: 1.35rem;
-          font-weight: 700;
-          letter-spacing: var(--tracking-title);
-          margin-bottom: 8px;
-        }
-
-        .engage-intro {
-          font-size: 0.9375rem;
-          color: var(--text-secondary);
-          margin-bottom: 24px;
-          max-width: 800px;
-          line-height: 1.6;
-        }
-
-        .xamarin-cases-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 16px;
-        }
-
-        @media (max-width: 992px) {
-          .xamarin-cases-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 560px) {
-          .xamarin-cases-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
-          }
-        }
-
-        .xamarin-case-item {
-          padding: 20px;
-          background-color: var(--surface-white);
-        }
-
-        .xamarin-case-header {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 10px;
-        }
-
-        .xamarin-case-title {
-          font-size: 1rem;
-          font-weight: 700;
-          letter-spacing: var(--tracking-title);
-        }
-
-        .xamarin-case-desc {
-          font-size: 0.8125rem;
-          color: var(--text-secondary);
-          line-height: 1.45;
-        }
-
-        .confidence-block {
-          display: grid;
-          grid-template-columns: 1fr 1.2fr;
-          gap: 32px;
-          padding: 36px;
-          background-color: var(--surface-white);
-          margin-bottom: 32px;
-          align-items: center;
-        }
-
-        @media (max-width: 880px) {
-          .confidence-block {
-            grid-template-columns: 1fr;
-            padding: 22px 18px;
-            gap: 20px;
-            margin-bottom: 24px;
-          }
-          .confidence-heading {
-            font-size: 1.2rem !important;
-          }
-          .confidence-desc {
-            font-size: 0.875rem !important;
-            margin-bottom: 16px !important;
-          }
-        }
-
-        .confidence-heading {
-          font-size: 1.35rem;
-          font-weight: 700;
-          letter-spacing: var(--tracking-title);
-          margin-bottom: 12px;
-        }
-
-        .confidence-desc {
-          font-size: 0.9375rem;
-          color: var(--text-secondary);
-          margin-bottom: 20px;
-          line-height: 1.6;
-        }
-
-        .confidence-tagline {
-          font-size: 1rem;
-          font-weight: 700;
-          color: var(--brand-red);
-          letter-spacing: var(--tracking-title);
-        }
-
-        .confidence-media {
-          display: flex;
-          justify-content: center;
-          background-color: var(--surface-soft);
-          border-radius: 6px;
-          padding: 16px;
-          border: 1px solid var(--border-subtle);
-        }
-
-        .infographic-img {
-          max-width: 100%;
-          height: auto;
-          border-radius: 4px;
-        }
-
-        .can-do-box {
-          padding: 28px;
-          background-color: var(--surface-soft);
-        }
-
-        @media (max-width: 768px) {
-          .can-do-box {
-            padding: 22px 18px;
-          }
-          .can-do-title {
-            font-size: 1.15rem !important;
-          }
-          .can-do-text {
-            font-size: 0.875rem !important;
-            line-height: 1.55 !important;
-          }
-        }
-
-        .can-do-title {
-          font-size: 1.25rem;
-          font-weight: 700;
-          letter-spacing: var(--tracking-title);
-          margin-bottom: 8px;
-        }
-
-        .can-do-text {
-          font-size: 0.9375rem;
-          color: var(--text-secondary);
-          line-height: 1.6;
-        }
 
         /* IoT Section */
         .iot-section {
@@ -3011,7 +2657,7 @@ export const EnterpriseProducts: React.FC = () => {
           flex-shrink: 0;
         }
 
-        /* What the Software Supports Grid */
+        /* What the Product Supports Grid */
         .capabilities-spec-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);

@@ -70,7 +70,7 @@ export const AboutOverview: React.FC = () => {
             <div className="milestone-year-text">2001</div>
             <div className="milestone-sub">Where the journey began</div>
             <p className="milestone-desc">
-              Founded in Doral, Florida to architect high-reliability business systems and enterprise software that perform under demand.
+              Founded in Doral, Florida to architect high-reliability business systems and enterprise products that perform under demand.
             </p>
           </div>
 

@@ -167,7 +167,7 @@ export const products: ProductItem[] = [
         'NIST FRTE 1:1 Verification track participant (privid_004) with certified Level 3 presentation attack detection (ISO/IEC 30107-3)',
         'NIST CMVP validated cryptographic module (Certificate #4985) and FIDO2 / WebAuthn / CTAP2 standards compliance',
         'Offline-native architecture: Local matching, signed verdict queues, and zero satellite dependency in the identity critical path',
-        'Low adoption cost: Software-only SDK integration in ~1–2 weeks per application with zero middleware server estate'
+        'Low adoption cost: Product-ready SDK integration in ~1–2 weeks per application with zero middleware server estate'
       ]
     }
   },
@@ -185,7 +185,7 @@ export const products: ProductItem[] = [
     destinationType: 'internal-panel',
     process: {
       headline: 'Move guests from terminal to ship with less friction.',
-      intro: "VenusGeo's Embarkation software helps cruise operators manage high-volume passenger check-in through a mobile-first digital workflow. It supports guest identification, document verification, boarding validation and operational status updates — helping teams move passengers through the terminal faster and with greater visibility.",
+      intro: "Venusgeo's Embarkation product helps cruise operators manage high-volume passenger check-in through a mobile-first digital workflow. It supports guest identification, document verification, boarding validation and operational status updates — helping teams move passengers through the terminal faster and with greater visibility.",
       fullDescription: 'The goal of the product is to reduce dependence on manual or fixed check-in workflows and create a smoother boarding experience for both guests and terminal teams.',
       capabilities: [
         {
@@ -257,8 +257,8 @@ export const products: ProductItem[] = [
     destinationType: 'internal-panel',
     process: {
       headline: 'Know every movement between ship and shore.',
-      intro: "VenusGeo's Gangway software helps cruise operators manage guest, crew and visitor movement at vessel entry and exit points. Mobile identity verification and digital check-in/check-out workflows give teams clearer visibility into who is onboard and who has gone ashore.",
-      fullDescription: 'The software helps replace fragmented manual processes with a more connected and traceable gangway operation.',
+      intro: "Venusgeo's Gangway product helps cruise operators manage guest, crew and visitor movement at vessel entry and exit points. Mobile identity verification and digital check-in/check-out workflows give teams clearer visibility into who is onboard and who has gone ashore.",
+      fullDescription: 'The product helps replace fragmented manual processes with a more connected and traceable gangway operation.',
       capabilities: [
         {
           title: 'MOBILE IDENTITY CHECK',
@@ -304,9 +304,9 @@ export const products: ProductItem[] = [
         }
       ],
       benefits: [
-        'Controlled ship/shore movement.',
-        'Clearer operational visibility.',
-        'Less manual processing.'
+        'Controlled guests ship/shore onboard movement',
+        'Reduced manual processing',
+        'Clear operational visibility'
       ]
     }
   },
@@ -324,7 +324,7 @@ export const products: ProductItem[] = [
     destinationType: 'internal-panel',
     process: {
       headline: 'Make safety accountability clearer and faster.',
-      intro: "VenusGeo's Mustering software supports digital identification and attendance workflows during onboard safety drills and muster operations. It helps crew teams confirm participation, identify outstanding passengers or crew, and maintain a clearer operational view of muster status.",
+      intro: "Venusgeo's Mustering product supports digital identification and attendance workflows during onboard safety drills and muster operations. It helps crew teams confirm participation, identify outstanding passengers or crew, and maintain a clearer operational view of muster status.",
       fullDescription: 'The product is designed to replace fragmented manual tracking with a more structured, mobile-first safety workflow.',
       capabilities: [
         {
@@ -391,7 +391,7 @@ export const products: ProductItem[] = [
     destinationType: 'internal-panel',
     process: {
       headline: 'Make the final passenger movement smoother.',
-      intro: "VenusGeo's Debarkation software helps cruise operators manage passenger departure through structured identity confirmation, status updates and digital checkout workflows. It gives operational teams clearer visibility as guests complete their journey and leave the vessel.",
+      intro: "Venusgeo's Debarkation product helps cruise operators manage passenger departure through structured identity confirmation, status updates and digital checkout workflows. It gives operational teams clearer visibility as guests complete their journey and leave the vessel.",
       fullDescription: 'The product helps reduce manual processing while supporting a more organized final stage of the cruise guest journey.',
       capabilities: [
         {
@@ -568,7 +568,7 @@ export const products: ProductItem[] = [
       fileSize: '2.5 MB'
     },
     detail: {
-      overview: 'ITAL provides comprehensive maritime and distributed fleet IT asset management, monitoring connected devices, satellite links, and software health worldwide.',
+      overview: 'ITAL provides comprehensive maritime and distributed fleet IT asset management, monitoring connected devices, satellite links, and system health worldwide.',
       features: [
         'Unified fleet IT telemetry and asset lifecycle management',
         'Vessel connectivity status across VSAT, Starlink, and 5G/LTE',
@@ -578,7 +578,7 @@ export const products: ProductItem[] = [
       useCases: [
         'Commercial fleet vessel IT operations and compliance',
         'Distributed offshore crew device administration',
-        'Enterprise vessel software rollout and patch management'
+        'Enterprise vessel product rollout and patch management'
       ],
       technicalHighlights: [
         'Low-bandwidth telemetry protocol optimized for satellite links',

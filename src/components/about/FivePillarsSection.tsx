@@ -79,7 +79,7 @@ export const FivePillarsSection: React.FC = () => {
       id: 'pillar-02',
       num: '02',
       title: 'Sourcing',
-      tagline: 'Great products depend on more than great software',
+      tagline: 'Great products depend on more than great code',
       icon: Cpu,
       content:
         'Selecting the right platforms, infrastructure, devices, technologies and vendors is a critical part of product engineering. Our sourcing approach considers the wider global ecosystem rather than treating technology selection as a single-vendor decision.',
@@ -99,7 +99,7 @@ export const FivePillarsSection: React.FC = () => {
         'Total Cost'
       ],
       constellationNodes: [
-        'Software',
+        'Product',
         'Hardware',
         'Cloud',
         'Security',
@@ -353,7 +353,7 @@ export const FivePillarsSection: React.FC = () => {
               </div>
 
               <h3 className="pillar-heading">
-                Great products depend on more than great software.
+                Great products depend on more than great code.
               </h3>
 
               <p className="pillar-text">{pillars[1].content}</p>
@@ -389,11 +389,11 @@ export const FivePillarsSection: React.FC = () => {
                       Venusgeo
                     </text>
 
-                    {/* Node 1: Software */}
+                    {/* Node 1: Product */}
                     <g transform="translate(90, 60)">
                       <circle cx="0" cy="0" r="18" fill="#ffffff" stroke="#e2e2e8" strokeWidth="1.5" />
                       <circle cx="0" cy="0" r="5" fill="#ed1b24" />
-                      <text x="0" y="30" textAnchor="middle" fontSize="10" fontWeight="700" fill="#121214">Software</text>
+                      <text x="0" y="30" textAnchor="middle" fontSize="10" fontWeight="700" fill="#121214">Product</text>
                     </g>
 
                     {/* Node 2: Cloud */}

@@ -89,7 +89,7 @@ export const AIEngineeringCTA: React.FC<AIEngineeringCTAProps> = ({
             <span className="text-red">in your business.</span>
           </h2>
           <p className="ai-cta-subheading">
-            Whatever stage your software or engineering capability is at, our team can help you map the
+            Whatever stage your product or engineering capability is at, our team can help you map the
             practical, accountable way forward.
           </p>
         </div>
@@ -192,9 +192,9 @@ export const AIEngineeringCTA: React.FC<AIEngineeringCTAProps> = ({
                       onChange={(e) => setFormData({ ...formData, focusArea: e.target.value })}
                     >
                       <option value="Build AI-powered products">01. Build new AI-powered products</option>
-                      <option value="Add intelligence to existing software">02. Add intelligence to existing software</option>
+                      <option value="Add intelligence to existing products">02. Add intelligence to existing products</option>
                       <option value="Modernize legacy systems with AI">03. Modernize legacy systems with AI</option>
-                      <option value="Accelerate software engineering teams">04. Accelerate software engineering teams</option>
+                      <option value="Accelerate product engineering teams">04. Accelerate product engineering teams</option>
                       <option value="Executive 90-minute opportunity workshop">05. Book 90-minute AI opportunity workshop</option>
                     </select>
                   </div>
@@ -224,7 +224,7 @@ export const AIEngineeringCTA: React.FC<AIEngineeringCTAProps> = ({
         {/* Closing Brand Statement */}
         <div className="closing-brand-bar">
           <p className="brand-statement-text">
-            <strong>Venusgeo:</strong> Engineering the next generation of software with AI.
+            <strong>Venusgeo:</strong> Engineering the next generation of products with AI.
           </p>
         </div>
       </div>

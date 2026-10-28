@@ -69,7 +69,7 @@ export const PowerOfDiversity: React.FC = () => {
       input: 'Shared purpose',
       arrow: '→',
       outcome: 'Turns ideas into outcomes',
-      sub: 'United focus translates multifaceted viewpoints into robust enterprise software.'
+      sub: 'United focus translates multifaceted viewpoints into robust enterprise products.'
     }
   ];
 

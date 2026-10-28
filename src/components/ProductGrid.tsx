@@ -162,10 +162,10 @@ export const ProductGrid: React.FC = () => {
                 </p>
               )}
 
-              {/* What the Software Supports */}
+              {/* What the Product Supports */}
               {selectedProduct.process.capabilities && selectedProduct.process.capabilities.length > 0 && (
                 <div className="modal-spec-block">
-                  <h4 className="spec-heading">What the Software Supports</h4>
+                  <h4 className="spec-heading">What the Product Supports</h4>
                   <div className="capabilities-spec-grid">
                     {selectedProduct.process.capabilities.map((cap, i) => {
                       const isObj = typeof cap === 'object' && cap !== null;
@@ -869,7 +869,7 @@ export const ProductGrid: React.FC = () => {
           flex-shrink: 0;
         }
 
-        /* What the Software Supports Grid */
+        /* What the Product Supports Grid */
         .capabilities-spec-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);

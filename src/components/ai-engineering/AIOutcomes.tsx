@@ -31,7 +31,7 @@ export const AIOutcomes: React.FC = () => {
       keyword: 'TRANSFORM',
       tagline: 'Add intelligence to the products and processes you already run.',
       detail:
-        'No costly rip-and-replace. We introduce an AI service layer into your existing enterprise software, enabling natural-language querying, smart forms, automated validation, and predictive workflows.',
+        'No costly rip-and-replace. We introduce an AI service layer into your existing enterprise products, enabling natural-language querying, smart forms, automated validation, and predictive workflows.',
       deliverables: ['In-app assistants & chat', 'Natural-language queries', 'Automated anomaly detection', 'Self-filling configurations'],
       schematicType: 'integrate'
     },
@@ -87,7 +87,7 @@ export const AIOutcomes: React.FC = () => {
             <span className="text-red">Four ways to put AI to work.</span>
           </h2>
           <p className="outcomes-subheading">
-            Whether starting fresh, augmenting live software, deciphering legacy platforms, or
+            Whether starting fresh, augmenting live products, deciphering legacy platforms, or
             supercharging your internal engineers — Venusgeo provides disciplined, production-tested execution.
           </p>
         </div>

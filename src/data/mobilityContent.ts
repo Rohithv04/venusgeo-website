@@ -18,10 +18,10 @@ export interface IoTModule {
 
 export const mobilityHomeContent = {
   hero: {
-    title: 'Build Your Mobile Apps With Our Enterprise Products Expert Team!',
-    subtitle: '25+ Years of dedication, to only build mobile apps and transform legacy applications',
+    title: 'Build Your Products With Our Enterprise Products Expert Team!',
+    subtitle: '25+ Years of dedication, to only build products and transform legacy applications',
     stats: [
-      { value: '25+', label: 'Mobile Apps' },
+      { value: '25+', label: 'Products' },
       { value: '500+', label: 'functional scopes' },
       { value: '25+', label: 'Years of Experience' },
       { value: 'TOB’s', label: 'Transfer Operate Build' }
@@ -34,8 +34,8 @@ export const mobilityHomeContent = {
       'Skill Shortage',
       'Client Agility'
     ],
-    empTitle: 'Enterprise Products Productization (EMP) Expertise',
-    empDescription: 'Building on a Complex Infra Plane, a mix of Legacy and Modern Tech Stacks, making it possible for Customers to Create Mobile Apps with us.'
+    empTitle: 'Enterprise Product Quick View',
+    empDescription: 'Building on a Complex Infra Plane, a mix of Legacy and Modern Tech Stacks, making it possible for Customers to Create Products with us.'
   },
   engagement: {
     heading: 'What It’s Like to Engage with Venusgeo Enterprise Products Team',
@@ -155,7 +155,7 @@ export const mobilityHomeContent = {
   },
   building: {
     heading: 'What It’s Like to Build with Venusgeo Enterprise Products Team',
-    description: 'How do we build so many apps. Venusgeo Enterprise Products Division is a 140-member core team, who have built 25+ apps, and over 500+ functional modules, with a high degree of digital integration dominance across the APP ecosystem. You name an APP technology our team is already working on it.',
+    description: 'Venusgeo Enterprise Products Division is a 140-member core team, who have built 25+ products, and over 500+ functional modules, with a high degree of digital integration dominance across the product ecosystem.',
     categories: [
       {
         name: 'Mobile Platforms',
@@ -207,10 +207,10 @@ export const mobilityHomeContent = {
 
 export const xamarinContent = {
   hero: {
-    title: 'Build Your Mobile Apps With Our Xamarin & MAUI Expert Team!',
-    subtitle: 'Building Xamarin Apps from 2018 and transforming legacy applications',
+    title: 'Build Your Products With Our Xamarin & MAUI Expert Team!',
+    subtitle: 'Building Xamarin products from 2018 and transforming legacy applications',
     stats: [
-      { value: '25+', label: 'Mobile Apps' },
+      { value: '25+', label: 'Products' },
       { value: '500+', label: 'functional scopes' },
       { value: '25+', label: 'Years of Experience' },
       { value: 'TOB’s', label: 'Transfer Operate Build' }
@@ -219,11 +219,11 @@ export const xamarinContent = {
   choice: {
     heading: 'Xamarin & MAUI Choice for Customers',
     paragraph1: 'When engaging with enterprise customers and you learn they are running applications using .NET Framework for years, you should never hesitate to say XAMARIN/MAUI is the best choice for a app modernization investment.',
-    paragraph2: 'Venusgeo has a proven record in succeeding with the choices made, in delivering the app modernization for the world largest cruise company, bringing in Xamarin & MAUI stacks into their mobile apps.'
+    paragraph2: 'Venusgeo has a proven record in succeeding with the choices made, in delivering the product modernization for the world largest cruise company, bringing in Xamarin & MAUI stacks into their products.'
   },
   engage: {
     heading: 'What It’s Like to Engage with Our Xamarin & MAUI Core Team',
-    intro: 'Are you deciding to invest in app modernization and are you running applications in Microsoft .Net stack, Venusgeo is the right partner for your investment and our .Net Core team is the perfect delivery arm for your investment. See the apps below, we delivered to the world’s largest cruise company that uses Xamarin and MAUI and is running in 25+ ships.',
+    intro: 'Are you deciding to invest in product modernization and are you running applications in Microsoft .Net stack, Venusgeo is the right partner for your investment and our .Net Core team is the perfect delivery arm for your investment. See the products below, we delivered to the world’s largest cruise company that uses Xamarin and MAUI and is running in 25+ ships.',
     cases: [
       {
         title: 'Dining POS',
@@ -348,7 +348,7 @@ export const iotContent = {
 export const mobilityFormsContent = {
   buildWithUs: {
     title: 'Build with us',
-    description: 'We have delivered Mobile App development for customers as products and projects as an outsourced engagement, end-end. We can do the same for your requirements.',
+    description: 'We have delivered product development for customers as products and projects as an outsourced engagement, end-end. We can do the same for your requirements.',
     fields: [
       { name: 'name', label: 'Name', placeholder: 'Enter your name' },
       { name: 'email', label: 'Business email', placeholder: 'Enter your business email' },
@@ -359,7 +359,7 @@ export const mobilityFormsContent = {
   },
   useOurResource: {
     title: 'Use our resource',
-    description: 'Customers have used our team members to accelerate the development of mobile apps to build their products and projects. You can still pick resources from our expertise pool.',
+    description: 'Customers have used our team members to accelerate the development of products to build their products and projects. You can still pick resources from our expertise pool.',
     fields: [
       { name: 'name', label: 'Name', placeholder: 'Enter your name' },
       { name: 'email', label: 'Business email', placeholder: 'Enter your business email' },

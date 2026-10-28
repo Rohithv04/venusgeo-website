@@ -28,7 +28,7 @@ export const WhyVenusgeoAI: React.FC = () => {
     {
       num: '03',
       title: 'WE USE AI OURSELVES',
-      statement: 'The way we engineer software has changed, and we practice what we advise.',
+      statement: 'The way we engineer products has changed, and we practice what we advise.',
       body:
         'We do not treat AI as a speculative research experiment. Our daily engineering pipelines run on AI-assisted spec generation, continuous validation, automated unit coverage, and brownfield code analysis.',
       icon: Terminal,
@@ -84,7 +84,7 @@ export const WhyVenusgeoAI: React.FC = () => {
                   <span className="proven-stat-num">2001</span>
                   <div className="proven-stat-desc">
                     <strong>Enterprise Rooted</strong>
-                    <span>Deploying production software for 25+ years</span>
+                    <span>Deploying production products for 25+ years</span>
                   </div>
                 </div>
               </div>
