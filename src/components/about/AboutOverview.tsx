@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { CheckCircle2, Sparkles } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { gsap, prefersReducedMotion } from '../../utils/animations';
 
 export const AboutOverview: React.FC = () => {
@@ -58,10 +58,6 @@ export const AboutOverview: React.FC = () => {
               <span className="text-red">tested by two decades of scale.</span>
             </h2>
           </div>
-          <div className="overview-statement-badge">
-            <Sparkles size={16} className="text-red" />
-            <span>Heritage & Forward Momentum</span>
-          </div>
         </div>
 
         {/* Large Typographic Moment: 2001 -> TODAY */}
@@ -87,7 +83,7 @@ export const AboutOverview: React.FC = () => {
             <div className="milestone-year-text text-red">TODAY</div>
             <div className="milestone-sub">Building AI-first enterprise technology</div>
             <p className="milestone-desc">
-              Harnessing agentic intelligence, zero-knowledge biometric validation, and distributed mobility to power tomorrow's enterprises.
+              Harnessing artificial intelligence, zero-knowledge and biometric validation to power tomorrow&apos;s enterprises.
             </p>
           </div>
         </div>

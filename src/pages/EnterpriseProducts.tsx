@@ -226,7 +226,7 @@ export const EnterpriseProducts: React.FC = () => {
             Products
           </button>
           <button type="button" onClick={() => scrollToSubAnchor('emp')} className="subnav-link">
-            Product Quick View
+            Quick View
           </button>
           <button type="button" onClick={() => scrollToSubAnchor('tech-stacks')} className="subnav-link">
             Tech Stacks
@@ -341,11 +341,7 @@ export const EnterpriseProducts: React.FC = () => {
         <section id="products" className="section mobility-products-section" aria-label="Enterprise Product Portfolio">
           <div className="container">
             <div className="section-intro-block card-panel">
-              <span className="eyebrow">Enterprise Product Portfolio</span>
-              <h2 className="section-title">Engineered Products & Connected Platforms</h2>
-              <p className="section-lead">
-                Full-lifecycle AI, security, healthcare, telecom, and mobility products engineered for real-world enterprise operations.
-              </p>
+              <h2 className="eyebrow" style={{ margin: 0 }}>Enterprise Product Portfolio</h2>
             </div>
 
             {/* THREE INDUSTRY GROUPS */}
@@ -455,11 +451,11 @@ export const EnterpriseProducts: React.FC = () => {
           </div>
         </section>
 
-        {/* Product Quick View & Case Studies */}
+        {/* Quick View & Case Studies */}
         <section id="emp" className="section emp-section">
           <div className="container">
             <div className="section-intro-block card-panel">
-              <span className="eyebrow">Product Quick View</span>
+              <span className="eyebrow">Quick View</span>
               <h2 className="section-title">{mobilityHomeContent.hero.empTitle}</h2>
               <p className="section-lead">{mobilityHomeContent.hero.empDescription}</p>
             </div>

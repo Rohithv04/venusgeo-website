@@ -73,14 +73,14 @@ export const AboutHero: React.FC = () => {
             <div className="eyebrow about-hero-eyebrow">About Venusgeo</div>
 
             <h1 ref={headlineRef} className="about-hero-headline">
-              Built on experience.<br />
-              <span className="text-red">Driven by what comes next.</span>
+              Built on Experience<br />
+              <span className="text-red">Driven by what new comes next</span>
             </h1>
 
             <p ref={copyRef} className="about-hero-copy">
-              Venusgeo has been helping enterprises navigate technology transformation since 2001.
-              Our work combines deep research, disciplined engineering and an understanding of
-              real-world business operations to create technology that remains relevant long after launch.
+              Venusgeo has been helping enterprises steer technology transformation since 2001. Our work
+              combines collaboration, research, disciplined engineering and an understanding of relevant
+              industry&apos;s business and operations to create technology products that remains relevant long after launch.
             </p>
 
             {/* Meta heritage statement pill */}
@@ -103,7 +103,7 @@ export const AboutHero: React.FC = () => {
               <div className="metric-divider" />
               <div className="metric-box">
                 <div className="metric-box-val">AI-First</div>
-                <div className="metric-box-lbl">Architecture</div>
+                <div className="metric-box-lbl">Product DLC</div>
               </div>
               <div className="metric-divider" />
               <div className="metric-box">

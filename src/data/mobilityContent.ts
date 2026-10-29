@@ -34,7 +34,7 @@ export const mobilityHomeContent = {
       'Skill Shortage',
       'Client Agility'
     ],
-    empTitle: 'Enterprise Product Quick View',
+    empTitle: 'Enterprise Products',
     empDescription: 'Building on a Complex Infra Plane, a mix of Legacy and Modern Tech Stacks, making it possible for Customers to Create Products with us.'
   },
   engagement: {
