@@ -70,7 +70,7 @@ export const AboutHero: React.FC = () => {
         <div className="about-hero-layout">
           {/* Left Column: Eyebrow, Large Headline, Story Copy, Heritage Strip */}
           <div className="about-hero-content">
-            <div className="eyebrow about-hero-eyebrow">About Venusgeo</div>
+            <div className="eyebrow about-hero-eyebrow">The Company</div>
 
             <h1 ref={headlineRef} className="about-hero-headline">
               Built on Experience<br />
@@ -78,7 +78,7 @@ export const AboutHero: React.FC = () => {
             </h1>
 
             <p ref={copyRef} className="about-hero-copy">
-              Venusgeo has been helping enterprises steer technology transformation since 2001. Our work
+              Venusgeo has been helping enterprises steer technology transformation since 2016. Our work
               combines collaboration, research, disciplined engineering and an understanding of relevant
               industry&apos;s business and operations to create technology products that remains relevant long after launch.
             </p>
@@ -86,13 +86,13 @@ export const AboutHero: React.FC = () => {
             {/* Meta heritage statement pill */}
             <div className="about-hero-meta-pill">
               <span className="meta-dot" />
-              <span>Founded in 2001 · Doral, Florida · Serving enterprises across industries</span>
+              <span>Founded in 2016 in Pennsylvania · Now doing business in Florida · Serving enterprises across industries</span>
             </div>
 
             {/* Key Stat Blocks Strip */}
             <div ref={badgesRef} className="about-hero-metrics">
               <div className="metric-box">
-                <div className="metric-box-val">2001</div>
+                <div className="metric-box-val">2016</div>
                 <div className="metric-box-lbl">Founded</div>
               </div>
               <div className="metric-divider" />
@@ -131,7 +131,7 @@ export const AboutHero: React.FC = () => {
                   <span className="topology-indicator-dot" />
                   <span className="topology-code">SYSTEM PERSPECTIVE // ARCHITECTURE MATRIX</span>
                 </div>
-                <span className="topology-version-tag">EST. 2001</span>
+                <span className="topology-version-tag">EST. 2016</span>
               </div>
 
               {/* Orbital Interactive SVG Visual */}

@@ -47,8 +47,8 @@ export const PowerOfDiversity: React.FC = () => {
       icon: Users2,
       input: 'Different experiences',
       arrow: '→',
-      outcome: 'Reveal different opportunities',
-      sub: 'Diverse backgrounds surface unexplored market needs and user constraints.'
+      outcome: 'Different opportunities',
+      sub: 'Diverse backgrounds surfaces unexplored market needs and user constraints.'
     },
     {
       icon: Compass,

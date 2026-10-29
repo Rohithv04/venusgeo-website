@@ -30,14 +30,14 @@ export const AboutOutcomes: React.FC = () => {
     {
       num: '01',
       domain: 'BUSINESS',
-      heading: 'Build what comes next.',
+      heading: 'Build what has come next with AI.',
       description:
-        'Create next-generation products designed to remain competitive, relevant and adaptable as technology and markets evolve.',
+        'Create next-generation products driven by AI, staying competitive, relevant and adaptable as technologies evolve.',
       icon: TrendingUp,
       impacts: [
-        'Future-proof architectural flexibility',
+        'Future-proof architectural advantage',
         'Accelerated commercial time-to-market',
-        'Sustained competitive differentiation'
+        'Sustained competitive advantage'
       ]
     },
     {
@@ -45,10 +45,10 @@ export const AboutOutcomes: React.FC = () => {
       domain: 'CUSTOMER',
       heading: 'Continuously improve the experience.',
       description:
-        'Use thoughtful technology and better digital journeys to improve service quality and strengthen customer engagement.',
+        'We sign off on technologies bringing value, technologies improving service quality and technologies strengthening the customer engagement.',
       icon: Users,
       impacts: [
-        'Frictionless user & patient journeys',
+        'Frictionless user, workforce & patient journey',
         'Deterministic performance at high load',
         'Zero-compromise privacy and biometric trust'
       ]
@@ -58,11 +58,11 @@ export const AboutOutcomes: React.FC = () => {
       domain: 'OPERATIONS',
       heading: 'Make complexity easier to operate.',
       description:
-        'Build technology that integrates effectively with enterprise environments while remaining intuitive, efficient and simple to use.',
+        'Building products that integrates effectively that runs enterprise environments on cloud while remaining fluid, intuitive, efficient and simple to maintain.',
       icon: Wrench,
       impacts: [
         'Seamless integration with legacy ERPs & POS',
-        'Distributed edge sync across maritime/remote assets',
+        'Distributed edge sync across remote assets',
         'Autonomous monitoring and self-healing pipelines'
       ]
     }

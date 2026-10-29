@@ -60,13 +60,13 @@ export const AboutOverview: React.FC = () => {
           </div>
         </div>
 
-        {/* Large Typographic Moment: 2001 -> TODAY */}
+        {/* Large Typographic Moment: 2016 -> TODAY */}
         <div ref={trackRef} className="heritage-connector-container card-panel">
           <div className="heritage-milestone-block start-milestone">
-            <div className="milestone-year-text">2001</div>
+            <div className="milestone-year-text">2016</div>
             <div className="milestone-sub">Where the journey began</div>
             <p className="milestone-desc">
-              Founded in Doral, Florida to architect high-reliability business systems and enterprise products that perform under demand.
+              Founded in Pennsylvania and now doing business in Florida to architect high-reliability business systems and enterprise products that perform under demand.
             </p>
           </div>
 
@@ -93,11 +93,11 @@ export const AboutOverview: React.FC = () => {
           {/* Main Story Panel */}
           <div className="narrative-main-panel card-panel-soft">
             <h3 className="narrative-heading">
-              Technology must respond to the realities of the business using it.
+              Technology must be responsible to the ROI of the businesses using it.
             </h3>
             <p className="narrative-body">
-              Venusgeo was founded in 2001 and has spent more than two decades helping enterprises adopt and evolve digital technology.
-              Our approach has always been grounded in a simple principle: technology must respond to the realities of the business using it.
+              Venusgeo has more than two decades of experience, helping enterprises adapt and evolve in the business.
+              Our approach has always been grounded in a simple principle: technology must respond to the CAPEX and OPEX of the business using it.
             </p>
             <p className="narrative-body">
               Market research, operational context, customer behavior and long-term technology relevance shape how we design and deliver solutions.
@@ -212,7 +212,7 @@ export const AboutOverview: React.FC = () => {
           overflow-x: hidden;
         }
 
-        /* Heritage Connector: 2001 -> TODAY */
+        /* Heritage Connector: 2016 -> TODAY */
         .heritage-connector-container {
           display: grid;
           grid-template-columns: 1fr auto 1fr;

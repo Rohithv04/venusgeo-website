@@ -81,7 +81,7 @@ export const WhyVenusgeoAI: React.FC = () => {
 
               <div className="why-proven-box">
                 <div className="proven-stat-row">
-                  <span className="proven-stat-num">2001</span>
+                  <span className="proven-stat-num">2016</span>
                   <div className="proven-stat-desc">
                     <strong>Enterprise Rooted</strong>
                     <span>Deploying production products for 25+ years</span>
