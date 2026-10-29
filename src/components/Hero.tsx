@@ -31,6 +31,7 @@ export const Hero: React.FC = () => {
     if (!heroRef.current) return;
 
     if (videoRef.current) {
+      videoRef.current.muted = true;
       videoRef.current.play().catch(() => {});
     }
     if (statRef.current) {
